@@ -21,6 +21,11 @@
   margin: 0;
 }
 
+/* Module headers are identifiers; keep them lower case */
+.api-nav-header.api-nav-module {
+  text-transform: none;
+}
+
 /* Type items with details/summary for collapsing operations */
 .api-type-details {
   margin: 0;
