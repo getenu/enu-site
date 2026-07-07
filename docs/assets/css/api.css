@@ -21,9 +21,37 @@
   margin: 0;
 }
 
-/* Module headers are identifiers; keep them lower case */
-.api-nav-header.api-nav-module {
-  text-transform: none;
+/* Collapsible sidebar sections (Constants, Enums, modules) */
+.sidebar .chapter-item > .api-nav-section,
+.sidebar .chapter-item > .api-nav-header {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.api-nav-section > summary {
+  list-style: none;
+  cursor: pointer;
+  display: block;
+}
+
+.api-nav-section > summary::-webkit-details-marker {
+  display: none;
+}
+
+.api-nav-section > summary::after {
+  content: '[+]';
+  float: right;
+  font-family: monospace;
+}
+
+.api-nav-section[open] > summary::after {
+  content: '[-]';
+}
+
+.api-nav-section > ol {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
 }
 
 /* Type items with details/summary for collapsing operations */

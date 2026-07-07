@@ -418,6 +418,58 @@ the prototype name doesn't include them.</p>
       }, 0);
 
       // Sidebar Logic
+      // 0. Persist expanded/collapsed state of sections and types
+      const storageKey = 'api-nav-state:' + location.pathname;
+      let navState = {};
+      try {
+        navState = JSON.parse(localStorage.getItem(storageKey)) || {};
+      } catch (e) {}
+
+      const saveNavState = () => {
+        try {
+          localStorage.setItem(storageKey, JSON.stringify(navState));
+        } catch (e) {}
+      };
+
+      const persistDetails = (selector, prefix, dataKey) => {
+        document.querySelectorAll(selector).forEach(d => {
+          const key = prefix + (d.dataset[dataKey] || '');
+          if (key in navState) {
+            d.open = navState[key];
+          }
+          d.addEventListener('toggle', () => {
+            navState[key] = d.open;
+            saveNavState();
+          });
+        });
+      };
+
+      persistDetails('.api-nav-section', 'section:', 'section');
+      persistDetails('.api-type-details', 'type:', 'type');
+
+      // If the URL points at a symbol, open its sidebar section and make
+      // sure the link is visible.
+      const revealHash = () => {
+        if (!location.hash) {
+          return;
+        }
+        const links = document.querySelectorAll('.api-nav-content a');
+        for (const link of links) {
+          const href = link.getAttribute('href') || '';
+          if (href === location.hash || href.endsWith(location.hash)) {
+            let details = link.closest('details');
+            while (details) {
+              details.open = true;
+              details = details.parentElement.closest('details');
+            }
+            link.scrollIntoView({block: 'center'});
+            break;
+          }
+        }
+      };
+      revealHash();
+      window.addEventListener('hashchange', revealHash);
+
       // 1. "TYPES" Header Toggle
       const headers = document.querySelectorAll('.api-nav-header');
       let typesHeader = null;
