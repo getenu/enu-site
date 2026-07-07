@@ -337,7 +337,7 @@
               <h4><a href="#default_flags_const">DEFAULT_FLAGS</a></h4>
               <p class="description">Default flags for <tt class="docutils literal"><span class="pre"><span class="Identifier">Ed</span></span></tt> containers: sync both locally and remotely.</p>
               <pre class="code-block constant-block"><code class="language-nim">DEFAULT_FLAGS = {SYNC_LOCAL, SYNC_REMOTE}</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L601"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L601"><code>ed/types</code></a></p>
             </article>
           </section>
 
@@ -352,7 +352,7 @@
             ## id pumps I/O until it fills (synchronous semantics).
   PARTIAL_ASYNC              ## partial replica, non-blocking: a touch returns a
                              ## placeholder that fills on a later tick (frame-paced).</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L11"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L11"><code>ed/types</code></a></p>
             </article>
             <article class="symbol" id="edflags_enum">
               <h4><a href="#edflags_enum">EdFlags</a></h4>
@@ -372,7 +372,7 @@
                              ## `destroy_owned` cascades into them. For true child
                              ## collections (a unit's `units`) -- NOT reference
                              ## collections (a sign's owner, a selection list).</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L70"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L70"><code>ed/types</code></a></p>
             </article>
             <article class="symbol" id="changekind_enum">
               <h4><a href="#changekind_enum">ChangeKind</a></h4>
@@ -384,7 +384,7 @@
   MODIFIED,                 ## Value was modified
   TOUCHED,                  ## Object was touched without modification
   CLOSED                     ## Object was destroyed</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L87"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L87"><code>ed/types</code></a></p>
             </article>
             <article class="symbol" id="changereason_enum">
               <h4><a href="#changereason_enum">ChangeReason</a></h4>
@@ -392,20 +392,20 @@
               <pre class="code-block enum-block"><code class="language-nim">ChangeReason = enum
   Update,                   ## An ordinary live change -- a mutation or touch
   Fill                       ## A placeholder materialized (partial-replica fetch landed)</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L96"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L96"><code>ed/types</code></a></p>
             </article>
             <article class="symbol" id="messagekind_enum">
               <h4><a href="#messagekind_enum">MessageKind</a></h4>
               <pre class="code-block enum-block"><code class="language-nim">MessageKind = enum
   BLANK, CREATE, DESTROY, ASSIGN, UNASSIGN, TOUCH, SUBSCRIBE, PACKED, REQUEST,
   NOT_FOUND, RELEASE, INTEREST, UNSUBSCRIBE</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L102"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L102"><code>ed/types</code></a></p>
             </article>
             <article class="symbol" id="subscriptionkind_enum">
               <h4><a href="#subscriptionkind_enum">SubscriptionKind</a></h4>
               <pre class="code-block enum-block"><code class="language-nim">SubscriptionKind = enum
   BLANK, LOCAL, REMOTE</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L228"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L228"><code>ed/types</code></a></p>
             </article>
             <article class="symbol" id="fetchstate_enum">
               <h4><a href="#fetchstate_enum">FetchState</a></h4>
@@ -416,7 +416,7 @@
   NotFound ## the authority answered NOT_FOUND -- it didn't exist *at fetch
            ## time*. With `follow` (the default) it still arrives later if
            ## something creates it; the handle stays NotFound either way.</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L285"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L285"><code>ed/types</code></a></p>
             </article>
           </section>
 
@@ -432,7 +432,7 @@
   triggered_by*: seq[BaseChange]
   triggered_by_type*: string
   type_name*: string</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L128"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L128"><code>ed/types</code></a></p>
 
 
             </article>
@@ -442,7 +442,7 @@
               <p class="description">Represents a change to an <tt class="docutils literal"><span class="pre"><span class="Identifier">Ed</span></span></tt> container, including the affected item.</p>
               <pre class="code-block"><code class="language-nim">Change[O] = ref object of BaseChange
   item*: O</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L197"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L197"><code>ed/types</code></a></p>
 
 
             </article>
@@ -451,7 +451,7 @@
 
               <p class="description">Callback identifier for tracking registered callbacks.</p>
               <pre class="code-block"><code class="language-nim">EID = uint16</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L8"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L8"><code>ed/types</code></a></p>
 
 
             </article>
@@ -460,7 +460,7 @@
 
               <p class="description">Generic reactive container. T is the contained type, O is the change object type.</p>
               <pre class="code-block"><code class="language-nim">Ed[T; O] = ref object of EdObject[T, O]</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L586"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L586"><code>ed/types</code></a></p>
 
               <div class="operation" id="ed_bootstrap">
                 <h5><a href="#ed_bootstrap">Ed.bootstrap</a></h5>
@@ -684,7 +684,7 @@ proc touch[T, O](self: Ed[T, O]; value: T; op_ctx = OperationContext())</code></
               <p class="description">Base type for all <tt class="docutils literal"><span class="pre"><span class="Identifier">Ed</span></span></tt> containers -- the <em>proxy</em> side of the split: what the app holds. Local, handle-scoped state only (change callbacks and their EID bookkeeping die with the proxy); everything synced forwards to <tt class="docutils literal"><span class="pre"><span class="Identifier">body</span></span></tt>. Minted by <tt class="docutils literal"><span class="pre"><span class="Identifier">ctx</span><span class="Punctuation">[</span><span class="Identifier">id</span><span class="Punctuation">]</span></span></tt>/<tt class="docutils literal"><span class="pre"><span class="Identifier">resolve_proxy</span></span></tt> when none is live -- reference identity holds because the body's backref always points at <em>the</em> live proxy (prune-before-read keeps it honest).</p>
               <pre class="code-block"><code class="language-nim">EdBase = object of RootObj
   body*: ref EdBodyBase</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L573"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L573"><code>ed/types</code></a></p>
 
               <div class="operation" id="edbase_thread_ctx">
                 <h5><a href="#edbase_thread_ctx">EdBase.thread_ctx</a></h5>
@@ -699,7 +699,7 @@ proc touch[T, O](self: Ed[T, O]; value: T; op_ctx = OperationContext())</code></
 
               <p class="description">Typed body: the canonical data AND the callbacks live here -- registry- owned, no reliance on cycle collection (which Nim's ORC empirically does not perform for closure environments). A closure stored here must capture nothing that reaches a body or a context, or it leaks for the registry's lifetime; the <tt class="docutils literal"><span class="pre"><span class="Identifier">it</span></span></tt> parameter exists so it never needs to.</p>
               <pre class="code-block"><code class="language-nim">EdBody[T; O] = ref object of EdBodyBase</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L548"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L548"><code>ed/types</code></a></p>
 
 
             </article>
@@ -720,7 +720,7 @@ proc touch[T, O](self: Ed[T, O]; value: T; op_ctx = OperationContext())</code></
   key_bytes*: Table[string, int]
   key_last_read*: Table[string, MonoTime]
   ctx*: EdContext</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L435"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L435"><code>ed/types</code></a></p>
 
 
             </article>
@@ -787,7 +787,7 @@ proc touch[T, O](self: Ed[T, O]; value: T; op_ctx = OperationContext())</code></
   when defined(dump_ed_objects):
     dump_at*: MonoTime
     counts*: array[MessageKind, int]</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L302"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L302"><code>ed/types</code></a></p>
 
               <div class="operation" id="edcontext_init">
                 <h5><a href="#edcontext_init">EdContext.init</a></h5>
@@ -953,7 +953,7 @@ proc contains(self: EdContext; zen: ref EdBase): bool</code></pre>
                              ## is wrong under multiple contexts per thread -- to find the right
                              ## `owned_by`/`ref_pool` for the cascade. Non-owning cursor (the context
                              ## outlives its refs); never synced.</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L46"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L46"><code>ed/types</code></a></p>
 
 
             </article>
@@ -962,7 +962,7 @@ proc contains(self: EdContext; zen: ref EdBase): bool</code></pre>
 
               <p class="description">Reactive sequence container.</p>
               <pre class="code-block"><code class="language-nim">EdSeq[T] = Ed[seq[T], T]</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L592"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L592"><code>ed/types</code></a></p>
 
 
               <div class="operation" id="eq_edseq">
@@ -984,7 +984,7 @@ proc contains(self: EdContext; zen: ref EdBase): bool</code></pre>
 
               <p class="description">Reactive set container.</p>
               <pre class="code-block"><code class="language-nim">EdSet[T] = Ed[set[T], T]</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L595"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L595"><code>ed/types</code></a></p>
 
 
               <div class="operation" id="pluseq_edset">
@@ -1011,7 +1011,7 @@ proc contains(self: EdContext; zen: ref EdBase): bool</code></pre>
 
               <p class="description">Reactive table container. Changes report key-value pairs.</p>
               <pre class="code-block"><code class="language-nim">EdTable[K; V] = Ed[Table[K, V], Pair[K, V]]</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L589"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L589"><code>ed/types</code></a></p>
 
 
               <div class="operation" id="pluseq_edtable">
@@ -1094,7 +1094,7 @@ proc touch[T, O](self: EdTable[T, O]; key: T; value: O;
 
               <p class="description">Reactive single-value container.</p>
               <pre class="code-block"><code class="language-nim">EdValue[T] = Ed[T, T]</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L598"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L598"><code>ed/types</code></a></p>
 
 
               <div class="operation" id="touch_edvalue">
@@ -1112,7 +1112,7 @@ proc touch[T, O](self: EdTable[T, O]; key: T; value: O;
   id*: string
   state*: FetchState
   obj*: ref EdBase</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L293"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L293"><code>ed/types</code></a></p>
 
 
             </article>
@@ -1120,7 +1120,7 @@ proc touch[T, O](self: EdTable[T, O]; key: T; value: O;
               <h4 class="type-heading"><a href="#idmapping_type">IdMapping</a></h4>
 
               <pre class="code-block"><code class="language-nim">IdMapping = tuple[short_id: uint8, full_id: string]</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L152"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L152"><code>ed/types</code></a></p>
 
 
             </article>
@@ -1129,7 +1129,7 @@ proc touch[T, O](self: EdTable[T, O]; key: T; value: O;
 
               <p class="description">A set of teardown actions (typically untracking callbacks). An owner -- a Unit or a scope -- holds a Lifetime and <tt class="docutils literal"><span class="pre"><span class="Identifier">finish</span></span></tt>es it on teardown, so everything bound to it cleans up at once with no manual <tt class="docutils literal"><span class="pre"><span class="Identifier">zid</span></span></tt> bookkeeping. Standalone (not part of EdBase) so an owner holds one directly.</p>
               <pre class="code-block"><code class="language-nim">Lifetime = ref object</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L21"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L21"><code>ed/types</code></a></p>
 
 
             </article>
@@ -1139,7 +1139,7 @@ proc touch[T, O](self: EdTable[T, O]; key: T; value: O;
               <pre class="code-block"><code class="language-nim">PackedMessageOperation = tuple[kind: MessageKind, ref_id: int,
                                change_object_id: string, obj: string,
                                delta: bool, key_bin: string]</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L143"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L143"><code>ed/types</code></a></p>
 
 
             </article>
@@ -1151,7 +1151,7 @@ proc touch[T, O](self: EdTable[T, O]; key: T; value: O;
   ctx_uid*: int
   object_id*: string
   gen*: int</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L562"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L562"><code>ed/types</code></a></p>
 
 
             </article>
@@ -1164,7 +1164,7 @@ proc touch[T, O](self: EdTable[T, O]; key: T; value: O;
               <pre class="code-block"><code class="language-nim">RefHandle = ref object
   ctx_uid*: int
   ref_id*: string</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L29"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L29"><code>ed/types</code></a></p>
 
 
             </article>
@@ -1192,7 +1192,7 @@ proc touch[T, O](self: EdTable[T, O]; key: T; value: O;
     last_sent_time*: float64
   else:
     nil</code></pre>
-              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/main/src/ed/types.nim#L233"><code>ed/types</code></a></p>
+              <p class="source">Source: <a href="https://github.com/getenu/ed/blob/7b564cf1c1e07d732b7ce149154ba467c8155dae/src/ed/types.nim#L233"><code>ed/types</code></a></p>
 
 
             </article>
@@ -1338,7 +1338,17 @@ proc touch[T, O](self: EdTable[T, O]; key: T; value: O;
 
         render();
         header.style.cursor = 'pointer';
-        header.addEventListener('click', () => setOpen(!open));
+        header.addEventListener('click', () => {
+          setOpen(!open);
+          // Module headers also navigate to their section in the content
+          if (header.dataset.anchor) {
+            const target = document.getElementById(header.dataset.anchor);
+            if (target) {
+              target.scrollIntoView();
+              history.replaceState(null, '', '#' + header.dataset.anchor);
+            }
+          }
+        });
         sectionOpeners[section] = () => setOpen(true);
       });
 
