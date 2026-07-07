@@ -3,7 +3,7 @@
 <head>
   <!-- Book generated using nimibook -->
   <meta charset="UTF-8">
-  <title>Arrows - Enu</title>
+  <title>Settings - Enu</title>
 
   <!-- Custom HTML head -->
 
@@ -132,7 +132,7 @@
         <strong aria-hidden="true">1.4.</strong> Controls and Usage
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../intro/settings.html" tabindex="0">
+      <a href="../intro/settings.html" class="active" tabindex="0">
         <strong aria-hidden="true">1.5.</strong> Settings
       </a></li>
     <li class="chapter-item expanded ">
@@ -192,7 +192,7 @@
         <strong aria-hidden="true">3.1.</strong> Writing Commands
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../command_loops/arrows.html" class="active" tabindex="0">
+      <a href="../command_loops/arrows.html" tabindex="0">
         <strong aria-hidden="true">3.2.</strong> Arrows
       </a></li>
     <li class="chapter-item expanded ">
@@ -284,30 +284,60 @@
       <main>
 
 
-          <h1>Arrows</h1>
-<h2><code>-&gt;</code> Little Switch Arrow</h2>
-<p>Switches from one command to another, after the first command has finished
-running.</p>
-<pre><code class="language-nim">draw_box -&gt; draw_stairs
-</code></pre>
-<h2><code>==&gt;</code> Big Switch Arrow</h2>
-<p>Switches from one command to another immediately. Will interrupt the running
-command.</p>
-<pre><code class="language-nim">if player.near:
-  sleep ==&gt; offer_quest
-</code></pre>
+          <h1>Settings</h1>
+<p>Open the settings panel with the gear button in the corner of the screen (on
+macOS it's also in the menu bar). It slides open and holds everything you can
+change without editing the <a href="config.html">config file</a> by hand.</p>
+<p><img src="../assets/settings.png" alt="Settings panel" /></p>
+<h2>Levels</h2>
+<p>The <strong>Levels</strong> dropdown lists every level in your current world. Pick one to
+jump straight to it. Choosing <strong>New...</strong> lets you name and create a fresh level
+to build in — your worlds are kept separate, so you can have one for
+experiments and one for your masterpiece.</p>
+<h2>Player Color</h2>
+<p>The color of your character in multiplayer. Pick one of Enu's built-in colors,
+or the panel will show a hex color if you've set a custom one in your config.</p>
+<h2>Environment</h2>
+<p>Changes the scenery and lighting around you. <code>default</code> is the usual purple
+world; <code>none</code> strips it back; and there are others to try. Switching is
+instant, so flip through them and see which you like.</p>
+<h2>Full Screen</h2>
+<p>Toggles between filling the whole screen and running in a window. (Hidden on
+iOS, where it wouldn't make sense.)</p>
+<h2>Megapixels</h2>
+<p>How sharp the world looks. Higher is crisper but asks more of your computer;
+lower is blurrier but runs faster. If things ever feel choppy, turn this down a
+notch. Use the arrows to step through sensible values.</p>
+<h2>Font Size</h2>
+<p>How big the text is in the code editor and console. Nudge it up or down with
+the arrows.</p>
+<h2>Toolbar Size</h2>
+<p>How big the tool icons are along the bottom of the screen.</p>
+<h2>Run Server / Connect</h2>
+<p>The multiplayer controls. <strong>Run Server</strong> turns your Enu into a server other
+people can join. When it's on, a field appears for a <strong>server address</strong> so you
+can share your world. To join someone else's world instead, type their address
+and press <strong>Connect</strong>. Multiplayer is still experimental — see the
+<a href="multiplayer.html">Multiplayer</a> page. Connecting or disconnecting restarts Enu.</p>
+<details class="note">
+<summary>Note</summary>
+<p>Every setting here writes to the same <code>config.json</code> described on the
+<a href="config.html">Config</a> page, so anything you change in the panel sticks around
+next time you launch Enu. A few options (like movement speeds and mouse
+sensitivity) only live in the config file for now.</p>
+</details>
       </main>
 
       <nav class="nav-wrapper" aria-label="Page navigation">
         <!-- Mobile navigation buttons -->
-          <a rel="prev" href="../command_loops/commands.html"
+          <a rel="prev" href="../intro/controls.html"
              class="mobile-nav-chapters previous"
              title="Previous chapter" aria-label="Previous chapter"
              aria-keyshortcuts="Left">
             <i class="fa fa-angle-left"></i>
           </a>
 
-          <a rel="next" href="../command_loops/loops.html"
+          <a rel="next" href="../intro/examples.html"
              class="mobile-nav-chapters next" title="Next chapter"
              aria-label="Next chapter" aria-keyshortcuts="Right">
             <i class="fa fa-angle-right"></i>
@@ -319,13 +349,13 @@ command.</p>
   </div>
 
   <nav class="nav-wide-wrapper" aria-label="Page navigation">
-      <a rel="prev" href="../command_loops/commands.html"
+      <a rel="prev" href="../intro/controls.html"
          class="nav-chapters previous" title="Previous chapter"
          aria-label="Previous chapter" aria-keyshortcuts="Left">
         <i class="fa fa-angle-left"></i>
       </a>
 
-      <a rel="next" href="../command_loops/loops.html"
+      <a rel="next" href="../intro/examples.html"
          class="nav-chapters next" title="Next chapter"
          aria-label="Next chapter" aria-keyshortcuts="Right">
         <i class="fa fa-angle-right"></i>

@@ -3,7 +3,7 @@
 <head>
   <!-- Book generated using nimibook -->
   <meta charset="UTF-8">
-  <title>Arrows - Enu</title>
+  <title>Drawing Shapes - Enu</title>
 
   <!-- Custom HTML head -->
 
@@ -164,7 +164,7 @@
         <strong aria-hidden="true">2.2.</strong> Built-in Commands
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../coding/shapes.html" tabindex="0">
+      <a href="../coding/shapes.html" class="active" tabindex="0">
         <strong aria-hidden="true">2.3.</strong> Drawing Shapes
       </a></li>
     <li class="chapter-item expanded ">
@@ -192,7 +192,7 @@
         <strong aria-hidden="true">3.1.</strong> Writing Commands
       </a></li>
     <li class="chapter-item expanded ">
-      <a href="../command_loops/arrows.html" class="active" tabindex="0">
+      <a href="../command_loops/arrows.html" tabindex="0">
         <strong aria-hidden="true">3.2.</strong> Arrows
       </a></li>
     <li class="chapter-item expanded ">
@@ -284,30 +284,108 @@
       <main>
 
 
-          <h1>Arrows</h1>
-<h2><code>-&gt;</code> Little Switch Arrow</h2>
-<p>Switches from one command to another, after the first command has finished
-running.</p>
-<pre><code class="language-nim">draw_box -&gt; draw_stairs
+          <h1>Drawing Shapes</h1>
+<p>Commands like <code>forward</code> and <code>up</code> draw one line of blocks at a time, which is
+great for paths, outlines, and anything you want to watch grow. When you know
+the shape you want, Enu can draw the whole thing in one command.</p>
+<p>Shapes are drawn where the drawing turtle is, facing the way the turtle faces,
+in the current <code>color</code>. Move the turtle with the normal drawing commands (use
+<code>drawing = false</code> if you don't want to leave a trail on the way), or tell the
+shape exactly where to go with <code>at</code>.</p>
+<h2><code>box</code></h2>
+<p><code>box width, height, depth</code> draws a solid box:</p>
+<pre><code class="language-nim">box 5, 3, 8
 </code></pre>
-<h2><code>==&gt;</code> Big Switch Arrow</h2>
-<p>Switches from one command to another immediately. Will interrupt the running
-command.</p>
-<pre><code class="language-nim">if player.near:
-  sleep ==&gt; offer_quest
+<p><img src="../assets/shape_box.png" alt="A solid box" /></p>
+<p>Make it hollow with <code>fill = false</code>, which is an instant room. Erase a couple
+of blocks for a doorway and you've got a little house:</p>
+<pre><code class="language-nim">box 9, 6, 9, fill = false
+box 2, 3, 1, at = vec3(4, 0, 0), color = eraser
 </code></pre>
+<p><img src="../assets/shape_house.png" alt="A hollow box with a doorway" /></p>
+<p>You can also draw a box between two corners, which is handy when you know
+coordinates instead of sizes:</p>
+<pre><code class="language-nim">box vec3(0, 0, 0), vec3(9, 4, 9)
+</code></pre>
+<h2><code>ball</code></h2>
+<p><code>ball size</code> draws a sphere, <code>size</code> blocks across, centred on the turtle:</p>
+<pre><code class="language-nim">color = red
+ball 9
+</code></pre>
+<p><img src="../assets/shape_ball.png" alt="A red ball" /></p>
+<p>Hollow balls make good domes — draw one, then erase the bottom half, or bury
+half of it in the ground. <code>sphere</code> is the same command with a fancier name.</p>
+<h2><code>can</code></h2>
+<p><code>can size, height</code> draws a cylinder, standing on the turtle's spot:</p>
+<pre><code class="language-nim">color = green
+can 7, 12
+</code></pre>
+<p><img src="../assets/shape_cylinder.png" alt="A green cylinder" /></p>
+<p>Perfect for towers, tree trunks, columns, and cans. <code>cylinder</code> is the same
+command with more syllables.</p>
+<h2><code>wall</code> and <code>floor</code></h2>
+<p><code>wall length</code> draws a wall heading the way the turtle faces — 4 blocks tall
+unless you say otherwise:</p>
+<pre><code class="language-nim">wall 10       # 10 long, 4 tall
+wall 10, 8    # 10 long, 8 tall
+</code></pre>
+<p>The turtle ends up at the far end of the wall, so turning and drawing another
+wall makes a perfect corner:</p>
+<pre><code class="language-nim">color = brown
+4.times:
+  wall 15, 5
+  turn right
+</code></pre>
+<p><img src="../assets/shape_fort.png" alt="A four-walled fort" /></p>
+<p>That's a fort. You're welcome.</p>
+<p><code>floor length</code> works the same way, but flat. It draws a square slab unless you
+give it a different width:</p>
+<pre><code class="language-nim">floor 15      # 15 x 15
+floor 15, 10  # 15 deep, 10 wide
+</code></pre>
+<p>Like <code>wall</code>, it leaves the turtle at the far edge, ready for the next piece.</p>
+<h2><code>place</code></h2>
+<p><code>place x, y, z</code> puts a single block at exact coordinates without moving the
+turtle:</p>
+<pre><code class="language-nim">place 3, 0, 5
+place 3, 1, 5, red
+</code></pre>
+<p>Coordinates are relative to the build's own space, not the world.</p>
+<h2>Drawing somewhere else</h2>
+<p>Every shape takes an <code>at</code> to draw at exact coordinates instead of at the
+turtle:</p>
+<pre><code class="language-nim">ball 5, at = vec3(0, 20, 0)      # a ball floating overhead
+can 3, 30, at = vec3(10, 0, 10)  # a column off to the side
+</code></pre>
+<h2>Colors and erasing</h2>
+<p>Shapes use the current <code>color</code>, or take one directly:</p>
+<pre><code class="language-nim">box 5, 5, 5, color = green
+</code></pre>
+<p><code>eraser</code> is a color too, so shapes can carve as well as build. A classic move
+is drawing a solid box and erasing a doorway:</p>
+<pre><code class="language-nim">box 9, 6, 9
+box 2, 3, 1, at = vec3(4, 0, 0), color = eraser
+</code></pre>
+<details class="note">
+<summary>Note for Nimions</summary>
+<p><code>ball</code> and <code>can</code> are aliases for <code>sphere</code> and <code>cylinder</code>. Sphere and cylinder
+sizes are diameters, rasterised centred on the target block, so even sizes
+round up to the next odd width. Fractional sizes are allowed, which is useful
+for smooth tapers — stack thin <code>can</code> slices with shrinking sizes to make cones
+and spires.</p>
+</details>
       </main>
 
       <nav class="nav-wrapper" aria-label="Page navigation">
         <!-- Mobile navigation buttons -->
-          <a rel="prev" href="../command_loops/commands.html"
+          <a rel="prev" href="../coding/commands.html"
              class="mobile-nav-chapters previous"
              title="Previous chapter" aria-label="Previous chapter"
              aria-keyshortcuts="Left">
             <i class="fa fa-angle-left"></i>
           </a>
 
-          <a rel="next" href="../command_loops/loops.html"
+          <a rel="next" href="../coding/shorthand.html"
              class="mobile-nav-chapters next" title="Next chapter"
              aria-label="Next chapter" aria-keyshortcuts="Right">
             <i class="fa fa-angle-right"></i>
@@ -319,13 +397,13 @@ command.</p>
   </div>
 
   <nav class="nav-wide-wrapper" aria-label="Page navigation">
-      <a rel="prev" href="../command_loops/commands.html"
+      <a rel="prev" href="../coding/commands.html"
          class="nav-chapters previous" title="Previous chapter"
          aria-label="Previous chapter" aria-keyshortcuts="Left">
         <i class="fa fa-angle-left"></i>
       </a>
 
-      <a rel="next" href="../command_loops/loops.html"
+      <a rel="next" href="../coding/shorthand.html"
          class="nav-chapters next" title="Next chapter"
          aria-label="Next chapter" aria-keyshortcuts="Right">
         <i class="fa fa-angle-right"></i>
