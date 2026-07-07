@@ -491,21 +491,50 @@ by default.</p>
         } catch (e) {}
       };
 
-      const persistDetails = (selector, prefix, dataKey) => {
-        document.querySelectorAll(selector).forEach(d => {
-          const key = prefix + (d.dataset[dataKey] || '');
-          if (key in navState) {
-            d.open = navState[key];
-          }
-          d.addEventListener('toggle', () => {
-            navState[key] = d.open;
-            saveNavState();
-          });
-        });
-      };
+      // Collapsible sections (Constants, Enums, modules): the header gets the
+      // same [+]/[-] control as the Types header, and toggles the visibility
+      // of the section's items.
+      const sectionOpeners = {};
+      document.querySelectorAll('.api-nav-header[data-section]').forEach(header => {
+        const section = header.dataset.section;
+        const key = 'section:' + section;
+        const items = document.querySelectorAll('[data-section-item="' + section + '"]');
+        const label = header.textContent.trim();
+        let open = key in navState ? navState[key] : true;
 
-      persistDetails('.api-nav-section', 'section:', 'section');
-      persistDetails('.api-type-details', 'type:', 'type');
+        const render = () => {
+          header.innerHTML = label + ' <span style="float:right; font-family: monospace;">' + (open ? '[-]' : '[+]') + '</span>';
+          items.forEach(li => {
+            li.style.display = open ? '' : 'none';
+          });
+        };
+
+        const setOpen = value => {
+          if (open !== value) {
+            open = value;
+            navState[key] = open;
+            saveNavState();
+            render();
+          }
+        };
+
+        render();
+        header.style.cursor = 'pointer';
+        header.addEventListener('click', () => setOpen(!open));
+        sectionOpeners[section] = () => setOpen(true);
+      });
+
+      // Persist per-type expanded/collapsed state
+      document.querySelectorAll('.api-type-details').forEach(d => {
+        const key = 'type:' + (d.dataset.type || '');
+        if (key in navState) {
+          d.open = navState[key];
+        }
+        d.addEventListener('toggle', () => {
+          navState[key] = d.open;
+          saveNavState();
+        });
+      });
 
       // If the URL points at a symbol, open its sidebar section and make
       // sure the link is visible.
@@ -517,6 +546,10 @@ by default.</p>
         for (const link of links) {
           const href = link.getAttribute('href') || '';
           if (href === location.hash || href.endsWith(location.hash)) {
+            const item = link.closest('[data-section-item]');
+            if (item && sectionOpeners[item.dataset.sectionItem]) {
+              sectionOpeners[item.dataset.sectionItem]();
+            }
             let details = link.closest('details');
             while (details) {
               details.open = true;
