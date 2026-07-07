@@ -1,0 +1,3286 @@
+<!DOCTYPE HTML>
+<html lang="en-us" class="sidebar-visible no-js dark">
+<head>
+  <!-- Book generated using nimibook -->
+  <meta charset="UTF-8">
+  <title>API Reference - Enu</title>
+
+  <!-- Custom HTML head -->
+
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta name="description" content="Build together">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff"/>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#333333">
+  <meta name="msapplication-TileColor" content="#603cba">
+  <meta name="theme-color" content="#333333">
+
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/general.css">
+  <link rel="stylesheet" href="../assets/css/chrome.css">
+  <link rel="stylesheet" href="../assets/css/enu.css">
+
+  <!-- Fonts -->
+  <link rel="stylesheet"
+      href="../assets/FontAwesome/css/font-awesome.min.css">
+
+  <!-- Highlight.js Stylesheets - I could use nimib native highlight but let's keep it for styling... -->
+  <link rel="stylesheet" href="../assets/css/highlight.css">
+
+  <!-- Custom theme stylesheets - why the "../"? -->
+
+
+  
+
+    <script src="https://cdn.jsdelivr.net/gh/pietroppeter/nimib@main/assets/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+
+  <!-- plausible analytics (new in nimibook) -->
+</head>
+<body>
+<!-- Provide site root to javascript -->
+<script type="text/javascript">
+  var path_to_root = "..//assets";
+  var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "dark";
+</script>
+
+<!-- Work around some values being stored in localStorage wrapped in quotes -->
+<script type="text/javascript">
+  try {
+    var theme = localStorage.getItem('mdbook-theme');
+    var sidebar = localStorage.getItem('mdbook-sidebar');
+
+    if (theme.startsWith('"') && theme.endsWith('"')) {
+      localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+    }
+
+    if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+      localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+    }
+  } catch (e) {
+  }
+</script>
+
+<!-- Set the theme before any content is loaded, prevents flash -->
+<script type="text/javascript">
+  var theme;
+  try {
+    theme = localStorage.getItem('mdbook-theme');
+  } catch (e) {
+  }
+  if (theme === null || theme === undefined) {
+    theme = default_theme;
+  }
+  var html = document.querySelector('html');
+  html.classList.remove('no-js')
+  html.classList.remove('dark')
+  html.classList.add(theme);
+  html.classList.add('js');
+</script>
+
+<!-- Hide / unhide sidebar before it is displayed -->
+<script type="text/javascript">
+  var html = document.querySelector('html');
+  var sidebar = 'hidden';
+  if (document.body.clientWidth >= 1080) {
+    try {
+      sidebar = localStorage.getItem('mdbook-sidebar');
+    } catch (e) {
+    }
+    sidebar = sidebar || 'visible';
+  }
+  html.classList.remove('sidebar-visible');
+  html.classList.add("sidebar-" + sidebar);
+</script>
+
+<nav id="sidebar" class="sidebar" aria-label="Table of contents">
+  <div class="sidebar-scrollbox">
+    <ol class="chapter">
+      <li>
+        <a href="https://getenu.com" tabindex="0">Home</a>
+      </li>
+    </ol>
+            <ol class="chapter">
+          <li class="chapter-item expanded">
+            <a href="../intro.html" tabindex="0">← Documentation</a>
+          </li>
+          <li class="chapter-item expanded">
+            <a href="enu_api.html" class="active" tabindex="0">API Reference</a>
+            <ol class="section api-nav-content">
+              <li class="chapter-item">
+                <div class="api-nav-header">Constants</div>
+              </li>
+              <li class="chapter-item api-nav-item"><a href="#yes_const">yes</a></li>
+              <li class="chapter-item api-nav-item"><a href="#no_const">no</a></li>
+              <li class="chapter-item api-nav-item"><a href="#asap_const">ASAP</a></li>
+              <li class="chapter-item api-nav-item"><a href="#up_const">UP</a></li>
+              <li class="chapter-item api-nav-item"><a href="#down_const">DOWN</a></li>
+              <li class="chapter-item api-nav-item"><a href="#back_const">BACK</a></li>
+              <li class="chapter-item api-nav-item"><a href="#forward_const">FORWARD</a></li>
+              <li class="chapter-item api-nav-item"><a href="#right_const">RIGHT</a></li>
+              <li class="chapter-item api-nav-item"><a href="#left_const">LEFT</a></li>
+              <li class="chapter-item api-nav-item"><a href="#unset_position_const">UNSET_POSITION</a></li>
+    
+              <li class="chapter-item">
+                <div class="api-nav-header">Enums</div>
+              </li>
+              <li class="chapter-item api-nav-item"><a href="#directions_enum">Directions</a></li>
+              <li class="chapter-item api-nav-item"><a href="#colors_enum">Colors</a></li>
+              <li class="chapter-item api-nav-item"><a href="#tools_enum">Tools</a></li>
+              <li class="chapter-item api-nav-item"><a href="#boxpivot_enum">BoxPivot</a></li>
+    
+              <li class="chapter-item">
+                <div class="api-nav-header">Commands</div>
+              </li>
+              <li class="chapter-item api-nav-item"><a href="#_cmd">*</a></li>
+              <li class="chapter-item api-nav-item"><a href="#gt_cmd">-&gt;</a></li>
+              <li class="chapter-item api-nav-item"><a href="#eqeqgt_cmd">==&gt;</a></li>
+              <li class="chapter-item api-nav-item"><a href="#q_cmd">?</a></li>
+              <li class="chapter-item api-nav-item"><a href="#\_cmd">\</a></li>
+              <li class="chapter-item api-nav-item"><a href="#or_cmd">or</a></li>
+              <li class="chapter-item api-nav-item"><a href="#active_unit_cmd">active_unit</a></li>
+              <li class="chapter-item api-nav-item"><a href="#added_units_cmd">added_units</a></li>
+              <li class="chapter-item api-nav-item"><a href="#all_bots_cmd">all_bots</a></li>
+              <li class="chapter-item api-nav-item"><a href="#all_builds_cmd">all_builds</a></li>
+              <li class="chapter-item api-nav-item"><a href="#all_players_cmd">all_players</a></li>
+              <li class="chapter-item api-nav-item"><a href="#all_signs_cmd">all_signs</a></li>
+              <li class="chapter-item api-nav-item"><a href="#all_units_cmd">all_units</a></li>
+              <li class="chapter-item api-nav-item"><a href="#anchor_cmd">anchor</a></li>
+              <li class="chapter-item api-nav-item"><a href="#asap_cmd">asap</a></li>
+              <li class="chapter-item api-nav-item"><a href="#b_cmd">b</a></li>
+              <li class="chapter-item api-nav-item"><a href="#back_cmd">back</a></li>
+              <li class="chapter-item api-nav-item"><a href="#ball_cmd">ball</a></li>
+              <li class="chapter-item api-nav-item"><a href="#box_cmd">box</a></li>
+              <li class="chapter-item api-nav-item"><a href="#can_cmd">can</a></li>
+              <li class="chapter-item api-nav-item"><a href="#check_cmd">check</a></li>
+              <li class="chapter-item api-nav-item"><a href="#clear_box_cmd">clear_box</a></li>
+              <li class="chapter-item api-nav-item"><a href="#contains_cmd">contains</a></li>
+              <li class="chapter-item api-nav-item"><a href="#cycle_cmd">cycle</a></li>
+              <li class="chapter-item api-nav-item"><a href="#cylinder_cmd">cylinder</a></li>
+              <li class="chapter-item api-nav-item"><a href="#d_cmd">d</a></li>
+              <li class="chapter-item api-nav-item"><a href="#down_cmd">down</a></li>
+              <li class="chapter-item api-nav-item"><a href="#dump_cmd">dump</a></li>
+              <li class="chapter-item api-nav-item"><a href="#echo_cmd">echo</a></li>
+              <li class="chapter-item api-nav-item"><a href="#echo_console_cmd">echo_console</a></li>
+              <li class="chapter-item api-nav-item"><a href="#even_cmd">even</a></li>
+              <li class="chapter-item api-nav-item"><a href="#executing_player_cmd">executing_player</a></li>
+              <li class="chapter-item api-nav-item"><a href="#exit_cmd">exit</a></li>
+              <li class="chapter-item api-nav-item"><a href="#f_cmd">f</a></li>
+              <li class="chapter-item api-nav-item"><a href="#far_cmd">far</a></li>
+              <li class="chapter-item api-nav-item"><a href="#find_by_id_cmd">find_by_id</a></li>
+              <li class="chapter-item api-nav-item"><a href="#find_voxel_overlaps_cmd">find_voxel_overlaps</a></li>
+              <li class="chapter-item api-nav-item"><a href="#first_cmd">first</a></li>
+              <li class="chapter-item api-nav-item"><a href="#first_key_cmd">first_key</a></li>
+              <li class="chapter-item api-nav-item"><a href="#floor_cmd">floor</a></li>
+              <li class="chapter-item api-nav-item"><a href="#floor_at_cmd">floor_at</a></li>
+              <li class="chapter-item api-nav-item"><a href="#forever_cmd">forever</a></li>
+              <li class="chapter-item api-nav-item"><a href="#forward_cmd">forward</a></li>
+              <li class="chapter-item api-nav-item"><a href="#frame_count_cmd">frame_count</a></li>
+              <li class="chapter-item api-nav-item"><a href="#fuzzed_cmd">fuzzed</a></li>
+              <li class="chapter-item api-nav-item"><a href="#go_home_cmd">go_home</a></li>
+              <li class="chapter-item api-nav-item"><a href="#init_cmd">init</a></li>
+              <li class="chapter-item api-nav-item"><a href="#init_duration_cmd">init_duration</a></li>
+              <li class="chapter-item api-nav-item"><a href="#init_timestamp_cmd">init_timestamp</a></li>
+              <li class="chapter-item api-nav-item"><a href="#initialize_state_cmd">initialize_state</a></li>
+              <li class="chapter-item api-nav-item"><a href="#isequalapprox_cmd">isEqualApprox</a></li>
+              <li class="chapter-item api-nav-item"><a href="#keep_alive_cmd">keep_alive</a></li>
+              <li class="chapter-item api-nav-item"><a href="#l_cmd">l</a></li>
+              <li class="chapter-item api-nav-item"><a href="#lean_cmd">lean</a></li>
+              <li class="chapter-item api-nav-item"><a href="#left_cmd">left</a></li>
+              <li class="chapter-item api-nav-item"><a href="#level_name_cmd">level_name</a></li>
+              <li class="chapter-item api-nav-item"><a href="#load_level_cmd">load_level</a></li>
+              <li class="chapter-item api-nav-item"><a href="#loop_cmd">loop</a></li>
+              <li class="chapter-item api-nav-item"><a href="#loop_finished_cmd">loop_finished</a></li>
+              <li class="chapter-item api-nav-item"><a href="#move_cmd">move</a></li>
+              <li class="chapter-item api-nav-item"><a href="#near_cmd">near</a></li>
+              <li class="chapter-item api-nav-item"><a href="#now_cmd">now</a></li>
+              <li class="chapter-item api-nav-item"><a href="#now_seconds_cmd">now_seconds</a></li>
+              <li class="chapter-item api-nav-item"><a href="#o_cmd">o</a></li>
+              <li class="chapter-item api-nav-item"><a href="#odd_cmd">odd</a></li>
+              <li class="chapter-item api-nav-item"><a href="#place_cmd">place</a></li>
+              <li class="chapter-item api-nav-item"><a href="#press_action_cmd">press_action</a></li>
+              <li class="chapter-item api-nav-item"><a href="#quit_cmd">quit</a></li>
+              <li class="chapter-item api-nav-item"><a href="#r_cmd">r</a></li>
+              <li class="chapter-item api-nav-item"><a href="#rand_cmd">rand</a></li>
+              <li class="chapter-item api-nav-item"><a href="#random_cmd">random</a></li>
+              <li class="chapter-item api-nav-item"><a href="#register_state_init_cmd">register_state_init</a></li>
+              <li class="chapter-item api-nav-item"><a href="#release_action_cmd">release_action</a></li>
+              <li class="chapter-item api-nav-item"><a href="#require_cmd">require</a></li>
+              <li class="chapter-item api-nav-item"><a href="#reset_cmd">reset</a></li>
+              <li class="chapter-item api-nav-item"><a href="#reset_level_cmd">reset_level</a></li>
+              <li class="chapter-item api-nav-item"><a href="#right_cmd">right</a></li>
+              <li class="chapter-item api-nav-item"><a href="#runner_cmd">runner</a></li>
+              <li class="chapter-item api-nav-item"><a href="#save_level_now_cmd">save_level_now</a></li>
+              <li class="chapter-item api-nav-item"><a href="#say_cmd">say</a></li>
+              <li class="chapter-item api-nav-item"><a href="#sign_cmd">sign</a></li>
+              <li class="chapter-item api-nav-item"><a href="#signal_test_complete_cmd">signal_test_complete</a></li>
+              <li class="chapter-item api-nav-item"><a href="#sleep_cmd">sleep</a></li>
+              <li class="chapter-item api-nav-item"><a href="#smart_call_cmd">smart_call</a></li>
+              <li class="chapter-item api-nav-item"><a href="#sphere_cmd">sphere</a></li>
+              <li class="chapter-item api-nav-item"><a href="#stepify_cmd">stepify</a></li>
+              <li class="chapter-item api-nav-item"><a href="#suite_cmd">suite</a></li>
+              <li class="chapter-item api-nav-item"><a href="#t_cmd">t</a></li>
+              <li class="chapter-item api-nav-item"><a href="#test_cmd">test</a></li>
+              <li class="chapter-item api-nav-item"><a href="#test_summary_cmd">test_summary</a></li>
+              <li class="chapter-item api-nav-item"><a href="#tests_failed_cmd">tests_failed</a></li>
+              <li class="chapter-item api-nav-item"><a href="#times_cmd">times</a></li>
+              <li class="chapter-item api-nav-item"><a href="#turn_cmd">turn</a></li>
+              <li class="chapter-item api-nav-item"><a href="#u_cmd">u</a></li>
+              <li class="chapter-item api-nav-item"><a href="#units_in_box_cmd">units_in_box</a></li>
+              <li class="chapter-item api-nav-item"><a href="#units_near_cmd">units_near</a></li>
+              <li class="chapter-item api-nav-item"><a href="#up_cmd">up</a></li>
+              <li class="chapter-item api-nav-item"><a href="#vec3_cmd">vec3</a></li>
+              <li class="chapter-item api-nav-item"><a href="#wall_cmd">wall</a></li>
+              <li class="chapter-item api-nav-item"><a href="#world_name_cmd">world_name</a></li>
+              <li class="chapter-item api-nav-item"><a href="#write_stack_trace_cmd">write_stack_trace</a></li>
+              <li class="chapter-item api-nav-item"><a href="#x_cmd">x</a></li>
+    
+              <li class="chapter-item">
+                <div class="api-nav-header api-types-toggle" data-expanded="true">Types</div>
+              </li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="Bot">
+                  <summary><a href="#bot_type">Bot</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#bot_all">Bot.all</a></li>
+                    <li class="chapter-item"><a href="#go_home_bot">go_home</a></li>
+                    <li class="chapter-item"><a href="#play_bot">play</a></li>
+                    <li class="chapter-item"><a href="#run_bot">run</a></li>
+                    <li class="chapter-item"><a href="#walk_bot">walk</a></li>
+                  </ol>
+                </details>
+              </li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="Build">
+                  <summary><a href="#build_type">Build</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#build_all">Build.all</a></li>
+                    <li class="chapter-item"><a href="#advance_build">advance</a></li>
+                    <li class="chapter-item"><a href="#begin_asap_build">begin_asap</a></li>
+                    <li class="chapter-item"><a href="#bounds_at_build">bounds_at</a></li>
+                    <li class="chapter-item"><a href="#box_build">box</a></li>
+                    <li class="chapter-item"><a href="#cylinder_build">cylinder</a></li>
+                    <li class="chapter-item"><a href="#draw_position_build">draw_position</a></li>
+                    <li class="chapter-item"><a href="#draw_positioneq_build">draw_position=</a></li>
+                    <li class="chapter-item"><a href="#draw_voxel_build">draw_voxel</a></li>
+                    <li class="chapter-item"><a href="#drawing_build">drawing</a></li>
+                    <li class="chapter-item"><a href="#drawingeq_build">drawing=</a></li>
+                    <li class="chapter-item"><a href="#end_asap_build">end_asap</a></li>
+                    <li class="chapter-item"><a href="#fill_square_build">fill_square</a></li>
+                    <li class="chapter-item"><a href="#go_home_build">go_home</a></li>
+                    <li class="chapter-item"><a href="#place_build">place</a></li>
+                    <li class="chapter-item"><a href="#reload_unit_build">reload_unit</a></li>
+                    <li class="chapter-item"><a href="#rendered_voxel_count_get_build">rendered_voxel_count_get</a></li>
+                    <li class="chapter-item"><a href="#restore_build">restore</a></li>
+                    <li class="chapter-item"><a href="#save_build">save</a></li>
+                    <li class="chapter-item"><a href="#sphere_build">sphere</a></li>
+                  </ol>
+                </details>
+              </li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="Context">
+                  <summary><a href="#context_type">Context</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#advance_context">advance</a></li>
+                  </ol>
+                </details>
+              </li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="Directions">
+                  <summary><a href="#directions_type">Directions</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#lean_directions">lean</a></li>
+                    <li class="chapter-item"><a href="#t_directions">t</a></li>
+                    <li class="chapter-item"><a href="#turn_directions">turn</a></li>
+                  </ol>
+                </details>
+              </li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="Duration">
+                  <summary><a href="#duration_type">Duration</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#dollar_duration">$</a></li>
+                    <li class="chapter-item"><a href="#gteq_duration">&gt;=</a></li>
+                    <li class="chapter-item"><a href="#gt_duration">&gt;</a></li>
+                    <li class="chapter-item"><a href="#lteq_duration">&lt;=</a></li>
+                    <li class="chapter-item"><a href="#lt_duration">&lt;</a></li>
+                    <li class="chapter-item"><a href="#plus_duration">+</a></li>
+                    <li class="chapter-item"><a href="#_duration">-</a></li>
+                    <li class="chapter-item"><a href="#eqeq_duration">==</a></li>
+                    <li class="chapter-item"><a href="#milliseconds_duration">milliseconds</a></li>
+                    <li class="chapter-item"><a href="#seconds_duration">seconds</a></li>
+                  </ol>
+                </details>
+              </li>
+              <li class="chapter-item api-nav-item"><a href="#frame_type">Frame</a></li>
+              <li class="chapter-item api-nav-item"><a href="#halt_type">Halt</a></li>
+              <li class="chapter-item api-nav-item"><a href="#loop_type">Loop</a></li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="Player">
+                  <summary><a href="#player_type">Player</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#player_added">Player.added</a></li>
+                    <li class="chapter-item"><a href="#player_all">Player.all</a></li>
+                    <li class="chapter-item"><a href="#player_hit">Player.hit</a></li>
+                    <li class="chapter-item"><a href="#bounce_player">bounce</a></li>
+                    <li class="chapter-item"><a href="#coding_player">coding</a></li>
+                    <li class="chapter-item"><a href="#codingeq_player">coding=</a></li>
+                    <li class="chapter-item"><a href="#flying_player">flying</a></li>
+                    <li class="chapter-item"><a href="#flyingeq_player">flying=</a></li>
+                    <li class="chapter-item"><a href="#god_player">god</a></li>
+                    <li class="chapter-item"><a href="#godeq_player">god=</a></li>
+                    <li class="chapter-item"><a href="#number_player">number</a></li>
+                    <li class="chapter-item"><a href="#open_sign_player">open_sign</a></li>
+                    <li class="chapter-item"><a href="#open_signeq_player">open_sign=</a></li>
+                    <li class="chapter-item"><a href="#playing_player">playing</a></li>
+                    <li class="chapter-item"><a href="#playingeq_player">playing=</a></li>
+                    <li class="chapter-item"><a href="#running_player">running</a></li>
+                    <li class="chapter-item"><a href="#runningeq_player">running=</a></li>
+                    <li class="chapter-item"><a href="#tool_player">tool</a></li>
+                    <li class="chapter-item"><a href="#tooleq_player">tool=</a></li>
+                    <li class="chapter-item"><a href="#tools_player">tools</a></li>
+                    <li class="chapter-item"><a href="#toolseq_player">tools=</a></li>
+                    <li class="chapter-item"><a href="#tools_clear_player">tools_clear</a></li>
+                    <li class="chapter-item"><a href="#tools_excl_player">tools_excl</a></li>
+                    <li class="chapter-item"><a href="#tools_has_player">tools_has</a></li>
+                    <li class="chapter-item"><a href="#tools_incl_player">tools_incl</a></li>
+                  </ol>
+                </details>
+              </li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="PositionOffset">
+                  <summary><a href="#positionoffset_type">PositionOffset</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#plus_positionoffset">+</a></li>
+                    <li class="chapter-item"><a href="#_positionoffset">-</a></li>
+                    <li class="chapter-item"><a href="#back_positionoffset">back</a></li>
+                    <li class="chapter-item"><a href="#down_positionoffset">down</a></li>
+                    <li class="chapter-item"><a href="#forward_positionoffset">forward</a></li>
+                    <li class="chapter-item"><a href="#left_positionoffset">left</a></li>
+                    <li class="chapter-item"><a href="#right_positionoffset">right</a></li>
+                    <li class="chapter-item"><a href="#up_positionoffset">up</a></li>
+                  </ol>
+                </details>
+              </li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="Query">
+                  <summary><a href="#query_type">Query</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#query_init">Query.init</a></li>
+                    <li class="chapter-item"><a href="#_query">[]</a></li>
+                    <li class="chapter-item"><a href="#as_query">as</a></li>
+                    <li class="chapter-item"><a href="#items_query">items</a></li>
+                    <li class="chapter-item"><a href="#len_query">len</a></li>
+                  </ol>
+                </details>
+              </li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="Sign">
+                  <summary><a href="#sign_type">Sign</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#sign_all">Sign.all</a></li>
+                    <li class="chapter-item"><a href="#billboard_sign">billboard</a></li>
+                    <li class="chapter-item"><a href="#billboardeq_sign">billboard=</a></li>
+                    <li class="chapter-item"><a href="#height_sign">height</a></li>
+                    <li class="chapter-item"><a href="#heighteq_sign">height=</a></li>
+                    <li class="chapter-item"><a href="#message_sign">message</a></li>
+                    <li class="chapter-item"><a href="#messageeq_sign">message=</a></li>
+                    <li class="chapter-item"><a href="#more_sign">more</a></li>
+                    <li class="chapter-item"><a href="#moreeq_sign">more=</a></li>
+                    <li class="chapter-item"><a href="#open_sign">open</a></li>
+                    <li class="chapter-item"><a href="#openeq_sign">open=</a></li>
+                    <li class="chapter-item"><a href="#size_sign">size</a></li>
+                    <li class="chapter-item"><a href="#sizeeq_sign">size=</a></li>
+                    <li class="chapter-item"><a href="#width_sign">width</a></li>
+                    <li class="chapter-item"><a href="#widtheq_sign">width=</a></li>
+                  </ol>
+                </details>
+              </li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="Timestamp">
+                  <summary><a href="#timestamp_type">Timestamp</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#dollar_timestamp">$</a></li>
+                    <li class="chapter-item"><a href="#gt_timestamp">&gt;</a></li>
+                    <li class="chapter-item"><a href="#lt_timestamp">&lt;</a></li>
+                    <li class="chapter-item"><a href="#plus_timestamp">+</a></li>
+                    <li class="chapter-item"><a href="#_timestamp">-</a></li>
+                  </ol>
+                </details>
+              </li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="ToolSet">
+                  <summary><a href="#toolset_type">ToolSet</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#dollar_toolset">$</a></li>
+                    <li class="chapter-item"><a href="#clear_toolset">clear</a></li>
+                    <li class="chapter-item"><a href="#contains_toolset">contains</a></li>
+                    <li class="chapter-item"><a href="#excl_toolset">excl</a></li>
+                    <li class="chapter-item"><a href="#incl_toolset">incl</a></li>
+                    <li class="chapter-item"><a href="#items_toolset">items</a></li>
+                    <li class="chapter-item"><a href="#len_toolset">len</a></li>
+                  </ol>
+                </details>
+              </li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="Unit">
+                  <summary><a href="#unit_type">Unit</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#unit_all">Unit.all</a></li>
+                    <li class="chapter-item"><a href="#_unit">-</a></li>
+                    <li class="chapter-item"><a href="#in_unit">in</a></li>
+                    <li class="chapter-item"><a href="#adopt_unit">adopt</a></li>
+                    <li class="chapter-item"><a href="#anchor_unit">anchor</a></li>
+                    <li class="chapter-item"><a href="#angle_to_unit">angle_to</a></li>
+                    <li class="chapter-item"><a href="#apply_position_unit">apply_position</a></li>
+                    <li class="chapter-item"><a href="#b_unit">b</a></li>
+                    <li class="chapter-item"><a href="#back_unit">back</a></li>
+                    <li class="chapter-item"><a href="#block_log_unit">block_log</a></li>
+                    <li class="chapter-item"><a href="#bounds_unit">bounds</a></li>
+                    <li class="chapter-item"><a href="#build_unit">build</a></li>
+                    <li class="chapter-item"><a href="#capture_start_transform_unit">capture_start_transform</a></li>
+                    <li class="chapter-item"><a href="#clear_block_log_unit">clear_block_log</a></li>
+                    <li class="chapter-item"><a href="#color_unit">color</a></li>
+                    <li class="chapter-item"><a href="#coloreq_unit">color=</a></li>
+                    <li class="chapter-item"><a href="#create_new_unit">create_new</a></li>
+                    <li class="chapter-item"><a href="#current_colliders_unit">current_colliders</a></li>
+                    <li class="chapter-item"><a href="#d_unit">d</a></li>
+                    <li class="chapter-item"><a href="#delete_unit">delete</a></li>
+                    <li class="chapter-item"><a href="#distance_unit">distance</a></li>
+                    <li class="chapter-item"><a href="#down_unit">down</a></li>
+                    <li class="chapter-item"><a href="#exec_instance_unit">exec_instance</a></li>
+                    <li class="chapter-item"><a href="#f_unit">f</a></li>
+                    <li class="chapter-item"><a href="#forward_unit">forward</a></li>
+                    <li class="chapter-item"><a href="#frame_created_unit">frame_created</a></li>
+                    <li class="chapter-item"><a href="#global_unit">global</a></li>
+                    <li class="chapter-item"><a href="#globaleq_unit">global=</a></li>
+                    <li class="chapter-item"><a href="#glow_unit">glow</a></li>
+                    <li class="chapter-item"><a href="#gloweq_unit">glow=</a></li>
+                    <li class="chapter-item"><a href="#go_unit">go</a></li>
+                    <li class="chapter-item"><a href="#height_unit">height</a></li>
+                    <li class="chapter-item"><a href="#hit_unit">hit</a></li>
+                    <li class="chapter-item"><a href="#id_unit">id</a></li>
+                    <li class="chapter-item"><a href="#l_unit">l</a></li>
+                    <li class="chapter-item"><a href="#lean_unit">lean</a></li>
+                    <li class="chapter-item"><a href="#left_unit">left</a></li>
+                    <li class="chapter-item"><a href="#local_position_unit">local_position</a></li>
+                    <li class="chapter-item"><a href="#lock_unit">lock</a></li>
+                    <li class="chapter-item"><a href="#lockeq_unit">lock=</a></li>
+                    <li class="chapter-item"><a href="#new_instance_unit">new_instance</a></li>
+                    <li class="chapter-item"><a href="#over_unit">over</a></li>
+                    <li class="chapter-item"><a href="#overlaps_unit">overlaps</a></li>
+                    <li class="chapter-item"><a href="#pending_block_updates_unit">pending_block_updates</a></li>
+                    <li class="chapter-item"><a href="#pending_block_updates_get_unit">pending_block_updates_get</a></li>
+                    <li class="chapter-item"><a href="#position_unit">position</a></li>
+                    <li class="chapter-item"><a href="#positioneq_unit">position=</a></li>
+                    <li class="chapter-item"><a href="#r_unit">r</a></li>
+                    <li class="chapter-item"><a href="#register_active_unit">register_active</a></li>
+                    <li class="chapter-item"><a href="#register_template_node_unit">register_template_node</a></li>
+                    <li class="chapter-item"><a href="#release_unit">release</a></li>
+                    <li class="chapter-item"><a href="#reset_unit">reset</a></li>
+                    <li class="chapter-item"><a href="#right_unit">right</a></li>
+                    <li class="chapter-item"><a href="#rotation_unit">rotation</a></li>
+                    <li class="chapter-item"><a href="#rotationeq_unit">rotation=</a></li>
+                    <li class="chapter-item"><a href="#say_unit">say</a></li>
+                    <li class="chapter-item"><a href="#scale_unit">scale</a></li>
+                    <li class="chapter-item"><a href="#scaleeq_unit">scale=</a></li>
+                    <li class="chapter-item"><a href="#see_unit">see</a></li>
+                    <li class="chapter-item"><a href="#seed_unit">seed</a></li>
+                    <li class="chapter-item"><a href="#seedeq_unit">seed=</a></li>
+                    <li class="chapter-item"><a href="#sees_unit">sees</a></li>
+                    <li class="chapter-item"><a href="#show_unit">show</a></li>
+                    <li class="chapter-item"><a href="#showeq_unit">show=</a></li>
+                    <li class="chapter-item"><a href="#speed_unit">speed</a></li>
+                    <li class="chapter-item"><a href="#speedeq_unit">speed=</a></li>
+                    <li class="chapter-item"><a href="#start_position_unit">start_position</a></li>
+                    <li class="chapter-item"><a href="#start_positioneq_unit">start_position=</a></li>
+                    <li class="chapter-item"><a href="#t_unit">t</a></li>
+                    <li class="chapter-item"><a href="#turn_unit">turn</a></li>
+                    <li class="chapter-item"><a href="#u_unit">u</a></li>
+                    <li class="chapter-item"><a href="#under_unit">under</a></li>
+                    <li class="chapter-item"><a href="#up_unit">up</a></li>
+                    <li class="chapter-item"><a href="#velocity_unit">velocity</a></li>
+                    <li class="chapter-item"><a href="#velocityeq_unit">velocity=</a></li>
+                    <li class="chapter-item"><a href="#wake_unit">wake</a></li>
+                  </ol>
+                </details>
+              </li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="Vector3">
+                  <summary><a href="#vector3_type">Vector3</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#lt_vector3">&lt;</a></li>
+                    <li class="chapter-item"><a href="#eq_vector3">*=</a></li>
+                    <li class="chapter-item"><a href="#_vector3">*</a></li>
+                    <li class="chapter-item"><a href="#pluseq_vector3">+=</a></li>
+                    <li class="chapter-item"><a href="#plus_vector3">+</a></li>
+                    <li class="chapter-item"><a href="#eq_vector3">-=</a></li>
+                    <li class="chapter-item"><a href="#_vector3">-</a></li>
+                    <li class="chapter-item"><a href="#/eq_vector3">/=</a></li>
+                    <li class="chapter-item"><a href="#/_vector3">/</a></li>
+                    <li class="chapter-item"><a href="#eqeq_vector3">==</a></li>
+                    <li class="chapter-item"><a href="#abs_vector3">abs</a></li>
+                    <li class="chapter-item"><a href="#angleto_vector3">angleTo</a></li>
+                    <li class="chapter-item"><a href="#block_color_at_vector3">block_color_at</a></li>
+                    <li class="chapter-item"><a href="#bounce_vector3">bounce</a></li>
+                    <li class="chapter-item"><a href="#box_vector3">box</a></li>
+                    <li class="chapter-item"><a href="#ceil_vector3">ceil</a></li>
+                    <li class="chapter-item"><a href="#cross_vector3">cross</a></li>
+                    <li class="chapter-item"><a href="#cubicinterpolate_vector3">cubicInterpolate</a></li>
+                    <li class="chapter-item"><a href="#distance_vector3">distance</a></li>
+                    <li class="chapter-item"><a href="#distancesquaredto_vector3">distanceSquaredTo</a></li>
+                    <li class="chapter-item"><a href="#distanceto_vector3">distanceTo</a></li>
+                    <li class="chapter-item"><a href="#dot_vector3">dot</a></li>
+                    <li class="chapter-item"><a href="#floor_vector3">floor</a></li>
+                    <li class="chapter-item"><a href="#fuzzed_vector3">fuzzed</a></li>
+                    <li class="chapter-item"><a href="#has_block_at_vector3">has_block_at</a></li>
+                    <li class="chapter-item"><a href="#height_vector3">height</a></li>
+                    <li class="chapter-item"><a href="#inverse_vector3">inverse</a></li>
+                    <li class="chapter-item"><a href="#isnormalized_vector3">isNormalized</a></li>
+                    <li class="chapter-item"><a href="#length_vector3">length</a></li>
+                    <li class="chapter-item"><a href="#lengthsquared_vector3">lengthSquared</a></li>
+                    <li class="chapter-item"><a href="#lerp_vector3">lerp</a></li>
+                    <li class="chapter-item"><a href="#maxaxis_vector3">maxAxis</a></li>
+                    <li class="chapter-item"><a href="#minaxis_vector3">minAxis</a></li>
+                    <li class="chapter-item"><a href="#movetoward_vector3">moveToward</a></li>
+                    <li class="chapter-item"><a href="#normalize_vector3">normalize</a></li>
+                    <li class="chapter-item"><a href="#normalized_vector3">normalized</a></li>
+                    <li class="chapter-item"><a href="#reflect_vector3">reflect</a></li>
+                    <li class="chapter-item"><a href="#sign_vector3">sign</a></li>
+                    <li class="chapter-item"><a href="#slide_vector3">slide</a></li>
+                    <li class="chapter-item"><a href="#snap_vector3">snap</a></li>
+                    <li class="chapter-item"><a href="#snapped_vector3">snapped</a></li>
+                    <li class="chapter-item"><a href="#t_vector3">t</a></li>
+                    <li class="chapter-item"><a href="#turn_vector3">turn</a></li>
+                    <li class="chapter-item"><a href="#zero_vector3">zero</a></li>
+                  </ol>
+                </details>
+              </li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="World">
+                  <summary><a href="#world_type">World</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#environment_world">environment</a></li>
+                    <li class="chapter-item"><a href="#environmenteq_world">environment=</a></li>
+                    <li class="chapter-item"><a href="#megapixels_world">megapixels</a></li>
+                    <li class="chapter-item"><a href="#megapixelseq_world">megapixels=</a></li>
+                  </ol>
+                </details>
+              </li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="WorldBox">
+                  <summary><a href="#worldbox_type">WorldBox</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#box_is_free_worldbox">box_is_free</a></li>
+                    <li class="chapter-item"><a href="#centre_worldbox">centre</a></li>
+                    <li class="chapter-item"><a href="#contains_worldbox">contains</a></li>
+                    <li class="chapter-item"><a href="#expanded_worldbox">expanded</a></li>
+                    <li class="chapter-item"><a href="#intersects_worldbox">intersects</a></li>
+                    <li class="chapter-item"><a href="#size_worldbox">size</a></li>
+                    <li class="chapter-item"><a href="#units_overlapping_worldbox">units_overlapping</a></li>
+                  </ol>
+                </details>
+              </li>
+            </ol>
+          </li>
+        </ol>
+<!-- I could use also an unescaped context value -->
+  </div>
+  <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+</nav>
+
+<div id="page-wrapper" class="page-wrapper">
+
+  <div class="page">
+    <div id="menu-bar-hover-placeholder"></div>
+    <div id="menu-bar" class="menu-bar sticky bordered">
+      <div class="left-buttons">
+        <button id="sidebar-toggle" class="icon-button" type="button"
+            title="Toggle Table of Contents"
+            aria-label="Toggle Table of Contents"
+            aria-controls="sidebar">
+          <i class="fa fa-bars"></i>
+        </button>
+        <button id="theme-toggle" class="icon-button" type="button"
+            title="Change theme" aria-label="Change theme"
+            aria-haspopup="true" aria-expanded="false"
+            aria-controls="theme-list">
+          <i class="fa fa-paint-brush"></i>
+        </button>
+        <ul id="theme-list" class="theme-popup" aria-label="Themes"
+          role="menu">
+          <li role="none">
+            <button role="menuitem" class="theme"
+                id="dark">Dark</button>
+          </li>
+          <li role="none">
+            <button role="menuitem" class="theme"
+                id="light">Light</button>
+          </li>
+        </ul>
+      </div>
+
+      <h1 class="menu-title">Enu</h1>
+
+      <div class="right-buttons">
+          <a href="https://github.com/dsrw/enu" title="Git repository"
+             aria-label="Git repository">
+            <i id="git-repository-button"
+               class="fa fa-github"></i>
+          </a>
+
+      </div>
+    </div>
+
+
+    <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+    <script type="text/javascript">
+      document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+      document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+      Array.from(document.querySelectorAll('#sidebar a')).forEach(function (link) {
+        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+      });
+    </script>
+
+    <div id="content" class="content">
+      <main>
+
+        <!-- API Reference Section -->
+        <section id="api-reference">
+          <h1>Enu API Reference</h1>
+
+          <section id="constants">
+            <h3>Constants</h3>
+            <article class="symbol" id="yes_const">
+              <h4><a href="#yes_const">yes</a></h4>
+              <pre class="code-block constant-block"><code class="language-nim">yes = true</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+            </article>
+            <article class="symbol" id="no_const">
+              <h4><a href="#no_const">no</a></h4>
+              <pre class="code-block constant-block"><code class="language-nim">no = false</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+            </article>
+            <article class="symbol" id="asap_const">
+              <h4><a href="#asap_const">ASAP</a></h4>
+              <p class="description">Magic value for speed to enable ASAP mode</p>
+              <pre class="code-block constant-block"><code class="language-nim">ASAP = 0.0</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+            </article>
+            <article class="symbol" id="up_const">
+              <h4><a href="#up_const">UP</a></h4>
+              <pre class="code-block constant-block"><code class="language-nim">UP = (0.0, 1.0, 0.0)</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+            </article>
+            <article class="symbol" id="down_const">
+              <h4><a href="#down_const">DOWN</a></h4>
+              <pre class="code-block constant-block"><code class="language-nim">DOWN = (0.0, -1.0, 0.0)</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+            </article>
+            <article class="symbol" id="back_const">
+              <h4><a href="#back_const">BACK</a></h4>
+              <pre class="code-block constant-block"><code class="language-nim">BACK = (0.0, 0.0, 1.0)</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+            </article>
+            <article class="symbol" id="forward_const">
+              <h4><a href="#forward_const">FORWARD</a></h4>
+              <pre class="code-block constant-block"><code class="language-nim">FORWARD = (0.0, 0.0, -1.0)</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+            </article>
+            <article class="symbol" id="right_const">
+              <h4><a href="#right_const">RIGHT</a></h4>
+              <pre class="code-block constant-block"><code class="language-nim">RIGHT = (1.0, 0.0, 0.0)</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+            </article>
+            <article class="symbol" id="left_const">
+              <h4><a href="#left_const">LEFT</a></h4>
+              <pre class="code-block constant-block"><code class="language-nim">LEFT = (-1.0, 0.0, 0.0)</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+            </article>
+            <article class="symbol" id="unset_position_const">
+              <h4><a href="#unset_position_const">UNSET_POSITION</a></h4>
+              <pre class="code-block constant-block"><code class="language-nim">UNSET_POSITION = (inf, inf, inf)</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+            </article>
+          </section>
+
+          <section id="enums">
+            <h3>Enums</h3>
+            <article class="symbol" id="directions_enum">
+              <h4><a href="#directions_enum">Directions</a></h4>
+              <pre class="code-block enum-block"><code class="language-nim">Directions = enum
+  up, u, down, d, left, l, right, r, forward, f, back, b</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+            </article>
+            <article class="symbol" id="colors_enum">
+              <h4><a href="#colors_enum">Colors</a></h4>
+              <pre class="code-block enum-block"><code class="language-nim">Colors = enum
+  eraser, blue, red, green, black, white, brown</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+            </article>
+            <article class="symbol" id="tools_enum">
+              <h4><a href="#tools_enum">Tools</a></h4>
+              <pre class="code-block enum-block"><code class="language-nim">Tools = enum
+  CodeMode, BlueBlock, RedBlock, GreenBlock, BlackBlock, WhiteBlock, BrownBlock,
+  PlaceBot, None</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+            </article>
+            <article class="symbol" id="boxpivot_enum">
+              <h4><a href="#boxpivot_enum">BoxPivot</a></h4>
+              <pre class="code-block enum-block"><code class="language-nim">BoxPivot = enum
+  corner, centre, bottom_centre</code></pre>
+              <p class="source">Source: <code>enu/builds</code></p>
+            </article>
+          </section>
+
+          <section id="commands">
+            <h3>Commands</h3>
+            <div class="operation" id="_cmd">
+              <h5><a href="#_cmd">*</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc `*`(b: float32; a: Vector3): Vector3</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="gt_cmd">
+              <h5><a href="#gt_cmd">-&gt;</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">macro `-&gt;`(from_state: untyped; to_state: untyped; body: untyped = nil)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="eqeqgt_cmd">
+              <h5><a href="#eqeqgt_cmd">==&gt;</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">macro `==&gt;`(from_state: untyped; to_state: untyped; body: untyped = nil)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="q_cmd">
+              <h5><a href="#q_cmd">?</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template `?`[T: ref](self: T): Query[T]
+template `?`[T: object](self: T): Query[T]
+template `?`[T](option: Option[T]): Query[T]
+template `?`[T: SomeNumber](self: SomeNumber): Query[T]
+template `?`(self: string): Query[string]
+template `?`[T: openArray](self: T): Query[T]
+template `?`[T: Table](self: T): Query[T]
+template `?`[T: set](self: T): Query[T]
+template `?`[T: HashSet](self: T): Query[T]</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="\_cmd">
+              <h5><a href="#\_cmd">\</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template `\`(s: string): string</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="or_cmd">
+              <h5><a href="#or_cmd">or</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc `or`[T: not bool](a, b: T): T</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="active_unit_cmd">
+              <h5><a href="#active_unit_cmd">active_unit</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc active_unit(): Unit</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="added_units_cmd">
+              <h5><a href="#added_units_cmd">added_units</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc added_units(): seq[Unit]</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="all_bots_cmd">
+              <h5><a href="#all_bots_cmd">all_bots</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc all_bots(): seq[Bot]</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="all_builds_cmd">
+              <h5><a href="#all_builds_cmd">all_builds</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc all_builds(): seq[Build]</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="all_players_cmd">
+              <h5><a href="#all_players_cmd">all_players</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc all_players(): seq[Player]</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="all_signs_cmd">
+              <h5><a href="#all_signs_cmd">all_signs</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc all_signs(): seq[Sign]</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="all_units_cmd">
+              <h5><a href="#all_units_cmd">all_units</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc all_units(): seq[Unit]</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="anchor_cmd">
+              <h5><a href="#anchor_cmd">anchor</a></h5>
+              <div class="overload-group">
+                <p class="description"><p>Declare the unit's pivot. Inside the block, turtle commands (<tt class="docutils literal"><span class="pre"><span class="Identifier">forward</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">right</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">up</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">turn</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">lean</span></span></tt>, …) accumulate into the unit's anchor pose instead of drawing voxels or moving the unit. The turtle starts at the proto's local <tt class="docutils literal"><span class="pre"><span class="Punctuation">(</span><span class="DecNumber">0</span><span class="Punctuation">,</span> <span class="DecNumber">0</span><span class="Punctuation">,</span> <span class="DecNumber">0</span><span class="Punctuation">)</span></span></tt> facing -Z.</p>
+<p>After the block, <tt class="docutils literal"><span class="pre"><span class="Identifier">position</span></span></tt> places the anchor pivot at the given world coord, <tt class="docutils literal"><span class="pre"><span class="Identifier">rotation</span></span></tt> pivots around it, and <tt class="docutils literal"><span class="pre"><span class="Identifier">move</span> <span class="Identifier">me</span><span class="Punctuation">;</span> <span class="Identifier">forward</span></span></tt> moves along the anchor's intrinsic forward.</p>
+</p>
+                <pre class="code-block"><code class="language-nim">template anchor(body: untyped)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="asap_cmd">
+              <h5><a href="#asap_cmd">asap</a></h5>
+              <div class="overload-group">
+                <p class="description">Execute build commands instantly without incremental updates.</p>
+                <pre class="code-block"><code class="language-nim">template asap(body: untyped)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="b_cmd">
+              <h5><a href="#b_cmd">b</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template b(steps = 1.0)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="back_cmd">
+              <h5><a href="#back_cmd">back</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template back(steps = 1.0)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="ball_cmd">
+              <h5><a href="#ball_cmd">ball</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template ball(size: int | float; color = active_unit().color; fill = true)
+template ball(size: int | float; at: Vector3; color = active_unit().color;
+              fill = true)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="box_cmd">
+              <h5><a href="#box_cmd">box</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template box(width, height, depth: int; color = active_unit().color;
+             fill = true; pivot: BoxPivot = corner)
+
+template box(width, height, depth: int; at: Vector3;
+             color = active_unit().color; rotation = 0.0; fill = true;
+             pivot: BoxPivot = corner)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="can_cmd">
+              <h5><a href="#can_cmd">can</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template can(size: int | float; height: int; color = active_unit().color;
+             fill = true)
+
+template can(size: int | float; height: int; at: Vector3;
+             color = active_unit().color; fill = true)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="check_cmd">
+              <h5><a href="#check_cmd">check</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template check(cond: untyped)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="clear_box_cmd">
+              <h5><a href="#clear_box_cmd">clear_box</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc clear_box(x1: float; y1: float; z1: float; x2: float; y2: float; z2: float): bool</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="contains_cmd">
+              <h5><a href="#contains_cmd">contains</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc contains(max, chance: int): bool</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="cycle_cmd">
+              <h5><a href="#cycle_cmd">cycle</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template cycle[T](args: varargs[T]): T</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="cylinder_cmd">
+              <h5><a href="#cylinder_cmd">cylinder</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template cylinder(size: int | float; height: int; color = active_unit().color;
+                  fill = true)
+
+template cylinder(size: int | float; height: int; at: Vector3;
+                  color = active_unit().color; fill = true)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="d_cmd">
+              <h5><a href="#d_cmd">d</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template d(steps = 1.0)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="down_cmd">
+              <h5><a href="#down_cmd">down</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template down(steps = 1.0)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="dump_cmd">
+              <h5><a href="#dump_cmd">dump</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">macro dump(x: typed): untyped</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="echo_cmd">
+              <h5><a href="#echo_cmd">echo</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc echo(args: varargs[string, `$`])</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="echo_console_cmd">
+              <h5><a href="#echo_console_cmd">echo_console</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc echo_console(msg: string)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="even_cmd">
+              <h5><a href="#even_cmd">even</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc even(self: int): bool</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="executing_player_cmd">
+              <h5><a href="#executing_player_cmd">executing_player</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc executing_player(): Player</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="exit_cmd">
+              <h5><a href="#exit_cmd">exit</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc exit(exit_code = 0; msg = &quot;&quot;)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="f_cmd">
+              <h5><a href="#f_cmd">f</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template f(steps = 1.0)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="far_cmd">
+              <h5><a href="#far_cmd">far</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc far(node: Unit | Vector3; greater_than = 100.0): bool</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="find_by_id_cmd">
+              <h5><a href="#find_by_id_cmd">find_by_id</a></h5>
+              <div class="overload-group">
+                <p class="description">Recursively search every unit in the world for one with this id. Returns nil if not found.</p>
+                <pre class="code-block"><code class="language-nim">proc find_by_id(id: string): Unit</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="find_voxel_overlaps_cmd">
+              <h5><a href="#find_voxel_overlaps_cmd">find_voxel_overlaps</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc find_voxel_overlaps(limit: int = 50): string</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="first_cmd">
+              <h5><a href="#first_cmd">first</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc first[T: Unit](_: type T): T</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="first_key_cmd">
+              <h5><a href="#first_key_cmd">first_key</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc first_key[K, V](self: Table[K, V]): K</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="floor_cmd">
+              <h5><a href="#floor_cmd">floor</a></h5>
+              <div class="overload-group">
+                <p class="description">A <tt class="docutils literal"><span class="pre"><span class="Identifier">length</span></span></tt>-deep, <tt class="docutils literal"><span class="pre"><span class="Identifier">width</span></span></tt>-wide, 1-thick slab in the turtle's horizontal plane. Leaves the turtle at the slab's far edge (advance length - 1), matching <tt class="docutils literal"><span class="pre"><span class="Identifier">wall</span></span></tt>.</p>
+                <pre class="code-block"><code class="language-nim">template floor(length: int; width: int = length;
+               color: Colors = active_unit().color)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="floor_at_cmd">
+              <h5><a href="#floor_at_cmd">floor_at</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc floor_at(x: float; z: float): int</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="forever_cmd">
+              <h5><a href="#forever_cmd">forever</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template forever(body)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="forward_cmd">
+              <h5><a href="#forward_cmd">forward</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template forward(steps = 1.0)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="frame_count_cmd">
+              <h5><a href="#frame_count_cmd">frame_count</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc frame_count(): int</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="fuzzed_cmd">
+              <h5><a href="#fuzzed_cmd">fuzzed</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc fuzzed(self, range: float): float</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="go_home_cmd">
+              <h5><a href="#go_home_cmd">go_home</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template go_home()</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="init_cmd">
+              <h5><a href="#init_cmd">init</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc init[T: Exception](kind: type[T]; message: string;
+                        parent: ref Exception = nil): ref Exception</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="init_duration_cmd">
+              <h5><a href="#init_duration_cmd">init_duration</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc init_duration(seconds: float): Duration</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="init_timestamp_cmd">
+              <h5><a href="#init_timestamp_cmd">init_timestamp</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc init_timestamp(seconds: float): Timestamp</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="initialize_state_cmd">
+              <h5><a href="#initialize_state_cmd">initialize_state</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc initialize_state()</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="isequalapprox_cmd">
+              <h5><a href="#isequalapprox_cmd">isEqualApprox</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc isEqualApprox(a, b: float32): bool
+
+proc isEqualApprox(a, b: float64): bool</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="keep_alive_cmd">
+              <h5><a href="#keep_alive_cmd">keep_alive</a></h5>
+              <div class="overload-group">
+                <p class="description">Reset the per-script execution timeout. For long-running non-yielding loops that need more than the default ~2s budget. Call periodically.</p>
+                <pre class="code-block"><code class="language-nim">proc keep_alive()</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="l_cmd">
+              <h5><a href="#l_cmd">l</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template l(steps = 1.0)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="lean_cmd">
+              <h5><a href="#lean_cmd">lean</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template lean(degrees: float)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="left_cmd">
+              <h5><a href="#left_cmd">left</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template left(steps = 1.0)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="level_name_cmd">
+              <h5><a href="#level_name_cmd">level_name</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc level_name(): string</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="load_level_cmd">
+              <h5><a href="#load_level_cmd">load_level</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc load_level(level: string; world = &quot;&quot;)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="loop_cmd">
+              <h5><a href="#loop_cmd">loop</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">macro loop(body: untyped)
+macro loop(sig: untyped; body: untyped): untyped</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="loop_finished_cmd">
+              <h5><a href="#loop_finished_cmd">loop_finished</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc loop_finished()</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="move_cmd">
+              <h5><a href="#move_cmd">move</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template move[T: Unit](new_enu_target: T)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="near_cmd">
+              <h5><a href="#near_cmd">near</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc near(node: Unit | Vector3; less_than = 5.0): bool</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="now_cmd">
+              <h5><a href="#now_cmd">now</a></h5>
+              <div class="overload-group">
+                <p class="description">Returns the current time as a Timestamp. Use with subtraction to measure elapsed time: let start = now() # ... do work ... let elapsed = now() - start echo &quot;Took &quot;, elapsed</p>
+                <pre class="code-block"><code class="language-nim">proc now(): Timestamp</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="now_seconds_cmd">
+              <h5><a href="#now_seconds_cmd">now_seconds</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc now_seconds(): float</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="o_cmd">
+              <h5><a href="#o_cmd">o</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template o(body)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="odd_cmd">
+              <h5><a href="#odd_cmd">odd</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc odd(self: int): bool</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="place_cmd">
+              <h5><a href="#place_cmd">place</a></h5>
+              <div class="overload-group">
+                <p class="description">Place a single block at local integer coords in a build script.</p>
+                <pre class="code-block"><code class="language-nim">template place(x, y, z: int; color = active_unit().color)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="press_action_cmd">
+              <h5><a href="#press_action_cmd">press_action</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc press_action(name: string)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="quit_cmd">
+              <h5><a href="#quit_cmd">quit</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc quit(code = 0; msg = &quot;&quot;)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="r_cmd">
+              <h5><a href="#r_cmd">r</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template r(steps = 1.0)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="rand_cmd">
+              <h5><a href="#rand_cmd">rand</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc rand[T: int | float](range: Slice[T]): T</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="random_cmd">
+              <h5><a href="#random_cmd">random</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc random[T](args: varargs[T]): T</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="register_state_init_cmd">
+              <h5><a href="#register_state_init_cmd">register_state_init</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc register_state_init(callback: proc ())</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="release_action_cmd">
+              <h5><a href="#release_action_cmd">release_action</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc release_action(name: string)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="require_cmd">
+              <h5><a href="#require_cmd">require</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template require(cond: untyped)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="reset_cmd">
+              <h5><a href="#reset_cmd">reset</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template reset(clear = false)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="reset_level_cmd">
+              <h5><a href="#reset_level_cmd">reset_level</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc reset_level()</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="right_cmd">
+              <h5><a href="#right_cmd">right</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template right(steps = 1.0)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="runner_cmd">
+              <h5><a href="#runner_cmd">runner</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template runner(): Player</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="save_level_now_cmd">
+              <h5><a href="#save_level_now_cmd">save_level_now</a></h5>
+              <div class="overload-group">
+                <p class="description">Triggers an immediate level save. Used for testing persistence.</p>
+                <pre class="code-block"><code class="language-nim">proc save_level_now()</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="say_cmd">
+              <h5><a href="#say_cmd">say</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template say(message: string; more = &quot;&quot;; width = float.high;
+             height = float.high; size = int.high; billboard = none(bool)): Sign</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="sign_cmd">
+              <h5><a href="#sign_cmd">sign</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc sign(a: float32): float32
+
+proc sign(a: float64): float64</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="signal_test_complete_cmd">
+              <h5><a href="#signal_test_complete_cmd">signal_test_complete</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc signal_test_complete(exit_code: int)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="sleep_cmd">
+              <h5><a href="#sleep_cmd">sleep</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc sleep(seconds = 0.0)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="smart_call_cmd">
+              <h5><a href="#smart_call_cmd">smart_call</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">macro smart_call(call: untyped)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="sphere_cmd">
+              <h5><a href="#sphere_cmd">sphere</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template sphere(size: int | float; color = active_unit().color; fill = true)
+template sphere(size: int | float; at: Vector3; color = active_unit().color;
+                fill = true)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="stepify_cmd">
+              <h5><a href="#stepify_cmd">stepify</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc stepify(value, step: float64): float64
+
+proc stepify(value, step: float32): float32</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="suite_cmd">
+              <h5><a href="#suite_cmd">suite</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template suite(name: string; body: untyped)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="t_cmd">
+              <h5><a href="#t_cmd">t</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template t(degrees: float)
+template t(enu_target: NegativeNode)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="test_cmd">
+              <h5><a href="#test_cmd">test</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template test(name: string; body: untyped)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="test_summary_cmd">
+              <h5><a href="#test_summary_cmd">test_summary</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc test_summary()</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="tests_failed_cmd">
+              <h5><a href="#tests_failed_cmd">tests_failed</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc tests_failed(): bool</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="times_cmd">
+              <h5><a href="#times_cmd">times</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template times(count: int; body: untyped): untyped
+template times(count: int; name: untyped; body: untyped): untyped</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="turn_cmd">
+              <h5><a href="#turn_cmd">turn</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template turn(degrees: float)
+template turn(enu_target: NegativeNode)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="u_cmd">
+              <h5><a href="#u_cmd">u</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template u(steps = 1.0)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="units_in_box_cmd">
+              <h5><a href="#units_in_box_cmd">units_in_box</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc units_in_box(x1: float; y1: float; z1: float; x2: float; y2: float;
+                  z2: float): seq[Unit]</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="units_near_cmd">
+              <h5><a href="#units_near_cmd">units_near</a></h5>
+              <div class="overload-group">
+                <p class="description">Lists every Unit in the world whose xz-distance to (x, y, z) is &lt;= radius, sorted nearest-first. One line per unit, formatted as: d=DD.D  unit_id  (X, Y, Z) Useful when chasing overlap reports / &quot;# CLAUDE: ...&quot; marker blocks from MCP: pass the marker's position and skim the candidates.</p>
+                <pre class="code-block"><code class="language-nim">proc units_near(x, y, z: float; radius = 30.0): string</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="up_cmd">
+              <h5><a href="#up_cmd">up</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template up(steps = 1.0)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="vec3_cmd">
+              <h5><a href="#vec3_cmd">vec3</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc vec3(x, y, z: float): Vector3</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="wall_cmd">
+              <h5><a href="#wall_cmd">wall</a></h5>
+              <div class="overload-group">
+                <p class="description">A <tt class="docutils literal"><span class="pre"><span class="Identifier">length</span></span></tt>-long, <tt class="docutils literal"><span class="pre"><span class="Identifier">height</span></span></tt>-tall, 1-thick wall extending along the turtle's local forward. Leaves the turtle at the wall's last voxel (advance length - 1), so <tt class="docutils literal"><span class="pre"><span class="Identifier">wall</span> <span class="Identifier">N</span><span class="Punctuation">;</span> <span class="Identifier">turn</span> <span class="Identifier">right</span><span class="Punctuation">;</span> <span class="Identifier">wall</span> <span class="Identifier">M</span></span></tt> traces a closed N×M corner — the two walls share the corner voxel instead of leaving a 1-cell gap.</p>
+                <pre class="code-block"><code class="language-nim">template wall(length: int; height: int = 4; color: Colors = active_unit().color)</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="world_name_cmd">
+              <h5><a href="#world_name_cmd">world_name</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc world_name(): string</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="write_stack_trace_cmd">
+              <h5><a href="#write_stack_trace_cmd">write_stack_trace</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">proc write_stack_trace()</code></pre>
+              </div>
+            </div>
+            <div class="operation" id="x_cmd">
+              <h5><a href="#x_cmd">x</a></h5>
+              <div class="overload-group">
+                <pre class="code-block"><code class="language-nim">template x(count: int; body: untyped): untyped</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section id="types">
+            <h3>Types</h3>
+            <article class="type-section" id="bot_type">
+              <h4 class="type-heading"><a href="#bot_type">Bot</a></h4>
+
+              <pre class="code-block"><code class="language-nim">Bot = ref object of Unit</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+
+              <div class="operation" id="bot_all">
+                <h5><a href="#bot_all">Bot.all</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc all(_: type Bot): Query[seq[Bot]]</code></pre>
+                </div>
+              </div>
+
+              <div class="operation" id="go_home_bot">
+                <h5><a href="#go_home_bot">go_home</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc go_home(self: Bot)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="play_bot">
+                <h5><a href="#play_bot">play</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc play(self: Bot; animation_name: string)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="run_bot">
+                <h5><a href="#run_bot">run</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc run(self: Bot)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="walk_bot">
+                <h5><a href="#walk_bot">walk</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc walk(self: Bot)</code></pre>
+                </div>
+              </div>
+            </article>
+            <article class="type-section" id="build_type">
+              <h4 class="type-heading"><a href="#build_type">Build</a></h4>
+
+              <pre class="code-block"><code class="language-nim">Build = ref object of Unit</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+
+              <div class="operation" id="build_all">
+                <h5><a href="#build_all">Build.all</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc all(T: type Build): Query[seq[Build]]</code></pre>
+                </div>
+              </div>
+
+              <div class="operation" id="advance_build">
+                <h5><a href="#advance_build">advance</a></h5>
+                <div class="overload-group">
+                  <p class="description">Translate the turtle by <tt class="docutils literal"><span class="pre"><span class="Identifier">steps</span></span></tt> along its current forward direction without going through <tt class="docutils literal"><span class="pre"><span class="Identifier">begin_move</span></span></tt>. No drawing, no animation, no speed/ASAP interaction. Used by <tt class="docutils literal"><span class="pre"><span class="Identifier">wall</span></span></tt> / <tt class="docutils literal"><span class="pre"><span class="Identifier">floor</span></span></tt> to leave the turtle at the far end of the shape.</p>
+                  <pre class="code-block"><code class="language-nim">proc advance(self: Build; steps: float)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="begin_asap_build">
+                <h5><a href="#begin_asap_build">begin_asap</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc begin_asap(self: Build)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="bounds_at_build">
+                <h5><a href="#bounds_at_build">bounds_at</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc bounds_at(self: Build; position: Vector3; rotation: float = 0.0;
+               scale: float = 0.0): WorldBox</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="box_build">
+                <h5><a href="#box_build">box</a></h5>
+                <div class="overload-group">
+                  <p class="description">At the turtle's current transform.</p>
+                  <pre class="code-block"><code class="language-nim">proc box(self: Build; width, height, depth: int; color = self.color;
+         fill = true; pivot: BoxPivot = corner)</code></pre>
+                </div>
+                <div class="overload-group">
+                  <p class="description">At an explicit unit-local coord. Optional yaw rotation.</p>
+                  <pre class="code-block"><code class="language-nim">proc box(self: Build; width, height, depth: int; at: Vector3;
+         color = self.color; rotation = 0.0; fill = true;
+         pivot: BoxPivot = corner)</code></pre>
+                </div>
+                <div class="overload-group">
+                  <p class="description">Axis-aligned corner-to-corner, inclusive of both corners. Corner order doesn't matter (min/max normalised).</p>
+                  <pre class="code-block"><code class="language-nim">proc box(self: Build; at, to: Vector3; color = self.color; fill = true)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="cylinder_build">
+                <h5><a href="#cylinder_build">cylinder</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc cylinder(self: Build; size: float; height: int; color = self.color;
+              fill = true)
+
+proc cylinder(self: Build; size: float; height: int; at: Vector3;
+              color = self.color; fill = true)
+
+proc cylinder(self: Build; size: int; height: int; color = self.color;
+              fill = true)
+
+proc cylinder(self: Build; size: int; height: int; at: Vector3;
+              color = self.color; fill = true)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="draw_position_build">
+                <h5><a href="#draw_position_build">draw_position</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc draw_position(self: Build): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="draw_positioneq_build">
+                <h5><a href="#draw_positioneq_build">draw_position=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc draw_position=(self: Build; value: Vector3)
+
+proc draw_position=(self: Build; unit: Unit)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="draw_voxel_build">
+                <h5><a href="#draw_voxel_build">draw_voxel</a></h5>
+                <div class="overload-group">
+                  <p class="description">Paints a COMPUTED block at the given position. Re-runs of the script regenerate it, so it isn't persisted to the save file. Used by place (the box/sphere/cylinder primitives draw host-side). For persistent placement (eg. user edits via eval, holes for windows) use place_block from builds_private, which marks the voxel MANUAL.</p>
+                  <pre class="code-block"><code class="language-nim">proc draw_voxel(self: Build; position: Vector3; color: Colors)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="drawing_build">
+                <h5><a href="#drawing_build">drawing</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc drawing(self: Build): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="drawingeq_build">
+                <h5><a href="#drawingeq_build">drawing=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc drawing=(self: Build; drawing: bool)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="end_asap_build">
+                <h5><a href="#end_asap_build">end_asap</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc end_asap(self: Build)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="fill_square_build">
+                <h5><a href="#fill_square_build">fill_square</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc fill_square(self: Build; length = 1)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="go_home_build">
+                <h5><a href="#go_home_build">go_home</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc go_home(self: Build)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="place_build">
+                <h5><a href="#place_build">place</a></h5>
+                <div class="overload-group">
+                  <p class="description">Place a single block at local integer coordinates.</p>
+                  <pre class="code-block"><code class="language-nim">proc place(self: Build; x, y, z: int; color = self.color)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="reload_unit_build">
+                <h5><a href="#reload_unit_build">reload_unit</a></h5>
+                <div class="overload-group">
+                  <p class="description">Reloads the Build's voxel data from disk without stopping the script.</p>
+                  <pre class="code-block"><code class="language-nim">proc reload_unit(self: Build)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="rendered_voxel_count_get_build">
+                <h5><a href="#rendered_voxel_count_get_build">rendered_voxel_count_get</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc rendered_voxel_count_get(self: Build): int</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="restore_build">
+                <h5><a href="#restore_build">restore</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc restore(self: Build; name = &quot;default&quot;)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="save_build">
+                <h5><a href="#save_build">save</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc save(self: Build; name = &quot;default&quot;)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="sphere_build">
+                <h5><a href="#sphere_build">sphere</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc sphere(self: Build; size: float; color = self.color; fill = true)
+
+proc sphere(self: Build; size: float; at: Vector3; color = self.color;
+            fill = true)
+
+proc sphere(self: Build; size: int; color = self.color; fill = true)
+
+proc sphere(self: Build; size: int; at: Vector3; color = self.color; fill = true)</code></pre>
+                </div>
+              </div>
+            </article>
+            <article class="type-section" id="context_type">
+              <h4 class="type-heading"><a href="#context_type">Context</a></h4>
+
+              <pre class="code-block"><code class="language-nim">Context = ref object
+  stack*: seq[Frame]</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+
+
+              <div class="operation" id="advance_context">
+                <h5><a href="#advance_context">advance</a></h5>
+                <div class="overload-group">
+                  <p class="description">advance state machine. Returns true if statemachine is still running. It's ok to run this from within the statemachine, but Halt exceptions must be allowed to propagate.</p>
+                  <pre class="code-block"><code class="language-nim">proc advance(ctx: Context; frame: Frame = nil): bool</code></pre>
+                </div>
+              </div>
+            </article>
+            <article class="type-section" id="directions_type">
+              <h4 class="type-heading"><a href="#directions_type">Directions</a></h4>
+
+
+
+              <div class="operation" id="lean_directions">
+                <h5><a href="#lean_directions">lean</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template lean(direction: Directions; degrees = 90.0)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="t_directions">
+                <h5><a href="#t_directions">t</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template t(direction: Directions; degrees = 90.0)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="turn_directions">
+                <h5><a href="#turn_directions">turn</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template turn(direction: Directions; degrees = 90.0)</code></pre>
+                </div>
+              </div>
+            </article>
+            <article class="type-section" id="duration_type">
+              <h4 class="type-heading"><a href="#duration_type">Duration</a></h4>
+
+              <p class="description">A duration of time.</p>
+              <pre class="code-block"><code class="language-nim">Duration = object</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+
+
+              <div class="operation" id="dollar_duration">
+                <h5><a href="#dollar_duration">$</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `$`(d: Duration): string</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="gteq_duration">
+                <h5><a href="#gteq_duration">&gt;=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `&gt;=`(a, b: Duration): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="gt_duration">
+                <h5><a href="#gt_duration">&gt;</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `&gt;`(a, b: Duration): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="lteq_duration">
+                <h5><a href="#lteq_duration">&lt;=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `&lt;=`(a, b: Duration): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="lt_duration">
+                <h5><a href="#lt_duration">&lt;</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `&lt;`(a, b: Duration): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="plus_duration">
+                <h5><a href="#plus_duration">+</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `+`(a, b: Duration): Duration</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="_duration">
+                <h5><a href="#_duration">-</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `-`(a, b: Duration): Duration</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="eqeq_duration">
+                <h5><a href="#eqeq_duration">==</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `==`(a, b: Duration): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="milliseconds_duration">
+                <h5><a href="#milliseconds_duration">milliseconds</a></h5>
+                <div class="overload-group">
+                  <p class="description">Get duration in milliseconds.</p>
+                  <pre class="code-block"><code class="language-nim">proc milliseconds(d: Duration): float</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="seconds_duration">
+                <h5><a href="#seconds_duration">seconds</a></h5>
+                <div class="overload-group">
+                  <p class="description">Get duration in seconds.</p>
+                  <pre class="code-block"><code class="language-nim">proc seconds(d: Duration): float</code></pre>
+                </div>
+              </div>
+            </article>
+            <article class="type-section" id="frame_type">
+              <h4 class="type-heading"><a href="#frame_type">Frame</a></h4>
+
+              <pre class="code-block"><code class="language-nim">Frame = ref object
+  manager*: proc (active: bool): bool
+  action*: proc ()</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+
+
+            </article>
+            <article class="type-section" id="halt_type">
+              <h4 class="type-heading"><a href="#halt_type">Halt</a></h4>
+
+              <pre class="code-block"><code class="language-nim">Halt = object of CatchableError</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+
+
+            </article>
+            <article class="type-section" id="loop_type">
+              <h4 class="type-heading"><a href="#loop_type">Loop</a></h4>
+
+              <pre class="code-block"><code class="language-nim">Loop = ref object
+  states*: Table[string, NimNode]
+  from_states*: seq[(string, NimNode)]</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+
+
+            </article>
+            <article class="type-section" id="player_type">
+              <h4 class="type-heading"><a href="#player_type">Player</a></h4>
+
+              <pre class="code-block"><code class="language-nim">Player = ref object of Unit</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+
+              <div class="operation" id="player_added">
+                <h5><a href="#player_added">Player.added</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc added(_: type Player): Query[seq[Player]]</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="player_all">
+                <h5><a href="#player_all">Player.all</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc all(_: type Player): Query[seq[Player]]</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="player_hit">
+                <h5><a href="#player_hit">Player.hit</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc hit(_: type Player): Query[seq[Player]]</code></pre>
+                </div>
+              </div>
+
+              <div class="operation" id="bounce_player">
+                <h5><a href="#bounce_player">bounce</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc bounce(me: Player; power = 1.0)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="coding_player">
+                <h5><a href="#coding_player">coding</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc coding(self: Player): Unit</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="codingeq_player">
+                <h5><a href="#codingeq_player">coding=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc coding=(self: Player; value: Unit)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="flying_player">
+                <h5><a href="#flying_player">flying</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc flying(self: Player): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="flyingeq_player">
+                <h5><a href="#flyingeq_player">flying=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc flying=(self: Player; value: bool)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="god_player">
+                <h5><a href="#god_player">god</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc god(self: Player): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="godeq_player">
+                <h5><a href="#godeq_player">god=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc god=(self: Player; value: bool)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="number_player">
+                <h5><a href="#number_player">number</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc number(self: Player): int</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="open_sign_player">
+                <h5><a href="#open_sign_player">open_sign</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc open_sign(self: Player): Sign</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="open_signeq_player">
+                <h5><a href="#open_signeq_player">open_sign=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc open_sign=(self: Player; value: Sign)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="playing_player">
+                <h5><a href="#playing_player">playing</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc playing(self: Player): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="playingeq_player">
+                <h5><a href="#playingeq_player">playing=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc playing=(self: Player; value: bool)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="running_player">
+                <h5><a href="#running_player">running</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc running(self: Player): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="runningeq_player">
+                <h5><a href="#runningeq_player">running=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc running=(self: Player; value: bool)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="tool_player">
+                <h5><a href="#tool_player">tool</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc tool(self: Player): Tools</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="tooleq_player">
+                <h5><a href="#tooleq_player">tool=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc tool=(self: Player; value: Tools)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="tools_player">
+                <h5><a href="#tools_player">tools</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc tools(self: Player): ToolSet</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="toolseq_player">
+                <h5><a href="#toolseq_player">tools=</a></h5>
+                <div class="overload-group">
+                  <p class="description">Replace the available tools with <tt class="docutils literal"><span class="pre"><span class="Identifier">value</span></span></tt> (a normal VM set literal, iterated here — never marshalled). <tt class="docutils literal"><span class="pre"><span class="Identifier">None</span></span></tt> is ignored; it isn't a selectable tool.</p>
+                  <pre class="code-block"><code class="language-nim">proc tools=(self: Player; value: set[Tools])</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="tools_clear_player">
+                <h5><a href="#tools_clear_player">tools_clear</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc tools_clear(self: Player)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="tools_excl_player">
+                <h5><a href="#tools_excl_player">tools_excl</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc tools_excl(self: Player; tool: Tools)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="tools_has_player">
+                <h5><a href="#tools_has_player">tools_has</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc tools_has(self: Player; tool: Tools): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="tools_incl_player">
+                <h5><a href="#tools_incl_player">tools_incl</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc tools_incl(self: Player; tool: Tools)</code></pre>
+                </div>
+              </div>
+            </article>
+            <article class="type-section" id="positionoffset_type">
+              <h4 class="type-heading"><a href="#positionoffset_type">PositionOffset</a></h4>
+
+              <pre class="code-block"><code class="language-nim">PositionOffset = object
+  position*: Vector3
+  offset*: float
+  direction*: Vector3</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+
+
+              <div class="operation" id="plus_positionoffset">
+                <h5><a href="#plus_positionoffset">+</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `+`(self: PositionOffset; offset: float): PositionOffset</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="_positionoffset">
+                <h5><a href="#_positionoffset">-</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `-`(self: PositionOffset; offset: float): PositionOffset</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="back_positionoffset">
+                <h5><a href="#back_positionoffset">back</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template back(offset: PositionOffset)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="down_positionoffset">
+                <h5><a href="#down_positionoffset">down</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template down(offset: PositionOffset)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="forward_positionoffset">
+                <h5><a href="#forward_positionoffset">forward</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template forward(offset: PositionOffset)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="left_positionoffset">
+                <h5><a href="#left_positionoffset">left</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template left(offset: PositionOffset)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="right_positionoffset">
+                <h5><a href="#right_positionoffset">right</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template right(offset: PositionOffset)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="up_positionoffset">
+                <h5><a href="#up_positionoffset">up</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template up(offset: PositionOffset)</code></pre>
+                </div>
+              </div>
+            </article>
+            <article class="type-section" id="query_type">
+              <h4 class="type-heading"><a href="#query_type">Query</a></h4>
+
+              <pre class="code-block"><code class="language-nim">Query[T] = object of RootObj
+  result*: T
+  truthy*: bool</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+
+              <div class="operation" id="query_init">
+                <h5><a href="#query_init">Query.init</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc init[T](_: type Query; results: openArray[T]): Query[seq[T]]</code></pre>
+                </div>
+              </div>
+
+              <div class="operation" id="_query">
+                <h5><a href="#_query">[]</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `[]`[T: Unit](self: Query[seq[T]]; index: int): T</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="as_query">
+                <h5><a href="#as_query">as</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template `as`[T](q: Query[seq[T]]; name: untyped): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="items_query">
+                <h5><a href="#items_query">items</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">iterator items[T](self: Query[seq[T]]): T</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="len_query">
+                <h5><a href="#len_query">len</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc len[T: Unit](self: Query[seq[T]]): int</code></pre>
+                </div>
+              </div>
+            </article>
+            <article class="type-section" id="sign_type">
+              <h4 class="type-heading"><a href="#sign_type">Sign</a></h4>
+
+              <pre class="code-block"><code class="language-nim">Sign = ref object of Unit</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+
+              <div class="operation" id="sign_all">
+                <h5><a href="#sign_all">Sign.all</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc all(_: type Sign): Query[seq[Sign]]</code></pre>
+                </div>
+              </div>
+
+              <div class="operation" id="billboard_sign">
+                <h5><a href="#billboard_sign">billboard</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc billboard(self: Sign): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="billboardeq_sign">
+                <h5><a href="#billboardeq_sign">billboard=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc billboard=(self: Sign; value: bool)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="height_sign">
+                <h5><a href="#height_sign">height</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc height(self: Sign): float</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="heighteq_sign">
+                <h5><a href="#heighteq_sign">height=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc height=(self: Sign; value: float)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="message_sign">
+                <h5><a href="#message_sign">message</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc message(self: Sign): string</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="messageeq_sign">
+                <h5><a href="#messageeq_sign">message=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc message=(self: Sign; value: string)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="more_sign">
+                <h5><a href="#more_sign">more</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc more(self: Sign): string</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="moreeq_sign">
+                <h5><a href="#moreeq_sign">more=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc more=(self: Sign; value: string)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="open_sign">
+                <h5><a href="#open_sign">open</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc open(self: Sign): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="openeq_sign">
+                <h5><a href="#openeq_sign">open=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc open=(self: Sign; value: bool)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="size_sign">
+                <h5><a href="#size_sign">size</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc size(self: Sign): int</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="sizeeq_sign">
+                <h5><a href="#sizeeq_sign">size=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc size=(self: Sign; value: int)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="width_sign">
+                <h5><a href="#width_sign">width</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc width(self: Sign): float</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="widtheq_sign">
+                <h5><a href="#widtheq_sign">width=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc width=(self: Sign; value: float)</code></pre>
+                </div>
+              </div>
+            </article>
+            <article class="type-section" id="timestamp_type">
+              <h4 class="type-heading"><a href="#timestamp_type">Timestamp</a></h4>
+
+              <p class="description">A point in time, represented as seconds since program start.</p>
+              <pre class="code-block"><code class="language-nim">Timestamp = object</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+
+
+              <div class="operation" id="dollar_timestamp">
+                <h5><a href="#dollar_timestamp">$</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `$`(t: Timestamp): string</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="gt_timestamp">
+                <h5><a href="#gt_timestamp">&gt;</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `&gt;`(a, b: Timestamp): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="lt_timestamp">
+                <h5><a href="#lt_timestamp">&lt;</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `&lt;`(a, b: Timestamp): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="plus_timestamp">
+                <h5><a href="#plus_timestamp">+</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `+`(a: Timestamp; b: Duration): Timestamp</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="_timestamp">
+                <h5><a href="#_timestamp">-</a></h5>
+                <div class="overload-group">
+                  <p class="description">Calculate duration between two timestamps.</p>
+                  <pre class="code-block"><code class="language-nim">proc `-`(a, b: Timestamp): Duration
+proc `-`(a: Timestamp; b: Duration): Timestamp</code></pre>
+                </div>
+              </div>
+            </article>
+            <article class="type-section" id="toolset_type">
+              <h4 class="type-heading"><a href="#toolset_type">ToolSet</a></h4>
+
+              <p class="description">Set-like view over a player's available tools. Operations forward to the host one tool at a time, so no real set crosses the bridge.</p>
+              <pre class="code-block"><code class="language-nim">ToolSet = distinct Player</code></pre>
+              <p class="source">Source: <code>enu/players</code></p>
+
+
+              <div class="operation" id="dollar_toolset">
+                <h5><a href="#dollar_toolset">$</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `$`(tools: ToolSet): string</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="clear_toolset">
+                <h5><a href="#clear_toolset">clear</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc clear(tools: ToolSet)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="contains_toolset">
+                <h5><a href="#contains_toolset">contains</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc contains(tools: ToolSet; tool: Tools): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="excl_toolset">
+                <h5><a href="#excl_toolset">excl</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc excl(tools: ToolSet; tool: Tools)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="incl_toolset">
+                <h5><a href="#incl_toolset">incl</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc incl(tools: ToolSet; tool: Tools)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="items_toolset">
+                <h5><a href="#items_toolset">items</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">iterator items(tools: ToolSet): Tools</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="len_toolset">
+                <h5><a href="#len_toolset">len</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc len(tools: ToolSet): int</code></pre>
+                </div>
+              </div>
+            </article>
+            <article class="type-section" id="unit_type">
+              <h4 class="type-heading"><a href="#unit_type">Unit</a></h4>
+
+              <pre class="code-block"><code class="language-nim">Unit = ref object of RootObj
+  name*: string
+  advance_state_machine*: proc (): bool
+  sign*: Sign
+  query_results*: Table[string, seq[Unit]]</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+
+              <div class="operation" id="unit_all">
+                <h5><a href="#unit_all">Unit.all</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc all(_: type Unit): Query[seq[Unit]]</code></pre>
+                </div>
+              </div>
+
+              <div class="operation" id="_unit">
+                <h5><a href="#_unit">-</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `-`(node: Unit): NegativeNode</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="in_unit">
+                <h5><a href="#in_unit">in</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `in`(unit: Unit): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="adopt_unit">
+                <h5><a href="#adopt_unit">adopt</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc adopt(self: Unit; unit: Unit)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="anchor_unit">
+                <h5><a href="#anchor_unit">anchor</a></h5>
+                <div class="overload-group">
+                  <p class="description">Re-anchor an existing instance. Visibly moves/reorients the instance because it's already rendered; the unit's <tt class="docutils literal"><span class="pre"><span class="Identifier">position</span></span></tt> and <tt class="docutils literal"><span class="pre"><span class="Identifier">rotation</span></span></tt> stay constant from the user's perspective.</p>
+                  <pre class="code-block"><code class="language-nim">template anchor(target: Unit; body: untyped)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="angle_to_unit">
+                <h5><a href="#angle_to_unit">angle_to</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc angle_to(self: Unit; position: Vector3): float
+
+proc angle_to(self: Unit; enu_target: Unit): float</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="apply_position_unit">
+                <h5><a href="#apply_position_unit">apply_position</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc apply_position(self: Unit; position: Vector3)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="b_unit">
+                <h5><a href="#b_unit">b</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template b(self: Unit; steps = 1.0)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="back_unit">
+                <h5><a href="#back_unit">back</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc back(self: Unit; steps: float; move_mode: int)
+
+template back(self: Unit; steps = 1.0)
+proc back(self: Unit; value: PositionOffset; move_mode: int)
+
+template back(self: Unit; value: PositionOffset)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="block_log_unit">
+                <h5><a href="#block_log_unit">block_log</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc block_log(self: Unit): string</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="bounds_unit">
+                <h5><a href="#bounds_unit">bounds</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc bounds(self: Unit): WorldBox</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="build_unit">
+                <h5><a href="#build_unit">build</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template build(new_enu_target: Unit)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="capture_start_transform_unit">
+                <h5><a href="#capture_start_transform_unit">capture_start_transform</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc capture_start_transform(self: Unit)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="clear_block_log_unit">
+                <h5><a href="#clear_block_log_unit">clear_block_log</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc clear_block_log(self: Unit)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="color_unit">
+                <h5><a href="#color_unit">color</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc color(self: Unit): Colors</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="coloreq_unit">
+                <h5><a href="#coloreq_unit">color=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc color=(self: Unit; color: Colors)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="create_new_unit">
+                <h5><a href="#create_new_unit">create_new</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc create_new(self: Unit)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="current_colliders_unit">
+                <h5><a href="#current_colliders_unit">current_colliders</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc current_colliders(self: Unit; name: string): seq[Unit]</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="d_unit">
+                <h5><a href="#d_unit">d</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template d(self: Unit; steps = 1.0)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="delete_unit">
+                <h5><a href="#delete_unit">delete</a></h5>
+                <div class="overload-group">
+                  <p class="description">Remove the unit from the level and delete its on-disk script + data directory. Distinct from <tt class="docutils literal"><span class="pre"><span class="Identifier">destroy</span></span></tt>, which only tears down the in-memory instance. Cannot be undone.</p>
+                  <pre class="code-block"><code class="language-nim">proc delete(self: Unit)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="distance_unit">
+                <h5><a href="#distance_unit">distance</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc distance(node: Unit): float</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="down_unit">
+                <h5><a href="#down_unit">down</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc down(self: Unit; steps: float; move_mode: int)
+
+template down(self: Unit; steps = 1.0)
+proc down(self: Unit; value: PositionOffset; move_mode: int)
+
+template down(self: Unit; value: PositionOffset)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="exec_instance_unit">
+                <h5><a href="#exec_instance_unit">exec_instance</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc exec_instance(self: Unit)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="f_unit">
+                <h5><a href="#f_unit">f</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template f(self: Unit; steps = 1.0)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="forward_unit">
+                <h5><a href="#forward_unit">forward</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc forward(self: Unit; steps: float; move_mode: int)
+
+template forward(self: Unit; steps = 1.0)
+proc forward(self: Unit; value: PositionOffset; move_mode: int)
+
+template forward(self: Unit; value: PositionOffset)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="frame_created_unit">
+                <h5><a href="#frame_created_unit">frame_created</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc frame_created(self: Unit): int</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="global_unit">
+                <h5><a href="#global_unit">global</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc global(self: Unit): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="globaleq_unit">
+                <h5><a href="#globaleq_unit">global=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc global=(self: Unit; global: bool)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="glow_unit">
+                <h5><a href="#glow_unit">glow</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc glow(self: Unit): float</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="gloweq_unit">
+                <h5><a href="#gloweq_unit">glow=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc glow=(self: Unit; energy: float)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="go_unit">
+                <h5><a href="#go_unit">go</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc go(self: Unit; position: Unit | Vector3)
+proc go(unit: Unit)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="height_unit">
+                <h5><a href="#height_unit">height</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc height(self: Unit): float</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="hit_unit">
+                <h5><a href="#hit_unit">hit</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc hit(self: Unit; node: Unit): bool
+
+proc hit(unit: Unit): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="id_unit">
+                <h5><a href="#id_unit">id</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc id(self: Unit): string</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="l_unit">
+                <h5><a href="#l_unit">l</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template l(self: Unit; steps = 1.0)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="lean_unit">
+                <h5><a href="#lean_unit">lean</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc lean(self: Unit; direction: Directions; degrees = 90.0; move_mode: int)
+
+proc lean(self: Unit; degrees: float; move_mode: int)
+
+template lean(self: Unit; direction: Directions; degrees = 90.0)
+template lean(self: Unit; degrees: float)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="left_unit">
+                <h5><a href="#left_unit">left</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc left(self: Unit; steps: float; move_mode: int)
+
+template left(self: Unit; steps = 1.0)
+proc left(self: Unit; value: PositionOffset; move_mode: int)
+
+template left(self: Unit; value: PositionOffset)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="local_position_unit">
+                <h5><a href="#local_position_unit">local_position</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc local_position(self: Unit): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="lock_unit">
+                <h5><a href="#lock_unit">lock</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc lock(self: Unit): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="lockeq_unit">
+                <h5><a href="#lockeq_unit">lock=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc lock=(self: Unit; value: bool)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="new_instance_unit">
+                <h5><a href="#new_instance_unit">new_instance</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc new_instance(src, dest: Unit)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="over_unit">
+                <h5><a href="#over_unit">over</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc over(node: Unit): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="overlaps_unit">
+                <h5><a href="#overlaps_unit">overlaps</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc overlaps(a: Unit; b: Unit): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="pending_block_updates_unit">
+                <h5><a href="#pending_block_updates_unit">pending_block_updates</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc pending_block_updates(self: Unit): int</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="pending_block_updates_get_unit">
+                <h5><a href="#pending_block_updates_get_unit">pending_block_updates_get</a></h5>
+                <div class="overload-group">
+                  <p class="description">Unfinished voxel pipeline work (queued, in-flight, or awaiting apply) for the unit and its descendants. 0 = every submitted edit is meshed and visible.</p>
+                  <pre class="code-block"><code class="language-nim">proc pending_block_updates_get(self: Unit): int</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="position_unit">
+                <h5><a href="#position_unit">position</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc position(self: Unit): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="positioneq_unit">
+                <h5><a href="#positioneq_unit">position=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc position=(self: Unit; position: Vector3)
+
+proc position=(self: Unit; unit: Unit)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="r_unit">
+                <h5><a href="#r_unit">r</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template r(self: Unit; steps = 1.0)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="register_active_unit">
+                <h5><a href="#register_active_unit">register_active</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc register_active(self: Unit)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="register_template_node_unit">
+                <h5><a href="#register_template_node_unit">register_template_node</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc register_template_node(self: Unit; name: string)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="release_unit">
+                <h5><a href="#release_unit">release</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc release(self: Unit)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="reset_unit">
+                <h5><a href="#reset_unit">reset</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc reset(self: Unit; clear = false)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="right_unit">
+                <h5><a href="#right_unit">right</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc right(self: Unit; steps: float; move_mode: int)
+
+template right(self: Unit; steps = 1.0)
+proc right(self: Unit; value: PositionOffset; move_mode: int)
+
+template right(self: Unit; value: PositionOffset)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="rotation_unit">
+                <h5><a href="#rotation_unit">rotation</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc rotation(self: Unit): float</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="rotationeq_unit">
+                <h5><a href="#rotationeq_unit">rotation=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc rotation=(self: Unit; degrees: float)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="say_unit">
+                <h5><a href="#say_unit">say</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc say(self: Unit; message: string; more = &quot;&quot;; width = float.high;
+         height = float.high; size = int.high; billboard = none(bool)): Sign</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="scale_unit">
+                <h5><a href="#scale_unit">scale</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc scale(self: Unit): float</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="scaleeq_unit">
+                <h5><a href="#scaleeq_unit">scale=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc scale=(self: Unit; scale: float)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="see_unit">
+                <h5><a href="#see_unit">see</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template see(target: Unit; less_than = 100.0): bool
+proc see(self: Unit; target: Unit; less_than = 100.0): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="seed_unit">
+                <h5><a href="#seed_unit">seed</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc seed(self: Unit): int</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="seedeq_unit">
+                <h5><a href="#seedeq_unit">seed=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc seed=(self: Unit; seed: int)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="sees_unit">
+                <h5><a href="#sees_unit">sees</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template sees(target: Unit; less_than = 100.0): bool
+proc sees(self: Unit; target: Unit; less_than = 100.0): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="show_unit">
+                <h5><a href="#show_unit">show</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc show(self: Unit): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="showeq_unit">
+                <h5><a href="#showeq_unit">show=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc show=(self: Unit; value: bool)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="speed_unit">
+                <h5><a href="#speed_unit">speed</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc speed(self: Unit): float</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="speedeq_unit">
+                <h5><a href="#speedeq_unit">speed=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc speed=(self: Unit; speed: float)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="start_position_unit">
+                <h5><a href="#start_position_unit">start_position</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc start_position(self: Unit): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="start_positioneq_unit">
+                <h5><a href="#start_positioneq_unit">start_position=</a></h5>
+                <div class="overload-group">
+                  <p class="description">Update the unit's spawn position. Persists across reload (unlike <tt class="docutils literal"><span class="pre"><span class="Identifier">position</span><span class="Operator">=</span></span></tt>, which only moves the live transform).</p>
+                  <pre class="code-block"><code class="language-nim">proc start_position=(self: Unit; position: Vector3)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="t_unit">
+                <h5><a href="#t_unit">t</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template t(self: Unit; degrees: float)
+template t(enu_target: Unit)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="turn_unit">
+                <h5><a href="#turn_unit">turn</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc turn(self: Unit; direction: Directions; degrees = 90.0; move_mode: int)
+
+proc turn(self: Unit; degrees: float; move_mode: int)
+
+template turn(self: Unit; direction: Directions; degrees = 90.0)
+template turn(self: Unit; degrees: float)
+proc turn(self: Unit; position: Vector3; move_mode: int)
+
+template turn(self: Unit; position: Vector3)
+proc turn(self: Unit; enu_target: Unit; move_mode: int)
+
+template turn(self: Unit; enu_target: Unit)
+template turn(enu_target: Unit)
+template turn(self: Unit; enu_target: NegativeNode)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="u_unit">
+                <h5><a href="#u_unit">u</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template u(self: Unit; steps = 1.0)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="under_unit">
+                <h5><a href="#under_unit">under</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc under(node: Unit): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="up_unit">
+                <h5><a href="#up_unit">up</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc up(self: Unit; steps: float; move_mode: int)
+
+template up(self: Unit; steps = 1.0)
+proc up(self: Unit; value: PositionOffset; move_mode: int)
+
+template up(self: Unit; value: PositionOffset)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="velocity_unit">
+                <h5><a href="#velocity_unit">velocity</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc velocity(self: Unit): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="velocityeq_unit">
+                <h5><a href="#velocityeq_unit">velocity=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc velocity=(self: Unit; velocity: Vector3)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="wake_unit">
+                <h5><a href="#wake_unit">wake</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc wake(self: Unit)</code></pre>
+                </div>
+              </div>
+            </article>
+            <article class="type-section" id="vector3_type">
+              <h4 class="type-heading"><a href="#vector3_type">Vector3</a></h4>
+
+              <pre class="code-block"><code class="language-nim">Vector3 = tuple[x, y, z: float]</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+
+
+              <div class="operation" id="lt_vector3">
+                <h5><a href="#lt_vector3">&lt;</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `&lt;`(a, b: Vector3): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="eq_vector3">
+                <h5><a href="#eq_vector3">*=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `*=`(a: var Vector3; b: Vector3)
+
+proc `*=`(a: var Vector3; b: float32)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="_vector3">
+                <h5><a href="#_vector3">*</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `*`(a, b: Vector3): Vector3
+proc `*`(a: Vector3; b: float32): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="pluseq_vector3">
+                <h5><a href="#pluseq_vector3">+=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `+=`(a: var Vector3; b: Vector3)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="plus_vector3">
+                <h5><a href="#plus_vector3">+</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `+`(a, b: Vector3): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="eq_vector3">
+                <h5><a href="#eq_vector3">-=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `-=`(a: var Vector3; b: Vector3)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="_vector3">
+                <h5><a href="#_vector3">-</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `-`(a, b: Vector3): Vector3
+proc `-`(self: Vector3): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="/eq_vector3">
+                <h5><a href="#/eq_vector3">/=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `/=`(a: var Vector3; b: Vector3)
+
+proc `/=`(a: var Vector3; b: float32)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="/_vector3">
+                <h5><a href="#/_vector3">/</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `/`(a, b: Vector3): Vector3
+proc `/`(a: Vector3; b: float32): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="eqeq_vector3">
+                <h5><a href="#eqeq_vector3">==</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `==`(a, b: Vector3): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="abs_vector3">
+                <h5><a href="#abs_vector3">abs</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc abs(self: Vector3): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="angleto_vector3">
+                <h5><a href="#angleto_vector3">angleTo</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc angleTo(self, other: Vector3): float32</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="block_color_at_vector3">
+                <h5><a href="#block_color_at_vector3">block_color_at</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc block_color_at(position: Vector3): Colors</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="bounce_vector3">
+                <h5><a href="#bounce_vector3">bounce</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc bounce(self, n: Vector3): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="box_vector3">
+                <h5><a href="#box_vector3">box</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template box(at, to: Vector3; color = active_unit().color; fill = true)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="ceil_vector3">
+                <h5><a href="#ceil_vector3">ceil</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc ceil(self: Vector3): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="cross_vector3">
+                <h5><a href="#cross_vector3">cross</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc cross(self, other: Vector3): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="cubicinterpolate_vector3">
+                <h5><a href="#cubicinterpolate_vector3">cubicInterpolate</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc cubicInterpolate(self, b, preA, postB: Vector3; t: float32): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="distance_vector3">
+                <h5><a href="#distance_vector3">distance</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc distance(position: Vector3): float</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="distancesquaredto_vector3">
+                <h5><a href="#distancesquaredto_vector3">distanceSquaredTo</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc distanceSquaredTo(self, other: Vector3): float32</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="distanceto_vector3">
+                <h5><a href="#distanceto_vector3">distanceTo</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc distanceTo(self, other: Vector3): float32</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="dot_vector3">
+                <h5><a href="#dot_vector3">dot</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc dot(self, other: Vector3): float32</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="floor_vector3">
+                <h5><a href="#floor_vector3">floor</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc floor(self: Vector3): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="fuzzed_vector3">
+                <h5><a href="#fuzzed_vector3">fuzzed</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc fuzzed(self, range: Vector3): Vector3
+proc fuzzed(self: Vector3; range: float): Vector3
+
+proc fuzzed(self: Vector3; x, y, z: float): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="has_block_at_vector3">
+                <h5><a href="#has_block_at_vector3">has_block_at</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc has_block_at(position: Vector3): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="height_vector3">
+                <h5><a href="#height_vector3">height</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc height(self: Vector3): float</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="inverse_vector3">
+                <h5><a href="#inverse_vector3">inverse</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc inverse(self: Vector3): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="isnormalized_vector3">
+                <h5><a href="#isnormalized_vector3">isNormalized</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc isNormalized(self: Vector3): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="length_vector3">
+                <h5><a href="#length_vector3">length</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc length(self: Vector3): float32</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="lengthsquared_vector3">
+                <h5><a href="#lengthsquared_vector3">lengthSquared</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc lengthSquared(self: Vector3): float32</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="lerp_vector3">
+                <h5><a href="#lerp_vector3">lerp</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc lerp(self: Vector3; other: Vector3; t: float32): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="maxaxis_vector3">
+                <h5><a href="#maxaxis_vector3">maxAxis</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc maxAxis(self: Vector3): int</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="minaxis_vector3">
+                <h5><a href="#minaxis_vector3">minAxis</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc minAxis(self: Vector3): int</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="movetoward_vector3">
+                <h5><a href="#movetoward_vector3">moveToward</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc moveToward(vFrom, to: Vector3; delta: float32): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="normalize_vector3">
+                <h5><a href="#normalize_vector3">normalize</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc normalize(self: var Vector3)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="normalized_vector3">
+                <h5><a href="#normalized_vector3">normalized</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc normalized(self: Vector3): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="reflect_vector3">
+                <h5><a href="#reflect_vector3">reflect</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc reflect(self, n: Vector3): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="sign_vector3">
+                <h5><a href="#sign_vector3">sign</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc sign(self: Vector3): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="slide_vector3">
+                <h5><a href="#slide_vector3">slide</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc slide(self, n: Vector3): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="snap_vector3">
+                <h5><a href="#snap_vector3">snap</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc snap(self: var Vector3; other: Vector3)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="snapped_vector3">
+                <h5><a href="#snapped_vector3">snapped</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc snapped(self: Vector3; other: Vector3): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="t_vector3">
+                <h5><a href="#t_vector3">t</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template t(position: Vector3)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="turn_vector3">
+                <h5><a href="#turn_vector3">turn</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template turn(position: Vector3)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="zero_vector3">
+                <h5><a href="#zero_vector3">zero</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc zero(self: var Vector3)</code></pre>
+                </div>
+              </div>
+            </article>
+            <article class="type-section" id="world_type">
+              <h4 class="type-heading"><a href="#world_type">World</a></h4>
+
+              <pre class="code-block"><code class="language-nim">World = ref object of RootObj</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+
+
+              <div class="operation" id="environment_world">
+                <h5><a href="#environment_world">environment</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc environment(self: World): string</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="environmenteq_world">
+                <h5><a href="#environmenteq_world">environment=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc environment=(self: World; value: string)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="megapixels_world">
+                <h5><a href="#megapixels_world">megapixels</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc megapixels(self: World): float</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="megapixelseq_world">
+                <h5><a href="#megapixelseq_world">megapixels=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc megapixels=(self: World; value: float)</code></pre>
+                </div>
+              </div>
+            </article>
+            <article class="type-section" id="worldbox_type">
+              <h4 class="type-heading"><a href="#worldbox_type">WorldBox</a></h4>
+
+              <pre class="code-block"><code class="language-nim">WorldBox = tuple[min, max: Vector3]</code></pre>
+              <p class="source">Source: <code>enu/types</code></p>
+
+
+              <div class="operation" id="box_is_free_worldbox">
+                <h5><a href="#box_is_free_worldbox">box_is_free</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc box_is_free(box: WorldBox): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="centre_worldbox">
+                <h5><a href="#centre_worldbox">centre</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc centre(b: WorldBox): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="contains_worldbox">
+                <h5><a href="#contains_worldbox">contains</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc contains(b: WorldBox; p: Vector3): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="expanded_worldbox">
+                <h5><a href="#expanded_worldbox">expanded</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc expanded(b: WorldBox; margin: float): WorldBox</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="intersects_worldbox">
+                <h5><a href="#intersects_worldbox">intersects</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc intersects(a, b: WorldBox): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="size_worldbox">
+                <h5><a href="#size_worldbox">size</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc size(b: WorldBox): Vector3</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="units_overlapping_worldbox">
+                <h5><a href="#units_overlapping_worldbox">units_overlapping</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc units_overlapping(box: WorldBox): seq[Unit]</code></pre>
+                </div>
+              </div>
+            </article>
+          </section>
+        </section>
+
+      </main>
+
+      <nav class="nav-wrapper" aria-label="Page navigation">
+        <!-- Mobile navigation buttons -->
+          <a rel="prev" href="../coding/random_numbers.html"
+             class="mobile-nav-chapters previous"
+             title="Previous chapter" aria-label="Previous chapter"
+             aria-keyshortcuts="Left">
+            <i class="fa fa-angle-left"></i>
+          </a>
+
+          <a rel="next" href="../command_loops.html"
+             class="mobile-nav-chapters next" title="Next chapter"
+             aria-label="Next chapter" aria-keyshortcuts="Right">
+            <i class="fa fa-angle-right"></i>
+          </a>
+
+        <div style="clear: both"></div>
+      </nav>
+    </div>
+  </div>
+
+  <nav class="nav-wide-wrapper" aria-label="Page navigation">
+      <a rel="prev" href="../coding/random_numbers.html"
+         class="nav-chapters previous" title="Previous chapter"
+         aria-label="Previous chapter" aria-keyshortcuts="Left">
+        <i class="fa fa-angle-left"></i>
+      </a>
+
+      <a rel="next" href="../command_loops.html"
+         class="nav-chapters next" title="Next chapter"
+         aria-label="Next chapter" aria-keyshortcuts="Right">
+        <i class="fa fa-angle-right"></i>
+      </a>
+  </nav>
+
+</div>
+
+
+
+
+
+
+
+<script src="../assets/js/clipboard.min.js"
+    type="text/javascript" charset="utf-8"></script>
+<script src="../assets/js/book.js" type="text/javascript"
+    charset="utf-8"></script>
+
+<!-- Custom JS scripts -->
+
+
+  <script>
+    window.addEventListener("load", function() {
+      // refinement script - wait for highlight.js
+      setTimeout(() => {
+        // 1. SCREAMING_SNAKE_CASE -> Constant (Blue)
+        const types = document.querySelectorAll('.hljs-type');
+        types.forEach(el => {
+          const text = el.innerText;
+          if (/^[A-Z][A-Z0-9_]+$/.test(text)) {
+            el.classList.remove('hljs-type');
+            el.classList.add('hljs-constant');
+          }
+        });
+
+        // 2. Single Uppercase (Generic Params) -> Type (Purple)
+        // Walk text nodes to find 'T', 'O', etc. that highlight.js missed
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+        let node;
+        const nodesToReplace = [];
+
+        while(node = walker.nextNode()) {
+          // Skip if inside a comment, string, or already highlighted element
+          const parent = node.parentElement;
+          if (parent.classList.contains('hljs-comment') ||
+              parent.classList.contains('hljs-string') ||
+              parent.classList.contains('hljs-literal') ||
+              parent.classList.contains('hljs-type') ||
+              parent.classList.contains('hljs-constant') ||
+              parent.tagName !== 'CODE' && !parent.classList.contains('hljs')) {
+             // Only target direct children of code/pre/unhighlighted spans mostly
+             continue;
+          }
+
+          if (/\b[A-Z]\b/.test(node.nodeValue)) {
+             nodesToReplace.push(node);
+          }
+        }
+
+
+        nodesToReplace.forEach(node => {
+          const span = document.createElement('span');
+          span.innerHTML = node.nodeValue.replace(/\b([A-Z])\b/g, '<span class="hljs-type">$1</span>');
+          node.parentNode.replaceChild(span, node);
+          // Unwrap the span container to keep DOM clean
+          while (span.firstChild) {
+            span.parentNode.insertBefore(span.firstChild, span);
+          }
+          span.parentNode.removeChild(span);
+        });
+
+      }, 0);
+
+      // Sidebar Logic
+      // 1. "TYPES" Header Toggle
+      const headers = document.querySelectorAll('.api-nav-header');
+      let typesHeader = null;
+      for (const h of headers) {
+        if (h.textContent.trim() === 'Types') {
+          typesHeader = h;
+          break;
+        }
+      }
+
+      if (typesHeader) {
+        typesHeader.style.cursor = 'pointer';
+
+        const updateHeaderState = () => {
+          const allDetails = document.querySelectorAll('.api-type-details');
+          const anyOpen = Array.from(allDetails).some(d => d.open);
+          typesHeader.innerHTML = 'Types <span style="float:right; font-family: monospace;">' + (anyOpen ? '[-]' : '[+]') + '</span>';
+        };
+
+        // Initial state
+        updateHeaderState();
+
+        typesHeader.addEventListener('click', () => {
+          const allDetails = document.querySelectorAll('.api-type-details');
+          const isCurrentlyExpanded = typesHeader.textContent.includes('[-]');
+
+          allDetails.forEach(d => {
+            d.open = !isCurrentlyExpanded;
+          });
+          updateHeaderState();
+        });
+
+        // Update header when individual items are toggled
+        const allDetails = document.querySelectorAll('.api-type-details');
+        allDetails.forEach(d => {
+          d.addEventListener('toggle', updateHeaderState);
+        });
+      }
+
+      // 2. Type Item Click Logic
+      const typeLinks = document.querySelectorAll('.api-type-details > summary > a');
+      typeLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          // Allow default navigation (scrolling) to happen first
+          // But we need to detect if it actually moved
+          const startScroll = window.scrollY;
+
+          // Let the browser handle the jump
+          setTimeout(() => {
+            const endScroll = window.scrollY;
+            const details = this.closest('details');
+            const userScrolled = Math.abs(endScroll - startScroll) > 5;
+
+            if (!details.open) {
+              // Collapsed -> Expand (always)
+              details.open = true;
+            } else {
+              // Expanded -> Collapse ONLY if we didn't scroll
+              if (!userScrolled) {
+                details.open = false;
+              }
+            }
+          }, 0);
+        });
+      });
+
+      // 3. Highlight Class Methods in Main Headers (Type.method)
+      // We want Type in Lavender (#C6C5FE) and method in White (#F6F3E8)
+      // Standard functions are already White via CSS.
+      const opHeaders = document.querySelectorAll('.operation h4 a, .operation h5 a');
+      opHeaders.forEach(link => {
+        const text = link.textContent;
+        if (text.includes('.')) {
+          const parts = text.split('.');
+          if (parts.length === 2) {
+             link.innerHTML = `<span style="color: #C6C5FE;">${parts[0]}</span>.${parts[1]}`;
+          }
+        }
+      });
+
+    });
+  </script>
+</body>
+</html>

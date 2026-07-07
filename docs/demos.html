@@ -31,10 +31,6 @@
 
   <!-- Highlight.js Stylesheets - I could use nimib native highlight but let's keep it for styling... -->
   <link rel="stylesheet" href="./assets/css/highlight.css">
-  <link rel="stylesheet"
-      href="./assets/css/tomorrow-night.css">
-  <link rel="stylesheet"
-      href="./assets/css/ayu-highlight.css">
 
   <!-- Custom theme stylesheets - why the "../"? -->
 
@@ -165,6 +161,10 @@
       <a href="./coding/random_numbers.html" tabindex="0">
         <strong aria-hidden="true">2.4.</strong> Random Numbers
       </a></li>
+    <li class="chapter-item expanded ">
+      <a href="./api/enu_api.html" tabindex="0">
+        <strong aria-hidden="true">2.5.</strong> API Reference
+      </a></li>
       </ol>
       </li>
     <li class="chapter-item expanded ">
@@ -268,11 +268,13 @@
 
     <div id="content" class="content">
       <main>
+
+
           <h1>Demos</h1>
 <h2>Inky: Isolation. A 90 minute game built with Enu and Nim</h2>
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9e9sLsmsu_o?si=anystxG6UCk3b0W2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 <h2>Potato Zombies: Helping a 6 year old build a 3D game with Enu and Nim</h2>
-<p>Initially presented at <a href="https://fosdem.org/2022/schedule/event/nim_potatozombies">FOSDOM 2022</a>.</p>
+<p>Initially presented at <a href="https://fosdem.org/2022/schedule/event/nim_potatozombies">FOSDEM 2022</a>.</p>
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/UqLy-4rP69I?si=Bk2Z6n6PoNbx7wkb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 <h2>Building 3D Games with Enu 0.2 - NimConf 2021</h2>
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ECJsq7BeZ8w?si=PJ8uMbv17_ipU573" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -335,5 +337,140 @@
 <!-- Custom JS scripts -->
 
 
+  <script>
+    window.addEventListener("load", function() {
+      // refinement script - wait for highlight.js
+      setTimeout(() => {
+        // 1. SCREAMING_SNAKE_CASE -> Constant (Blue)
+        const types = document.querySelectorAll('.hljs-type');
+        types.forEach(el => {
+          const text = el.innerText;
+          if (/^[A-Z][A-Z0-9_]+$/.test(text)) {
+            el.classList.remove('hljs-type');
+            el.classList.add('hljs-constant');
+          }
+        });
+
+        // 2. Single Uppercase (Generic Params) -> Type (Purple)
+        // Walk text nodes to find 'T', 'O', etc. that highlight.js missed
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+        let node;
+        const nodesToReplace = [];
+
+        while(node = walker.nextNode()) {
+          // Skip if inside a comment, string, or already highlighted element
+          const parent = node.parentElement;
+          if (parent.classList.contains('hljs-comment') ||
+              parent.classList.contains('hljs-string') ||
+              parent.classList.contains('hljs-literal') ||
+              parent.classList.contains('hljs-type') ||
+              parent.classList.contains('hljs-constant') ||
+              parent.tagName !== 'CODE' && !parent.classList.contains('hljs')) {
+             // Only target direct children of code/pre/unhighlighted spans mostly
+             continue;
+          }
+
+          if (/\b[A-Z]\b/.test(node.nodeValue)) {
+             nodesToReplace.push(node);
+          }
+        }
+
+
+        nodesToReplace.forEach(node => {
+          const span = document.createElement('span');
+          span.innerHTML = node.nodeValue.replace(/\b([A-Z])\b/g, '<span class="hljs-type">$1</span>');
+          node.parentNode.replaceChild(span, node);
+          // Unwrap the span container to keep DOM clean
+          while (span.firstChild) {
+            span.parentNode.insertBefore(span.firstChild, span);
+          }
+          span.parentNode.removeChild(span);
+        });
+
+      }, 0);
+
+      // Sidebar Logic
+      // 1. "TYPES" Header Toggle
+      const headers = document.querySelectorAll('.api-nav-header');
+      let typesHeader = null;
+      for (const h of headers) {
+        if (h.textContent.trim() === 'Types') {
+          typesHeader = h;
+          break;
+        }
+      }
+
+      if (typesHeader) {
+        typesHeader.style.cursor = 'pointer';
+
+        const updateHeaderState = () => {
+          const allDetails = document.querySelectorAll('.api-type-details');
+          const anyOpen = Array.from(allDetails).some(d => d.open);
+          typesHeader.innerHTML = 'Types <span style="float:right; font-family: monospace;">' + (anyOpen ? '[-]' : '[+]') + '</span>';
+        };
+
+        // Initial state
+        updateHeaderState();
+
+        typesHeader.addEventListener('click', () => {
+          const allDetails = document.querySelectorAll('.api-type-details');
+          const isCurrentlyExpanded = typesHeader.textContent.includes('[-]');
+
+          allDetails.forEach(d => {
+            d.open = !isCurrentlyExpanded;
+          });
+          updateHeaderState();
+        });
+
+        // Update header when individual items are toggled
+        const allDetails = document.querySelectorAll('.api-type-details');
+        allDetails.forEach(d => {
+          d.addEventListener('toggle', updateHeaderState);
+        });
+      }
+
+      // 2. Type Item Click Logic
+      const typeLinks = document.querySelectorAll('.api-type-details > summary > a');
+      typeLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          // Allow default navigation (scrolling) to happen first
+          // But we need to detect if it actually moved
+          const startScroll = window.scrollY;
+
+          // Let the browser handle the jump
+          setTimeout(() => {
+            const endScroll = window.scrollY;
+            const details = this.closest('details');
+            const userScrolled = Math.abs(endScroll - startScroll) > 5;
+
+            if (!details.open) {
+              // Collapsed -> Expand (always)
+              details.open = true;
+            } else {
+              // Expanded -> Collapse ONLY if we didn't scroll
+              if (!userScrolled) {
+                details.open = false;
+              }
+            }
+          }, 0);
+        });
+      });
+
+      // 3. Highlight Class Methods in Main Headers (Type.method)
+      // We want Type in Lavender (#C6C5FE) and method in White (#F6F3E8)
+      // Standard functions are already White via CSS.
+      const opHeaders = document.querySelectorAll('.operation h4 a, .operation h5 a');
+      opHeaders.forEach(link => {
+        const text = link.textContent;
+        if (text.includes('.')) {
+          const parts = text.split('.');
+          if (parts.length === 2) {
+             link.innerHTML = `<span style="color: #C6C5FE;">${parts[0]}</span>.${parts[1]}`;
+          }
+        }
+      });
+
+    });
+  </script>
 </body>
 </html>

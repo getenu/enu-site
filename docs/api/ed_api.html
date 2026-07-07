@@ -1,0 +1,1377 @@
+<!DOCTYPE HTML>
+<html lang="en-us" class="sidebar-visible no-js dark">
+<head>
+  <!-- Book generated using nimibook -->
+  <meta charset="UTF-8">
+  <title>API Reference - Enu</title>
+
+  <!-- Custom HTML head -->
+
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta name="description" content="Build together">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff"/>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#333333">
+  <meta name="msapplication-TileColor" content="#603cba">
+  <meta name="theme-color" content="#333333">
+
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/general.css">
+  <link rel="stylesheet" href="../assets/css/chrome.css">
+  <link rel="stylesheet" href="../assets/css/enu.css">
+
+  <!-- Fonts -->
+  <link rel="stylesheet"
+      href="../assets/FontAwesome/css/font-awesome.min.css">
+
+  <!-- Highlight.js Stylesheets - I could use nimib native highlight but let's keep it for styling... -->
+  <link rel="stylesheet" href="../assets/css/highlight.css">
+
+  <!-- Custom theme stylesheets - why the "../"? -->
+
+
+  
+
+    <script src="https://cdn.jsdelivr.net/gh/pietroppeter/nimib@main/assets/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+
+  <!-- plausible analytics (new in nimibook) -->
+</head>
+<body>
+<!-- Provide site root to javascript -->
+<script type="text/javascript">
+  var path_to_root = "..//assets";
+  var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "dark";
+</script>
+
+<!-- Work around some values being stored in localStorage wrapped in quotes -->
+<script type="text/javascript">
+  try {
+    var theme = localStorage.getItem('mdbook-theme');
+    var sidebar = localStorage.getItem('mdbook-sidebar');
+
+    if (theme.startsWith('"') && theme.endsWith('"')) {
+      localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+    }
+
+    if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+      localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+    }
+  } catch (e) {
+  }
+</script>
+
+<!-- Set the theme before any content is loaded, prevents flash -->
+<script type="text/javascript">
+  var theme;
+  try {
+    theme = localStorage.getItem('mdbook-theme');
+  } catch (e) {
+  }
+  if (theme === null || theme === undefined) {
+    theme = default_theme;
+  }
+  var html = document.querySelector('html');
+  html.classList.remove('no-js')
+  html.classList.remove('dark')
+  html.classList.add(theme);
+  html.classList.add('js');
+</script>
+
+<!-- Hide / unhide sidebar before it is displayed -->
+<script type="text/javascript">
+  var html = document.querySelector('html');
+  var sidebar = 'hidden';
+  if (document.body.clientWidth >= 1080) {
+    try {
+      sidebar = localStorage.getItem('mdbook-sidebar');
+    } catch (e) {
+    }
+    sidebar = sidebar || 'visible';
+  }
+  html.classList.remove('sidebar-visible');
+  html.classList.add("sidebar-" + sidebar);
+</script>
+
+<nav id="sidebar" class="sidebar" aria-label="Table of contents">
+  <div class="sidebar-scrollbox">
+    <ol class="chapter">
+      <li>
+        <a href="https://getenu.com" tabindex="0">Home</a>
+      </li>
+    </ol>
+            <ol class="chapter">
+          <li class="chapter-item expanded">
+            <a href="ed_readme.html" tabindex="0"><strong aria-hidden="true">1.</strong> README</a>
+          </li>
+          <li class="chapter-item expanded">
+            <a href="ed_api.html" class="active" tabindex="0"><strong aria-hidden="true">2.</strong> API Reference</a>
+            <ol class="section api-nav-content">
+              <li class="chapter-item">
+                <div class="api-nav-header">Constants</div>
+              </li>
+              <li class="chapter-item api-nav-item"><a href="#default_flags_const">DEFAULT_FLAGS</a></li>
+    
+              <li class="chapter-item">
+                <div class="api-nav-header">Enums</div>
+              </li>
+              <li class="chapter-item api-nav-item"><a href="#syncmode_enum">SyncMode</a></li>
+              <li class="chapter-item api-nav-item"><a href="#edflags_enum">EdFlags</a></li>
+              <li class="chapter-item api-nav-item"><a href="#changekind_enum">ChangeKind</a></li>
+              <li class="chapter-item api-nav-item"><a href="#changereason_enum">ChangeReason</a></li>
+              <li class="chapter-item api-nav-item"><a href="#messagekind_enum">MessageKind</a></li>
+              <li class="chapter-item api-nav-item"><a href="#subscriptionkind_enum">SubscriptionKind</a></li>
+              <li class="chapter-item api-nav-item"><a href="#fetchstate_enum">FetchState</a></li>
+    
+              <li class="chapter-item">
+                <div class="api-nav-header api-types-toggle" data-expanded="true">Types</div>
+              </li>
+              <li class="chapter-item api-nav-item"><a href="#basechange_type">BaseChange</a></li>
+              <li class="chapter-item api-nav-item"><a href="#change_type">Change</a></li>
+              <li class="chapter-item api-nav-item"><a href="#eid_type">EID</a></li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="Ed">
+                  <summary><a href="#ed_type">Ed</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#ed_bootstrap">Ed.bootstrap</a></li>
+                    <li class="chapter-item"><a href="#ed_init">Ed.init</a></li>
+                    <li class="chapter-item"><a href="#ed_thread_ctx">Ed.thread_ctx</a></li>
+                    <li class="chapter-item"><a href="#ed_thread_ctxeq">Ed.thread_ctx=</a></li>
+                    <li class="chapter-item"><a href="#ampeq_ed">&amp;=</a></li>
+                    <li class="chapter-item"><a href="#pluseq_ed">+=</a></li>
+                    <li class="chapter-item"><a href="#eq_ed">-=</a></li>
+                    <li class="chapter-item"><a href="#eqeq_ed">==</a></li>
+                    <li class="chapter-item"><a href="#_ed">[]</a></li>
+                    <li class="chapter-item"><a href="#add_ed">add</a></li>
+                    <li class="chapter-item"><a href="#clear_ed">clear</a></li>
+                    <li class="chapter-item"><a href="#contains_ed">contains</a></li>
+                    <li class="chapter-item"><a href="#del_ed">del</a></li>
+                    <li class="chapter-item"><a href="#delete_ed">delete</a></li>
+                    <li class="chapter-item"><a href="#destroy_ed">destroy</a></li>
+                    <li class="chapter-item"><a href="#init_ed">init</a></li>
+                    <li class="chapter-item"><a href="#len_ed">len</a></li>
+                    <li class="chapter-item"><a href="#pause_ed">pause</a></li>
+                    <li class="chapter-item"><a href="#pause_changes_ed">pause_changes</a></li>
+                    <li class="chapter-item"><a href="#relay_fill_ed">relay_fill</a></li>
+                    <li class="chapter-item"><a href="#resume_changes_ed">resume_changes</a></li>
+                    <li class="chapter-item"><a href="#touch_ed">touch</a></li>
+                    <li class="chapter-item"><a href="#tracked_ed">tracked</a></li>
+                    <li class="chapter-item"><a href="#typed_body_ed">typed_body</a></li>
+                    <li class="chapter-item"><a href="#untrack_all_ed">untrack_all</a></li>
+                    <li class="chapter-item"><a href="#value_ed">value</a></li>
+                    <li class="chapter-item"><a href="#valueeq_ed">value=</a></li>
+                  </ol>
+                </details>
+              </li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="EdBase">
+                  <summary><a href="#edbase_type">EdBase</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#edbase_thread_ctx">EdBase.thread_ctx</a></li>
+                  </ol>
+                </details>
+              </li>
+              <li class="chapter-item api-nav-item"><a href="#edbody_type">EdBody</a></li>
+              <li class="chapter-item api-nav-item"><a href="#edbodybase_type">EdBodyBase</a></li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="EdContext">
+                  <summary><a href="#edcontext_type">EdContext</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#edcontext_init">EdContext.init</a></li>
+                    <li class="chapter-item"><a href="#edcontext_init_metrics">EdContext.init_metrics</a></li>
+                    <li class="chapter-item"><a href="#dollar_edcontext">$</a></li>
+                    <li class="chapter-item"><a href="#_edcontext">[]</a></li>
+                    <li class="chapter-item"><a href="#blocking_edcontext">blocking</a></li>
+                    <li class="chapter-item"><a href="#clear_edcontext">clear</a></li>
+                    <li class="chapter-item"><a href="#close_edcontext">close</a></li>
+                    <li class="chapter-item"><a href="#contains_edcontext">contains</a></li>
+                    <li class="chapter-item"><a href="#destroy_edcontext">destroy</a></li>
+                    <li class="chapter-item"><a href="#destroy_owned_edcontext">destroy_owned</a></li>
+                    <li class="chapter-item"><a href="#len_edcontext">len</a></li>
+                    <li class="chapter-item"><a href="#next_lsn_edcontext">next_lsn</a></li>
+                    <li class="chapter-item"><a href="#next_op_id_edcontext">next_op_id</a></li>
+                    <li class="chapter-item"><a href="#pack_objects_edcontext">pack_objects</a></li>
+                    <li class="chapter-item"><a href="#pressure_edcontext">pressure</a></li>
+                    <li class="chapter-item"><a href="#set_owner_edcontext">set_owner</a></li>
+                    <li class="chapter-item"><a href="#stamp_lsn_edcontext">stamp_lsn</a></li>
+                    <li class="chapter-item"><a href="#tick_keepalives_edcontext">tick_keepalives</a></li>
+                    <li class="chapter-item"><a href="#tick_reactor_edcontext">tick_reactor</a></li>
+                    <li class="chapter-item"><a href="#untrack_edcontext">untrack</a></li>
+                  </ol>
+                </details>
+              </li>
+              <li class="chapter-item api-nav-item"><a href="#edref_type">EdRef</a></li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="EdSeq">
+                  <summary><a href="#edseq_type">EdSeq</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#eq_edseq">[]=</a></li>
+                    <li class="chapter-item"><a href="#_edseq">[]</a></li>
+                  </ol>
+                </details>
+              </li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="EdSet">
+                  <summary><a href="#edset_type">EdSet</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#pluseq_edset">+=</a></li>
+                    <li class="chapter-item"><a href="#plus_edset">+</a></li>
+                    <li class="chapter-item"><a href="#items_edset">items</a></li>
+                  </ol>
+                </details>
+              </li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="EdTable">
+                  <summary><a href="#edtable_type">EdTable</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#pluseq_edtable">+=</a></li>
+                    <li class="chapter-item"><a href="#eq_edtable">[]=</a></li>
+                    <li class="chapter-item"><a href="#contains_edtable">contains</a></li>
+                    <li class="chapter-item"><a href="#del_edtable">del</a></li>
+                    <li class="chapter-item"><a href="#delete_edtable">delete</a></li>
+                    <li class="chapter-item"><a href="#items_edtable">items</a></li>
+                    <li class="chapter-item"><a href="#loaded_edtable">loaded</a></li>
+                    <li class="chapter-item"><a href="#pairs_edtable">pairs</a></li>
+                    <li class="chapter-item"><a href="#release_edtable">release</a></li>
+                    <li class="chapter-item"><a href="#request_edtable">request</a></li>
+                    <li class="chapter-item"><a href="#touch_edtable">touch</a></li>
+                  </ol>
+                </details>
+              </li>
+              <li class="chapter-item api-nav-item">
+                <details class="api-type-details" data-type="EdValue">
+                  <summary><a href="#edvalue_type">EdValue</a></summary>
+                  <ol class="section">
+                    <li class="chapter-item"><a href="#touch_edvalue">touch</a></li>
+                  </ol>
+                </details>
+              </li>
+              <li class="chapter-item api-nav-item"><a href="#fetch_type">Fetch</a></li>
+              <li class="chapter-item api-nav-item"><a href="#idmapping_type">IdMapping</a></li>
+              <li class="chapter-item api-nav-item"><a href="#lifetime_type">Lifetime</a></li>
+              <li class="chapter-item api-nav-item"><a href="#packedmessageoperation_type">PackedMessageOperation</a></li>
+              <li class="chapter-item api-nav-item"><a href="#proxyhandle_type">ProxyHandle</a></li>
+              <li class="chapter-item api-nav-item"><a href="#refhandle_type">RefHandle</a></li>
+              <li class="chapter-item api-nav-item"><a href="#subscription_type">Subscription</a></li>
+            </ol>
+          </li>
+        </ol>
+<!-- I could use also an unescaped context value -->
+  </div>
+  <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+</nav>
+
+<div id="page-wrapper" class="page-wrapper">
+
+  <div class="page">
+    <div id="menu-bar-hover-placeholder"></div>
+    <div id="menu-bar" class="menu-bar sticky bordered">
+      <div class="left-buttons">
+        <button id="sidebar-toggle" class="icon-button" type="button"
+            title="Toggle Table of Contents"
+            aria-label="Toggle Table of Contents"
+            aria-controls="sidebar">
+          <i class="fa fa-bars"></i>
+        </button>
+        <button id="theme-toggle" class="icon-button" type="button"
+            title="Change theme" aria-label="Change theme"
+            aria-haspopup="true" aria-expanded="false"
+            aria-controls="theme-list">
+          <i class="fa fa-paint-brush"></i>
+        </button>
+        <ul id="theme-list" class="theme-popup" aria-label="Themes"
+          role="menu">
+          <li role="none">
+            <button role="menuitem" class="theme"
+                id="dark">Dark</button>
+          </li>
+          <li role="none">
+            <button role="menuitem" class="theme"
+                id="light">Light</button>
+          </li>
+        </ul>
+      </div>
+
+      <h1 class="menu-title">Enu</h1>
+
+      <div class="right-buttons">
+          <a href="https://github.com/dsrw/enu" title="Git repository"
+             aria-label="Git repository">
+            <i id="git-repository-button"
+               class="fa fa-github"></i>
+          </a>
+
+      </div>
+    </div>
+
+
+    <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+    <script type="text/javascript">
+      document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+      document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+      Array.from(document.querySelectorAll('#sidebar a')).forEach(function (link) {
+        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+      });
+    </script>
+
+    <div id="content" class="content">
+      <main>
+
+        <!-- API Reference Section -->
+        <section id="api-reference">
+          <h1>Ed API Reference</h1>
+
+          <section id="constants">
+            <h3>Constants</h3>
+            <article class="symbol" id="default_flags_const">
+              <h4><a href="#default_flags_const">DEFAULT_FLAGS</a></h4>
+              <p class="description">Default flags for <tt class="docutils literal"><span class="pre"><span class="Identifier">Ed</span></span></tt> containers: sync both locally and remotely.</p>
+              <pre class="code-block constant-block"><code class="language-nim">DEFAULT_FLAGS = {SYNC_LOCAL, SYNC_REMOTE}</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+            </article>
+          </section>
+
+          <section id="enums">
+            <h3>Enums</h3>
+            <article class="symbol" id="syncmode_enum">
+              <h4><a href="#syncmode_enum">SyncMode</a></h4>
+              <p class="description">How a context replicates its authority. A single enum (rather than separate partial/blocking flags) so the nonsensical combination -- a full replica that blocks waiting to materialize, when it never needs to -- can't be expressed.</p>
+              <pre class="code-block enum-block"><code class="language-nim">SyncMode = enum
+  FULL,                     ## full replica; everything syncs, reads never block.
+  PARTIAL, ## partial replica, blocking: touching an unmaterialized
+            ## id pumps I/O until it fills (synchronous semantics).
+  PARTIAL_ASYNC              ## partial replica, non-blocking: a touch returns a
+                             ## placeholder that fills on a later tick (frame-paced).</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+            </article>
+            <article class="symbol" id="edflags_enum">
+              <h4><a href="#edflags_enum">EdFlags</a></h4>
+              <p class="description">Flags controlling <tt class="docutils literal"><span class="pre"><span class="Identifier">Ed</span></span></tt> container behavior.</p>
+              <pre class="code-block enum-block"><code class="language-nim">EdFlags = enum
+  TRACK_CHILDREN,           ## Propagate changes from nested `Ed` objects
+  SYNC_LOCAL,               ## Sync changes to other local contexts (threads)
+  SYNC_REMOTE,              ## Sync changes to remote contexts (network)
+  SYNC_ALL_NO_OVERWRITE,    ## Sync without overwriting existing data
+  LAZY, ## Pull-only: closure pushes / deep-fetch serving skip
+         ## this container -- it syncs via explicit fetch or per-key
+         ## requests (big voxel tables). Arrives as a placeholder
+         ## otherwise.
+  OWNS_MEMBERS               ## This collection's EdRef members are *owned* by the
+                             ## collection's owner: membership registers them in
+                             ## `owned_by` (removal un-registers), so the owner's
+                             ## `destroy_owned` cascades into them. For true child
+                             ## collections (a unit's `units`) -- NOT reference
+                             ## collections (a sign's owner, a selection list).</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+            </article>
+            <article class="symbol" id="changekind_enum">
+              <h4><a href="#changekind_enum">ChangeKind</a></h4>
+              <p class="description">Types of changes that can occur on an <tt class="docutils literal"><span class="pre"><span class="Identifier">Ed</span></span></tt> container.</p>
+              <pre class="code-block enum-block"><code class="language-nim">ChangeKind = enum
+  CREATED,                  ## Object was created
+  ADDED,                    ## Item was added (sequences, sets, tables)
+  REMOVED,                  ## Item was removed
+  MODIFIED,                 ## Value was modified
+  TOUCHED,                  ## Object was touched without modification
+  CLOSED                     ## Object was destroyed</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+            </article>
+            <article class="symbol" id="changereason_enum">
+              <h4><a href="#changereason_enum">ChangeReason</a></h4>
+              <p class="description">Why a change fired, orthogonal to <tt class="docutils literal"><span class="pre"><span class="Identifier">ChangeKind</span></span></tt>. (Unrelated to <tt class="docutils literal"><span class="pre"><span class="Identifier">Change</span><span class="Operator">.</span><span class="Identifier">triggered_by</span></span></tt>, which is the upstream changes that caused this one.)</p>
+              <pre class="code-block enum-block"><code class="language-nim">ChangeReason = enum
+  Update,                   ## An ordinary live change -- a mutation or touch
+  Fill                       ## A placeholder materialized (partial-replica fetch landed)</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+            </article>
+            <article class="symbol" id="messagekind_enum">
+              <h4><a href="#messagekind_enum">MessageKind</a></h4>
+              <pre class="code-block enum-block"><code class="language-nim">MessageKind = enum
+  BLANK, CREATE, DESTROY, ASSIGN, UNASSIGN, TOUCH, SUBSCRIBE, PACKED, REQUEST,
+  NOT_FOUND, RELEASE, INTEREST, UNSUBSCRIBE</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+            </article>
+            <article class="symbol" id="subscriptionkind_enum">
+              <h4><a href="#subscriptionkind_enum">SubscriptionKind</a></h4>
+              <pre class="code-block enum-block"><code class="language-nim">SubscriptionKind = enum
+  BLANK, LOCAL, REMOTE</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+            </article>
+            <article class="symbol" id="fetchstate_enum">
+              <h4><a href="#fetchstate_enum">FetchState</a></h4>
+              <p class="description">Where a <tt class="docutils literal"><span class="pre"><span class="Identifier">fetch</span></span></tt> stands. Resolves on a later tick (the request round-trip).</p>
+              <pre class="code-block enum-block"><code class="language-nim">FetchState = enum
+  Pending,                  ## request sent; no answer yet
+  Found,                    ## the object (or, for a deep owner fetch, its closure) arrived
+  NotFound ## the authority answered NOT_FOUND -- it didn't exist *at fetch
+           ## time*. With `follow` (the default) it still arrives later if
+           ## something creates it; the handle stays NotFound either way.</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+            </article>
+          </section>
+
+
+          <section id="types">
+            <h3>Types</h3>
+            <article class="type-section" id="basechange_type">
+              <h4 class="type-heading"><a href="#basechange_type">BaseChange</a></h4>
+
+              <pre class="code-block"><code class="language-nim">BaseChange = ref object of RootObj
+  changes*: set[ChangeKind]
+  reason*: ChangeReason
+  field_name*: string
+  triggered_by*: seq[BaseChange]
+  triggered_by_type*: string
+  type_name*: string</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+
+
+            </article>
+            <article class="type-section" id="change_type">
+              <h4 class="type-heading"><a href="#change_type">Change</a></h4>
+
+              <p class="description">Represents a change to an <tt class="docutils literal"><span class="pre"><span class="Identifier">Ed</span></span></tt> container, including the affected item.</p>
+              <pre class="code-block"><code class="language-nim">Change[O] = ref object of BaseChange
+  item*: O</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+
+
+            </article>
+            <article class="type-section" id="eid_type">
+              <h4 class="type-heading"><a href="#eid_type">EID</a></h4>
+
+              <p class="description">Callback identifier for tracking registered callbacks.</p>
+              <pre class="code-block"><code class="language-nim">EID = uint16</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+
+
+            </article>
+            <article class="type-section" id="ed_type">
+              <h4 class="type-heading"><a href="#ed_type">Ed</a></h4>
+
+              <p class="description">Generic reactive container. T is the contained type, O is the change object type.</p>
+              <pre class="code-block"><code class="language-nim">Ed[T; O] = ref object of EdObject[T, O]</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+
+              <div class="operation" id="ed_bootstrap">
+                <h5><a href="#ed_bootstrap">Ed.bootstrap</a></h5>
+                <div class="overload-group">
+                  <p class="description">Emit the per-type registrations collected at compile time. Expanded by <tt class="docutils literal"><span class="pre"><span class="Identifier">connect</span></span></tt>, so apps never name it. Each emitted statement is a trivial <tt class="docutils literal"><span class="pre"><span class="Identifier">register_initializer</span><span class="Punctuation">(</span><span class="Operator">...</span><span class="Punctuation">)</span></span></tt> call (see <tt class="docutils literal"><span class="pre"><span class="Identifier">create_initializer</span></span></tt>), so it expands cleanly inside a <tt class="docutils literal"><span class="pre"><span class="Identifier">unittest</span> <span class="Identifier">test</span></span></tt> block.</p>
+                  <pre class="code-block"><code class="language-nim">macro bootstrap(_: type Ed): untyped</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="ed_init">
+                <h5><a href="#ed_init">Ed.init</a></h5>
+                <div class="overload-group">
+                  <p class="description">Initialize an empty <tt class="docutils literal"><span class="pre"><span class="Identifier">Ed</span></span></tt> container of the given type.</p>
+                  <pre class="code-block"><code class="language-nim">proc init(T: type Ed; flags = DEFAULT_FLAGS; ctx = ctx(); id = &quot;&quot;;
+          op_ctx = OperationContext()): T:type
+
+proc init(_: type Ed; T: type[ref | object | array | SomeOrdinal | SomeNumber];
+          flags = DEFAULT_FLAGS; ctx = ctx(); id = &quot;&quot;;
+          op_ctx = OperationContext()): Ed[T, T]
+
+proc init[T: ref | object | tuple | array | SomeOrdinal | SomeNumber | string |
+    ptr](_: type Ed; tracked: T; flags = DEFAULT_FLAGS; ctx = ctx(); id = &quot;&quot;;
+         op_ctx = OperationContext()): Ed[T, T]
+
+proc init[O](_: type Ed; tracked: set[O]; flags = DEFAULT_FLAGS; ctx = ctx();
+             id = &quot;&quot;; op_ctx = OperationContext()): Ed[set[O], O]
+
+proc init[K, V](_: type Ed; tracked: Table[K, V]; flags = DEFAULT_FLAGS;
+                ctx = ctx(); id = &quot;&quot;; op_ctx = OperationContext()): EdTable[K, V]
+
+proc init[O](_: type Ed; tracked: seq[O]; flags = DEFAULT_FLAGS; ctx = ctx();
+             id = &quot;&quot;; op_ctx = OperationContext()): Ed[seq[O], O]
+
+proc init[O](_: type Ed; T: type seq[O]; flags = DEFAULT_FLAGS; ctx = ctx();
+             id = &quot;&quot;; op_ctx = OperationContext()): Ed[seq[O], O]
+
+proc init[O](_: type Ed; T: type set[O]; flags = DEFAULT_FLAGS; ctx = ctx();
+             id = &quot;&quot;; op_ctx = OperationContext()): Ed[set[O], O]
+
+proc init[K, V](_: type Ed; T: type Table[K, V]; flags = DEFAULT_FLAGS;
+                ctx = ctx(); id = &quot;&quot;; op_ctx = OperationContext()): Ed[
+    Table[K, V], Pair[K, V]]
+
+proc init(_: type Ed; K, V: type; flags = DEFAULT_FLAGS; ctx = ctx(); id = &quot;&quot;;
+          op_ctx = OperationContext()): EdTable[K, V]</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="ed_thread_ctx">
+                <h5><a href="#ed_thread_ctx">Ed.thread_ctx</a></h5>
+                <div class="overload-group">
+                  <p class="description">Get the current thread's <tt class="docutils literal"><span class="pre"><span class="Identifier">EdContext</span></span></tt>. Creates one if it doesn't exist.</p>
+                  <pre class="code-block"><code class="language-nim">proc thread_ctx(t: type Ed): EdContext</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="ed_thread_ctxeq">
+                <h5><a href="#ed_thread_ctxeq">Ed.thread_ctx=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc thread_ctx=(_: type Ed; ctx: EdContext)</code></pre>
+                </div>
+              </div>
+
+              <div class="operation" id="ampeq_ed">
+                <h5><a href="#ampeq_ed">&amp;=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `&amp;=`[T, O](self: Ed[T, O]; value: O)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="pluseq_ed">
+                <h5><a href="#pluseq_ed">+=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `+=`[T, O](self: Ed[T, O]; value: T)
+proc `+=`[T: seq; O](self: Ed[T, O]; value: O)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="eq_ed">
+                <h5><a href="#eq_ed">-=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `-=`[T, O](self: Ed[T, O]; value: T)
+proc `-=`[T: set; O](self: Ed[T, O]; value: O)
+proc `-=`[T: seq; O](self: Ed[T, O]; value: O)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="eqeq_ed">
+                <h5><a href="#eqeq_ed">==</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `==`(a, b: Ed): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="_ed">
+                <h5><a href="#_ed">[]</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `[]`[K, V](self: Ed[Table[K, V], Pair[K, V]]; index: K): V</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="add_ed">
+                <h5><a href="#add_ed">add</a></h5>
+                <div class="overload-group">
+                  <p class="description">Add an item to a sequence container.</p>
+                  <pre class="code-block"><code class="language-nim">proc add[T, O](self: Ed[T, O]; value: O; op_ctx = OperationContext())</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="clear_ed">
+                <h5><a href="#clear_ed">clear</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc clear[T, O](self: Ed[T, O])</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="contains_ed">
+                <h5><a href="#contains_ed">contains</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc contains[T, O](self: Ed[T, O]; child: O): bool
+proc contains[T, O](self: Ed[T, O]; children: set[O] | seq[O]): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="del_ed">
+                <h5><a href="#del_ed">del</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc del[T, O](self: Ed[T, O]; value: O; op_ctx = OperationContext())
+proc del[T: seq; O](self: Ed[T, O]; index: SomeOrdinal;
+                    op_ctx = OperationContext())</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="delete_ed">
+                <h5><a href="#delete_ed">delete</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc delete[T, O](self: Ed[T, O]; value: O)
+proc delete[T: seq; O](self: Ed[T, O]; index: SomeOrdinal)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="destroy_ed">
+                <h5><a href="#destroy_ed">destroy</a></h5>
+                <div class="overload-group">
+                  <p class="description">Destroy the container and remove it from its context. <tt class="docutils literal"><span class="pre"><span class="Identifier">op_ctx</span></span></tt> carries the source of the op that triggered this -- for a <em>received</em> DESTROY (re-broadcast by <tt class="docutils literal"><span class="pre"><span class="Identifier">change_receiver</span></span></tt> so it relays past this hop) it's the upstream source, so the re-broadcast filters the contexts the op already visited and never echoes back to its origin. Empty (a local destroy) =&gt; just this context's id.</p>
+                  <pre class="code-block"><code class="language-nim">proc destroy[T, O](self: Ed[T, O]; publish = true; op_ctx = OperationContext())</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="init_ed">
+                <h5><a href="#init_ed">init</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc init[T, O](self: var Ed[T, O]; flags = DEFAULT_FLAGS; ctx = ctx(); id = &quot;&quot;;
+                op_ctx = OperationContext())</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="len_ed">
+                <h5><a href="#len_ed">len</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc len(self: Ed): int</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="pause_ed">
+                <h5><a href="#pause_ed">pause</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template pause(self: Ed; eids: varargs[EID]; body: untyped)
+template pause(self: Ed; body: untyped)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="pause_changes_ed">
+                <h5><a href="#pause_changes_ed">pause_changes</a></h5>
+                <div class="overload-group">
+                  <p class="description">Pause change callbacks. Pass specific EIDs or none to pause all.</p>
+                  <pre class="code-block"><code class="language-nim">proc pause_changes(self: Ed; eids: varargs[EID])</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="relay_fill_ed">
+                <h5><a href="#relay_fill_ed">relay_fill</a></h5>
+                <div class="overload-group">
+                  <p class="description">Re-broadcast a just-filled placeholder to our own subscribers: they hold the same id as a placeholder (minted from the same inline ref), and the relayed CREATE fills theirs and clears their flag -- <tt class="docutils literal"><span class="pre"><span class="Identifier">loaded</span></span></tt> then means the same thing on every hop. Exported because the generated type initializer expands at the <tt class="docutils literal"><span class="pre"><span class="Identifier">Ed</span><span class="Operator">.</span><span class="Identifier">bootstrap</span></span></tt> call site, where the private <tt class="docutils literal"><span class="pre"><span class="Identifier">publish_create</span></span></tt> field isn't reachable.</p>
+                  <pre class="code-block"><code class="language-nim">proc relay_fill[T, O](item: Ed[T, O]; op_ctx: OperationContext)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="resume_changes_ed">
+                <h5><a href="#resume_changes_ed">resume_changes</a></h5>
+                <div class="overload-group">
+                  <p class="description">Resume change callbacks. Pass specific EIDs or none to resume all.</p>
+                  <pre class="code-block"><code class="language-nim">proc resume_changes(self: Ed; eids: varargs[EID])</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="touch_ed">
+                <h5><a href="#touch_ed">touch</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc touch[T: set; O](self: Ed[T, O]; value: O; op_ctx = OperationContext())
+proc touch[T: seq; O](self: Ed[T, O]; value: O; op_ctx = OperationContext())
+proc touch[T, O](self: Ed[T, O]; value: T; op_ctx = OperationContext())</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="tracked_ed">
+                <h5><a href="#tracked_ed">tracked</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template tracked[T, O](self: Ed[T, O]): untyped</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="typed_body_ed">
+                <h5><a href="#typed_body_ed">typed_body</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">template typed_body[T, O](self: Ed[T, O]): EdBody[T, O]</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="untrack_all_ed">
+                <h5><a href="#untrack_all_ed">untrack_all</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc untrack_all[T, O](self: Ed[T, O])</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="value_ed">
+                <h5><a href="#value_ed">value</a></h5>
+                <div class="overload-group">
+                  <p class="description">Get the container's current value.</p>
+                  <pre class="code-block"><code class="language-nim">proc value[T, O](self: Ed[T, O]): T</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="valueeq_ed">
+                <h5><a href="#valueeq_ed">value=</a></h5>
+                <div class="overload-group">
+                  <p class="description">Set the container's value. Triggers change callbacks and sync.</p>
+                  <pre class="code-block"><code class="language-nim">proc value=[T, O](self: Ed[T, O]; value: T; op_ctx = OperationContext())</code></pre>
+                </div>
+              </div>
+            </article>
+            <article class="type-section" id="edbase_type">
+              <h4 class="type-heading"><a href="#edbase_type">EdBase</a></h4>
+
+              <p class="description">Base type for all <tt class="docutils literal"><span class="pre"><span class="Identifier">Ed</span></span></tt> containers -- the <em>proxy</em> side of the split: what the app holds. Local, handle-scoped state only (change callbacks and their EID bookkeeping die with the proxy); everything synced forwards to <tt class="docutils literal"><span class="pre"><span class="Identifier">body</span></span></tt>. Minted by <tt class="docutils literal"><span class="pre"><span class="Identifier">ctx</span><span class="Punctuation">[</span><span class="Identifier">id</span><span class="Punctuation">]</span></span></tt>/<tt class="docutils literal"><span class="pre"><span class="Identifier">resolve_proxy</span></span></tt> when none is live -- reference identity holds because the body's backref always points at <em>the</em> live proxy (prune-before-read keeps it honest).</p>
+              <pre class="code-block"><code class="language-nim">EdBase = object of RootObj
+  body*: ref EdBodyBase</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+
+              <div class="operation" id="edbase_thread_ctx">
+                <h5><a href="#edbase_thread_ctx">EdBase.thread_ctx</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc thread_ctx(_: type EdBase): EdContext</code></pre>
+                </div>
+              </div>
+
+            </article>
+            <article class="type-section" id="edbody_type">
+              <h4 class="type-heading"><a href="#edbody_type">EdBody</a></h4>
+
+              <p class="description">Typed body: the canonical data AND the callbacks live here -- registry- owned, no reliance on cycle collection (which Nim's ORC empirically does not perform for closure environments). A closure stored here must capture nothing that reaches a body or a context, or it leaks for the registry's lifetime; the <tt class="docutils literal"><span class="pre"><span class="Identifier">it</span></span></tt> parameter exists so it never needs to.</p>
+              <pre class="code-block"><code class="language-nim">EdBody[T; O] = ref object of EdBodyBase</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+
+
+            </article>
+            <article class="type-section" id="edbodybase_type">
+              <h4 class="type-heading"><a href="#edbodybase_type">EdBodyBase</a></h4>
+
+              <p class="description">Registry-side state of a container -- the <em>body</em> of the proxy/body split (docs/proxy-body.md). Carries the data and everything the wire needs; the app-facing proxy (<tt class="docutils literal"><span class="pre"><span class="Identifier">Ed</span></span></tt>) forwards here via templates, so call sites read unchanged. The registry owns the body; the proxy is reached through the <tt class="docutils literal"><span class="pre"><span class="Identifier">proxy</span></span></tt> backref + <tt class="docutils literal"><span class="pre"><span class="Identifier">mint</span></span></tt> (resolve_proxy).</p>
+              <pre class="code-block"><code class="language-nim">EdBodyBase = object of RootObj
+  id*: string
+  owner_id*: string
+  destroyed*: bool
+  placeholder*: bool
+  flags*: set[EdFlags]
+  last_read*: MonoTime
+  bytes*: int
+  updates*: int
+  up_tier*: int
+  key_bytes*: Table[string, int]
+  key_last_read*: Table[string, MonoTime]
+  ctx*: EdContext</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+
+
+            </article>
+            <article class="type-section" id="edcontext_type">
+              <h4 class="type-heading"><a href="#edcontext_type">EdContext</a></h4>
+
+              <p class="description">Central coordination object managing <tt class="docutils literal"><span class="pre"><span class="Identifier">Ed</span></span></tt> container lifecycle, subscriptions, and message passing between threads/network.</p>
+              <pre class="code-block"><code class="language-nim">EdContext = ref object
+  id*: string
+  uid*: int
+  is_authority*: bool
+  leader_id*: string
+  lsn_counter*: int64
+  applied_lsn*: int64
+  op_id_counter*: int64
+  latest_op_id*: Table[string, int64]
+  materialize*: proc (self: EdContext; id: string)
+  sync_mode*: SyncMode
+  mem_limit*: int
+  used_bytes*: int
+  sweep_dirty*: bool ## Set whenever something an eviction sweep would act on changed since the
+                     ## last sweep: a message was processed, or a dead proxy/ref was pruned. The
+                     ## sweep skips its (O(objects)) reconcile/churn/pressure work when this is
+                     ## false and we're under budget -- so a calm context pays ~nothing per tick.
+                     ## (A pure read that mints a proxy without any message can delay a promote
+                     ## by a tick; harmless and self-correcting.)
+  last_proxy_prune_epoch*: int
+  last_ref_prune_epoch*: int
+  filling*: bool
+  silent*: bool
+  pending_msgs*: seq[Message]
+  pending_fills*: seq[proc ()]
+  pending_key_requests*: Table[string, seq[string]]
+  pending_key_releases*: Table[string, seq[string]]
+  upstream_ctx_ids*: HashSet[string]
+  warned_missing*: HashSet[string]
+  objects*: OrderedTable[string, ref EdBodyBase]
+  objects_need_packing*: bool
+  owned_by*: Table[string, HashSet[string]]
+  fetches*: Table[string, Fetch]
+  pending_obj_wants*: Table[string, seq[tuple[sub: Subscription, deep: bool]]]
+  pending_key_wants*: Table[string, Table[string, seq[Subscription]]]
+  subscribers*: seq[Subscription]
+  reactor*: Reactor
+  subscribing*: bool
+  value_initializers*: seq[proc ()]
+  unsubscribed*: seq[string]
+  metrics_label*: string
+  last_keepalive_tick*: float64
+  bytes_sent*: int
+  bytes_received*: int
+  when defined(ed_debug_messages):
+    messages_sent*: int
+    messages_received*: int
+    obj_bytes_sent*: int
+    obj_bytes_received*: int
+    pre_compression_bytes*: int
+    messages_by_kind*: array[MessageKind, int]
+    messages_sent_by_kind*: array[MessageKind, int]
+    obj_bytes_sent_by_kind*: array[MessageKind, int]
+    obj_bytes_recv_by_kind*: array[MessageKind, int]
+    obj_bytes_by_id*: Table[string, int]
+    obj_bytes_by_type*: Table[int, int]
+  when defined(dump_ed_objects):
+    dump_at*: MonoTime
+    counts*: array[MessageKind, int]</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+
+              <div class="operation" id="edcontext_init">
+                <h5><a href="#edcontext_init">EdContext.init</a></h5>
+                <div class="overload-group">
+                  <p class="description">Create a new <tt class="docutils literal"><span class="pre"><span class="Identifier">EdContext</span></span></tt>. Set <tt class="docutils literal"><span class="pre"><span class="Identifier">listen_address</span></span></tt> to enable network sync. Set <tt class="docutils literal"><span class="pre"><span class="Identifier">is_authority</span></span></tt> to make this context the sequencer (leader) that assigns global LSNs -- see docs/consistency.md.</p>
+                  <pre class="code-block"><code class="language-nim">proc init(_: type EdContext; id = &quot;thread-&quot; &amp; $getThreadId();
+          listen_address = &quot;&quot;; blocking_recv = false; chan_size = 100;
+          buffer = false; max_recv_duration = Duration.default;
+          min_recv_duration = Duration.default; label = &quot;default&quot;;
+          is_authority = false; mem_limit = DEFAULT_MEM_LIMIT): EdContext</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="edcontext_init_metrics">
+                <h5><a href="#edcontext_init_metrics">EdContext.init_metrics</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc init_metrics(_: type EdContext; labels: varargs[string])</code></pre>
+                </div>
+              </div>
+
+              <div class="operation" id="dollar_edcontext">
+                <h5><a href="#dollar_edcontext">$</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `$`(self: EdContext): string</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="_edcontext">
+                <h5><a href="#_edcontext">[]</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `[]`[T, O](self: EdContext; src: Ed[T, O]): Ed[T, O]</code></pre>
+                </div>
+                <div class="overload-group">
+                  <p class="description">Container lookup by id. Raises <tt class="docutils literal"><span class="pre"><span class="Identifier">KeyError</span></span></tt> when absent -- except inside a <tt class="docutils literal"><span class="pre"><span class="Identifier">blocking</span></span></tt> scope, where an unknown id is fetched from the authority and waited for (bounded, silent pump); a NOT_FOUND NACK fails fast. Still absent afterwards -&gt; <tt class="docutils literal"><span class="pre"><span class="Identifier">KeyError</span></span></tt> as usual. A destroyed-but-unswept id keeps its old behavior (returns nil) and doesn't trigger a fetch.</p>
+                  <pre class="code-block"><code class="language-nim">proc `[]`(self: EdContext; id: string): ref EdBase</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="blocking_edcontext">
+                <h5><a href="#blocking_edcontext">blocking</a></h5>
+                <div class="overload-group">
+                  <p class="description">Within this scope, raise a PARTIAL_ASYNC context to PARTIAL: a read that touches an unmaterialized placeholder blocks (pumps I/O) until it fills instead of returning empty. A no-op for any other <tt class="docutils literal"><span class="pre"><span class="Identifier">sync_mode</span></span></tt> -- FULL has nothing to block on, PARTIAL already blocks.</p>
+                  <pre class="code-block"><code class="language-nim">template blocking(self: EdContext; body: untyped)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="clear_edcontext">
+                <h5><a href="#clear_edcontext">clear</a></h5>
+                <div class="overload-group">
+                  <p class="description">Remove all objects from this context.</p>
+                  <pre class="code-block"><code class="language-nim">proc clear(self: EdContext)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="close_edcontext">
+                <h5><a href="#close_edcontext">close</a></h5>
+                <div class="overload-group">
+                  <p class="description">Close network connections and cleanup resources.</p>
+                  <pre class="code-block"><code class="language-nim">proc close(self: EdContext)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="contains_edcontext">
+                <h5><a href="#contains_edcontext">contains</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc contains(self: EdContext; id: string): bool
+
+proc contains(self: EdContext; zen: ref EdBase): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="destroy_edcontext">
+                <h5><a href="#destroy_edcontext">destroy</a></h5>
+                <div class="overload-group">
+                  <p class="description"><p>Tear the context down and release everything it owns.</p>
+<p>Bodies linger in the registry by design -- they outlive their proxies (the registry is a cache with its own eviction). So a dropped context can't reclaim them on its own: every body holds self-/context-capturing closures (<tt class="docutils literal"><span class="pre"><span class="Identifier">publish_create</span></span></tt> et al.), and ORC doesn't collect closure cycles, so the context stays pinned through its own registry. This is the explicit teardown that breaks those cycles -- <tt class="docutils literal"><span class="pre"><span class="Identifier">release_closures</span></span></tt> on each body -- and drops the registry plus the per-context buffers. Afterwards the context holds nothing, so it (and its channel/reactor) is reclaimed when the last reference drops. Idempotent.</p>
+</p>
+                  <pre class="code-block"><code class="language-nim">proc destroy(self: EdContext)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="destroy_owned_edcontext">
+                <h5><a href="#destroy_owned_edcontext">destroy_owned</a></h5>
+                <div class="overload-group">
+                  <p class="description">Destroy everything owned by <tt class="docutils literal"><span class="pre"><span class="Identifier">owner_id</span></span></tt> (per the <tt class="docutils literal"><span class="pre"><span class="Identifier">owned_by</span></span></tt> index). Two passes: first owned EdRef <em>members</em> (an OWNS_MEMBERS collection's children) -- cascaded through their <tt class="docutils literal"><span class="pre"><span class="Identifier">destroy</span></span></tt> method while the containers they unlink themselves from are still alive -- then the owned containers, each firing its CLOSED, dropping from <tt class="docutils literal"><span class="pre"><span class="Identifier">ctx</span><span class="Operator">.</span><span class="Identifier">objects</span></span></tt>, and broadcasting DESTROY so replicas tear down their mirrors. Works in <em>any</em> context -- including one that didn't construct the object -- because ownership is synced, not derived from the constructing context. The owner's <tt class="docutils literal"><span class="pre"><span class="Identifier">lifetime</span><span class="Operator">.</span><span class="Identifier">finish</span></span></tt> handles its callbacks separately. Containers are type-erased here (<tt class="docutils literal"><span class="pre"><span class="Keyword">ref</span> <span class="Identifier">EdBase</span></span></tt>), so they're destroyed via their <tt class="docutils literal"><span class="pre"><span class="Identifier">change_receiver</span></span></tt> (the same path a received DESTROY takes); members are ref_pool keys, dispatched via <tt class="docutils literal"><span class="pre"><span class="Identifier">EdRef</span><span class="Operator">.</span><span class="Identifier">destroy</span></span></tt>.</p>
+                  <pre class="code-block"><code class="language-nim">proc destroy_owned(ctx: EdContext; owner_id: string)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="len_edcontext">
+                <h5><a href="#len_edcontext">len</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc len(self: EdContext): int</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="next_lsn_edcontext">
+                <h5><a href="#next_lsn_edcontext">next_lsn</a></h5>
+                <div class="overload-group">
+                  <p class="description">Authority-only: allocate the next global sequence number.</p>
+                  <pre class="code-block"><code class="language-nim">proc next_lsn(self: EdContext): int64</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="next_op_id_edcontext">
+                <h5><a href="#next_op_id_edcontext">next_op_id</a></h5>
+                <div class="overload-group">
+                  <p class="description">Allocate the next op id for a write this context originates.</p>
+                  <pre class="code-block"><code class="language-nim">proc next_op_id(self: EdContext): int64</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="pack_objects_edcontext">
+                <h5><a href="#pack_objects_edcontext">pack_objects</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc pack_objects(self: EdContext)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="pressure_edcontext">
+                <h5><a href="#pressure_edcontext">pressure</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc pressure(self: EdContext): float</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="set_owner_edcontext">
+                <h5><a href="#set_owner_edcontext">set_owner</a></h5>
+                <div class="overload-group">
+                  <p class="description">Attribute a standalone EdRef to <tt class="docutils literal"><span class="pre"><span class="Identifier">owner_id</span></span></tt>, so <tt class="docutils literal"><span class="pre"><span class="Identifier">destroy_owned</span><span class="Punctuation">(</span><span class="Identifier">owner_id</span><span class="Punctuation">)</span></span></tt> tears it down (cascading through its own <tt class="docutils literal"><span class="pre"><span class="Identifier">destroy</span></span></tt>). Unlike a container's baked-in, synced <tt class="docutils literal"><span class="pre"><span class="Identifier">owner_id</span></span></tt>, this ownership isn't sent as data -- it's re-derived locally on each context, exactly like OWNS_MEMBERS membership (<tt class="docutils literal"><span class="pre"><span class="Identifier">type_registry</span></span></tt>): call it wherever the ref is created/adopted, on every context, and the index lands the same everywhere with no extra sync.</p>
+                  <pre class="code-block"><code class="language-nim">proc set_owner(ctx: EdContext; obj: EdRef; owner_id: string)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="stamp_lsn_edcontext">
+                <h5><a href="#stamp_lsn_edcontext">stamp_lsn</a></h5>
+                <div class="overload-group">
+                  <p class="description">If this context is the authority, assign the op its global LSN, once. Applies to the ordered ops the authority broadcasts (self-originated or forwarded). CREATE is intentionally not stamped -- concurrent same-id creation is out of scope and the subscribe-time resend distinction needs its own step (see spike doc). DESTROY <em>is</em> stamped: delete-vs-update is a real conflict that must be ordered.</p>
+                  <pre class="code-block"><code class="language-nim">proc stamp_lsn(self: EdContext; msg: var Message)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="tick_keepalives_edcontext">
+                <h5><a href="#tick_keepalives_edcontext">tick_keepalives</a></h5>
+                <div class="overload-group">
+                  <p class="description">Lightweight tick that only sends keepalives if enough time has passed. Safe to call frequently - won't do anything if called too soon. Call this after long operations (file I/O, etc.) to prevent connection timeouts.</p>
+                  <pre class="code-block"><code class="language-nim">proc tick_keepalives(self: EdContext)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="tick_reactor_edcontext">
+                <h5><a href="#tick_reactor_edcontext">tick_reactor</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc tick_reactor(self: EdContext)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="untrack_edcontext">
+                <h5><a href="#untrack_edcontext">untrack</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc untrack(ctx: EdContext; zid: EID)</code></pre>
+                </div>
+              </div>
+            </article>
+            <article class="type-section" id="edref_type">
+              <h4 class="type-heading"><a href="#edref_type">EdRef</a></h4>
+
+              <p class="description">Base for registered (network-syncable) refs. Carries a <tt class="docutils literal"><span class="pre"><span class="Identifier">RefHandle</span></span></tt> so the registry can clean up <tt class="docutils literal"><span class="pre"><span class="Identifier">ref_pool</span></span></tt> when ORC reclaims the instance, keeping the pool's non-owning (cursor) hold from dangling -- the subtype's own default destructor stays intact (only the trivial <tt class="docutils literal"><span class="pre"><span class="Identifier">RefHandle</span></span></tt> gets a custom one).</p>
+              <pre class="code-block"><code class="language-nim">EdRef = ref object of RootObj
+  id*: string ## The ref's identity (sync identity rides on it via `ref_id` = tid:id).
+              ## Lives on the base so runtime code (the `destroy` method, `own` scopes,
+              ## ownership) can use it without knowing the concrete type.
+  ref_handle*: RefHandle
+  destroyed*: bool ## Idempotency latch for `destroy`, set at its top. `ed_ignore`: local
+                                 ## teardown state, never synced (a received ref must arrive un-destroyed).
+  lifetime*: Lifetime ## This ref's teardown actions -- external subscriptions and (via `own`) its
+                      ## owned containers. `destroy` runs `lifetime.finish`. Never synced.
+  ctx*: EdContext ## The context this instance lives in, stamped on first `ref_pool` add. A
+                             ## registered ref belongs to exactly one context (sync mints a separate
+                             ## instance per context), so `destroy` uses it -- not `Ed.thread_ctx`, which
+                             ## is wrong under multiple contexts per thread -- to find the right
+                             ## `owned_by`/`ref_pool` for the cascade. Non-owning cursor (the context
+                             ## outlives its refs); never synced.</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+
+
+            </article>
+            <article class="type-section" id="edseq_type">
+              <h4 class="type-heading"><a href="#edseq_type">EdSeq</a></h4>
+
+              <p class="description">Reactive sequence container.</p>
+              <pre class="code-block"><code class="language-nim">EdSeq[T] = Ed[seq[T], T]</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+
+
+              <div class="operation" id="eq_edseq">
+                <h5><a href="#eq_edseq">[]=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `[]=`[T](self: EdSeq[T]; index: SomeOrdinal; value: T;
+              op_ctx = OperationContext())</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="_edseq">
+                <h5><a href="#_edseq">[]</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `[]`[T](self: EdSeq[T]; index: SomeOrdinal | BackwardsIndex): T</code></pre>
+                </div>
+              </div>
+            </article>
+            <article class="type-section" id="edset_type">
+              <h4 class="type-heading"><a href="#edset_type">EdSet</a></h4>
+
+              <p class="description">Reactive set container.</p>
+              <pre class="code-block"><code class="language-nim">EdSet[T] = Ed[set[T], T]</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+
+
+              <div class="operation" id="pluseq_edset">
+                <h5><a href="#pluseq_edset">+=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `+=`[O](self: EdSet[O]; value: O)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="plus_edset">
+                <h5><a href="#plus_edset">+</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `+`[O](self, other: EdSet[O]): set[O]</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="items_edset">
+                <h5><a href="#items_edset">items</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">iterator items[T](self: EdSet[T] | EdSeq[T]): T</code></pre>
+                </div>
+              </div>
+            </article>
+            <article class="type-section" id="edtable_type">
+              <h4 class="type-heading"><a href="#edtable_type">EdTable</a></h4>
+
+              <p class="description">Reactive table container. Changes report key-value pairs.</p>
+              <pre class="code-block"><code class="language-nim">EdTable[K; V] = Ed[Table[K, V], Pair[K, V]]</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+
+
+              <div class="operation" id="pluseq_edtable">
+                <h5><a href="#pluseq_edtable">+=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `+=`[T, O](self: EdTable[T, O]; other: Table[T, O])</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="eq_edtable">
+                <h5><a href="#eq_edtable">[]=</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc `[]=`[K, V](self: EdTable[K, V]; key: K; value: V;
+                 op_ctx = OperationContext())</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="contains_edtable">
+                <h5><a href="#contains_edtable">contains</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc contains[K, V](self: EdTable[K, V]; key: K): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="del_edtable">
+                <h5><a href="#del_edtable">del</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc del[K, V](self: EdTable[K, V]; key: K; op_ctx = OperationContext())</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="delete_edtable">
+                <h5><a href="#delete_edtable">delete</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc delete[K, V](self: EdTable[K, V]; key: K)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="items_edtable">
+                <h5><a href="#items_edtable">items</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">iterator items[K, V](self: EdTable[K, V]): Pair[K, V]</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="loaded_edtable">
+                <h5><a href="#loaded_edtable">loaded</a></h5>
+                <div class="overload-group">
+                  <p class="description">Whether this key's value is materialized locally. Distinct from <tt class="docutils literal"><span class="pre"><span class="Identifier">key</span> <span class="Keyword">in</span> <span class="Identifier">self</span></span></tt> (shape: whether the key exists at all, once shape sync lands).</p>
+                  <pre class="code-block"><code class="language-nim">proc loaded[K, V](self: EdTable[K, V]; key: K): bool</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="pairs_edtable">
+                <h5><a href="#pairs_edtable">pairs</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">iterator pairs[K, V](self: EdTable[K, V]): (K, V)</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="release_edtable">
+                <h5><a href="#release_edtable">release</a></h5>
+                <div class="overload-group">
+                  <p class="description">Drop a locally-materialized entry to free memory (paging out). Never deletes on the authority; <tt class="docutils literal"><span class="pre"><span class="Identifier">request</span><span class="Punctuation">(</span><span class="Identifier">key</span><span class="Punctuation">)</span></span></tt> re-fetches. Three effects: evict locally (REMOVED fires, watches un-render), retract our per-key interest upstream (ops for this key stop flowing), and notify downstream clones so they evict too -- all via one batched RELEASE on the next tick. Also retracts a pending interest in a key that never loaded (a requested empty-space chunk).</p>
+                  <pre class="code-block"><code class="language-nim">proc release[K, V](self: EdTable[K, V]; key: K)
+proc release[K, V](self: EdTable[K, V]; keys: openArray[K])</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="request_edtable">
+                <h5><a href="#request_edtable">request</a></h5>
+                <div class="overload-group">
+                  <p class="description">Queue a per-key fetch from the authority. Batched and sent on the next <tt class="docutils literal"><span class="pre"><span class="Identifier">tick</span></span></tt> (a frame's worth of requests collapse into one message per table); the value arrives as an ADDED change, so existing <tt class="docutils literal"><span class="pre"><span class="Identifier">track</span></span></tt>/<tt class="docutils literal"><span class="pre"><span class="Identifier">watch</span></span></tt> handlers render it. No-op if the key is already loaded.</p>
+                  <pre class="code-block"><code class="language-nim">proc request[K, V](self: EdTable[K, V]; key: K)
+proc request[K, V](self: EdTable[K, V]; keys: openArray[K])</code></pre>
+                </div>
+              </div>
+              <div class="operation" id="touch_edtable">
+                <h5><a href="#touch_edtable">touch</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc touch[K, V](self: EdTable[K, V]; pair: Pair[K, V]; op_ctx: OperationContext)
+proc touch[T, O](self: EdTable[T, O]; key: T; value: O;
+                 op_ctx = OperationContext())</code></pre>
+                </div>
+              </div>
+            </article>
+            <article class="type-section" id="edvalue_type">
+              <h4 class="type-heading"><a href="#edvalue_type">EdValue</a></h4>
+
+              <p class="description">Reactive single-value container.</p>
+              <pre class="code-block"><code class="language-nim">EdValue[T] = Ed[T, T]</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+
+
+              <div class="operation" id="touch_edvalue">
+                <h5><a href="#touch_edvalue">touch</a></h5>
+                <div class="overload-group">
+                  <pre class="code-block"><code class="language-nim">proc touch[T](self: EdValue[T]; value: T; op_ctx = OperationContext())</code></pre>
+                </div>
+              </div>
+            </article>
+            <article class="type-section" id="fetch_type">
+              <h4 class="type-heading"><a href="#fetch_type">Fetch</a></h4>
+
+              <p class="description">Handle returned by <tt class="docutils literal"><span class="pre"><span class="Identifier">fetch</span></span></tt>. Watch <tt class="docutils literal"><span class="pre"><span class="Identifier">state</span></span></tt>; once <tt class="docutils literal"><span class="pre"><span class="Identifier">Found</span></span></tt>, <tt class="docutils literal"><span class="pre"><span class="Identifier">obj</span></span></tt> links the container -- except for a deep fetch of an <em>owner</em> id (a unit), which has no container of its own: state resolves via its arriving closure and <tt class="docutils literal"><span class="pre"><span class="Identifier">obj</span></span></tt> stays nil.</p>
+              <pre class="code-block"><code class="language-nim">Fetch = ref object
+  id*: string
+  state*: FetchState
+  obj*: ref EdBase</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+
+
+            </article>
+            <article class="type-section" id="idmapping_type">
+              <h4 class="type-heading"><a href="#idmapping_type">IdMapping</a></h4>
+
+              <pre class="code-block"><code class="language-nim">IdMapping = tuple[short_id: uint8, full_id: string]</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+
+
+            </article>
+            <article class="type-section" id="lifetime_type">
+              <h4 class="type-heading"><a href="#lifetime_type">Lifetime</a></h4>
+
+              <p class="description">A set of teardown actions (typically untracking callbacks). An owner -- a Unit or a scope -- holds a Lifetime and <tt class="docutils literal"><span class="pre"><span class="Identifier">finish</span></span></tt>es it on teardown, so everything bound to it cleans up at once with no manual <tt class="docutils literal"><span class="pre"><span class="Identifier">zid</span></span></tt> bookkeeping. Standalone (not part of EdBase) so an owner holds one directly.</p>
+              <pre class="code-block"><code class="language-nim">Lifetime = ref object</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+
+
+            </article>
+            <article class="type-section" id="packedmessageoperation_type">
+              <h4 class="type-heading"><a href="#packedmessageoperation_type">PackedMessageOperation</a></h4>
+
+              <pre class="code-block"><code class="language-nim">PackedMessageOperation = tuple[kind: MessageKind, ref_id: int,
+                               change_object_id: string, obj: string,
+                               delta: bool, key_bin: string]</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+
+
+            </article>
+            <article class="type-section" id="proxyhandle_type">
+              <h4 class="type-heading"><a href="#proxyhandle_type">ProxyHandle</a></h4>
+
+              <p class="description">Per-proxy registry-cleanup handle (the container twin of <tt class="docutils literal"><span class="pre"><span class="Identifier">RefHandle</span></span></tt>). When a proxy's last reference drops, ORC destroys its fields and this handle's <tt class="docutils literal"><span class="pre"><span class="Operator">=</span><span class="Identifier">destroy</span></span></tt> records the death for the context to prune -- the destructor dereferences <em>nothing</em> (the context, even the body, may be reclaimed in the same ORC batch). <tt class="docutils literal"><span class="pre"><span class="Identifier">gen</span></span></tt> guards out-of-order prunes: a body only clears its backref if the dead proxy was its <em>current</em> one.</p>
+              <pre class="code-block"><code class="language-nim">ProxyHandle = ref object
+  ctx_uid*: int
+  object_id*: string
+  gen*: int</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+
+
+            </article>
+            <article class="type-section" id="refhandle_type">
+              <h4 class="type-heading"><a href="#refhandle_type">RefHandle</a></h4>
+
+              <p class="description"><p>Per-instance registry-cleanup handle on every <tt class="docutils literal"><span class="pre"><span class="Identifier">EdRef</span></span></tt>. When a registered ref's last reference drops, ORC destroys this handle and its <tt class="docutils literal"><span class="pre"><span class="Operator">=</span><span class="Identifier">destroy</span></span></tt> records the dead instance for removal from its context's <tt class="docutils literal"><span class="pre"><span class="Identifier">ref_pool</span></span></tt>.</p>
+<p>It identifies the context by <em>value</em> (a uid, not a reference): the destructor must never dereference its <tt class="docutils literal"><span class="pre"><span class="Identifier">EdContext</span></span></tt>, because at teardown the context can be reclaimed in the same ORC cycle-collection batch as the ref (a dangling-cursor UAF, caught by ASan). So it only appends the dead id to <tt class="docutils literal"><span class="pre"><span class="Identifier">pending_dead_refs</span></span></tt>; each context prunes its own dead ids before any <tt class="docutils literal"><span class="pre"><span class="Identifier">ref_pool</span></span></tt> identity read and on tick. The uid (not <tt class="docutils literal"><span class="pre"><span class="Identifier">id</span></span></tt>, which is reused across contexts) is what lets a freed ref find the right pool with no live reference. <tt class="docutils literal"><span class="pre"><span class="Identifier">ctx_uid</span></span></tt>/<tt class="docutils literal"><span class="pre"><span class="Identifier">ref_id</span></span></tt> stay unset until the first <tt class="docutils literal"><span class="pre"><span class="Identifier">ref_pool</span></span></tt> add; until then <tt class="docutils literal"><span class="pre"><span class="Operator">=</span><span class="Identifier">destroy</span></span></tt> is a no-op.</p>
+</p>
+              <pre class="code-block"><code class="language-nim">RefHandle = ref object
+  ctx_uid*: int
+  ref_id*: string</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+
+
+            </article>
+            <article class="type-section" id="subscription_type">
+              <h4 class="type-heading"><a href="#subscription_type">Subscription</a></h4>
+
+              <pre class="code-block"><code class="language-nim">Subscription = ref object
+  ctx_id*: string
+  partial*: bool
+  deep*: bool
+  interest*: HashSet[string]
+  interest_cache*: HashSet[string]
+  key_interest*: Table[string, HashSet[string]]
+  capabilities*: HashSet[int]
+  next_short_id*: uint8
+  id_to_short*: Table[string, uint8]
+  outgoing_short_to_id*: Table[uint8, string]
+  incoming_short_to_id*: Table[uint8, string]
+  case kind*: SubscriptionKind
+  of LOCAL:
+    chan*: Chan[Message]
+    chan_buffer*: seq[Message]
+  of REMOTE:
+    connection*: Connection
+    last_sent_time*: float64
+  else:
+    nil</code></pre>
+              <p class="source">Source: <code>ed/types</code></p>
+
+
+            </article>
+          </section>
+        </section>
+
+      </main>
+
+      <nav class="nav-wrapper" aria-label="Page navigation">
+        <!-- Mobile navigation buttons -->
+          <a rel="prev" href="../api/ed_readme.html"
+             class="mobile-nav-chapters previous"
+             title="Previous chapter" aria-label="Previous chapter"
+             aria-keyshortcuts="Left">
+            <i class="fa fa-angle-left"></i>
+          </a>
+
+
+        <div style="clear: both"></div>
+      </nav>
+    </div>
+  </div>
+
+  <nav class="nav-wide-wrapper" aria-label="Page navigation">
+      <a rel="prev" href="../api/ed_readme.html"
+         class="nav-chapters previous" title="Previous chapter"
+         aria-label="Previous chapter" aria-keyshortcuts="Left">
+        <i class="fa fa-angle-left"></i>
+      </a>
+
+  </nav>
+
+</div>
+
+
+
+
+
+
+
+<script src="../assets/js/clipboard.min.js"
+    type="text/javascript" charset="utf-8"></script>
+<script src="../assets/js/book.js" type="text/javascript"
+    charset="utf-8"></script>
+
+<!-- Custom JS scripts -->
+
+
+  <script>
+    window.addEventListener("load", function() {
+      // refinement script - wait for highlight.js
+      setTimeout(() => {
+        // 1. SCREAMING_SNAKE_CASE -> Constant (Blue)
+        const types = document.querySelectorAll('.hljs-type');
+        types.forEach(el => {
+          const text = el.innerText;
+          if (/^[A-Z][A-Z0-9_]+$/.test(text)) {
+            el.classList.remove('hljs-type');
+            el.classList.add('hljs-constant');
+          }
+        });
+
+        // 2. Single Uppercase (Generic Params) -> Type (Purple)
+        // Walk text nodes to find 'T', 'O', etc. that highlight.js missed
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+        let node;
+        const nodesToReplace = [];
+
+        while(node = walker.nextNode()) {
+          // Skip if inside a comment, string, or already highlighted element
+          const parent = node.parentElement;
+          if (parent.classList.contains('hljs-comment') ||
+              parent.classList.contains('hljs-string') ||
+              parent.classList.contains('hljs-literal') ||
+              parent.classList.contains('hljs-type') ||
+              parent.classList.contains('hljs-constant') ||
+              parent.tagName !== 'CODE' && !parent.classList.contains('hljs')) {
+             // Only target direct children of code/pre/unhighlighted spans mostly
+             continue;
+          }
+
+          if (/\b[A-Z]\b/.test(node.nodeValue)) {
+             nodesToReplace.push(node);
+          }
+        }
+
+
+        nodesToReplace.forEach(node => {
+          const span = document.createElement('span');
+          span.innerHTML = node.nodeValue.replace(/\b([A-Z])\b/g, '<span class="hljs-type">$1</span>');
+          node.parentNode.replaceChild(span, node);
+          // Unwrap the span container to keep DOM clean
+          while (span.firstChild) {
+            span.parentNode.insertBefore(span.firstChild, span);
+          }
+          span.parentNode.removeChild(span);
+        });
+
+      }, 0);
+
+      // Sidebar Logic
+      // 1. "TYPES" Header Toggle
+      const headers = document.querySelectorAll('.api-nav-header');
+      let typesHeader = null;
+      for (const h of headers) {
+        if (h.textContent.trim() === 'Types') {
+          typesHeader = h;
+          break;
+        }
+      }
+
+      if (typesHeader) {
+        typesHeader.style.cursor = 'pointer';
+
+        const updateHeaderState = () => {
+          const allDetails = document.querySelectorAll('.api-type-details');
+          const anyOpen = Array.from(allDetails).some(d => d.open);
+          typesHeader.innerHTML = 'Types <span style="float:right; font-family: monospace;">' + (anyOpen ? '[-]' : '[+]') + '</span>';
+        };
+
+        // Initial state
+        updateHeaderState();
+
+        typesHeader.addEventListener('click', () => {
+          const allDetails = document.querySelectorAll('.api-type-details');
+          const isCurrentlyExpanded = typesHeader.textContent.includes('[-]');
+
+          allDetails.forEach(d => {
+            d.open = !isCurrentlyExpanded;
+          });
+          updateHeaderState();
+        });
+
+        // Update header when individual items are toggled
+        const allDetails = document.querySelectorAll('.api-type-details');
+        allDetails.forEach(d => {
+          d.addEventListener('toggle', updateHeaderState);
+        });
+      }
+
+      // 2. Type Item Click Logic
+      const typeLinks = document.querySelectorAll('.api-type-details > summary > a');
+      typeLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          // Allow default navigation (scrolling) to happen first
+          // But we need to detect if it actually moved
+          const startScroll = window.scrollY;
+
+          // Let the browser handle the jump
+          setTimeout(() => {
+            const endScroll = window.scrollY;
+            const details = this.closest('details');
+            const userScrolled = Math.abs(endScroll - startScroll) > 5;
+
+            if (!details.open) {
+              // Collapsed -> Expand (always)
+              details.open = true;
+            } else {
+              // Expanded -> Collapse ONLY if we didn't scroll
+              if (!userScrolled) {
+                details.open = false;
+              }
+            }
+          }, 0);
+        });
+      });
+
+      // 3. Highlight Class Methods in Main Headers (Type.method)
+      // We want Type in Lavender (#C6C5FE) and method in White (#F6F3E8)
+      // Standard functions are already White via CSS.
+      const opHeaders = document.querySelectorAll('.operation h4 a, .operation h5 a');
+      opHeaders.forEach(link => {
+        const text = link.textContent;
+        if (text.includes('.')) {
+          const parts = text.split('.');
+          if (parts.length === 2) {
+             link.innerHTML = `<span style="color: #C6C5FE;">${parts[0]}</span>.${parts[1]}`;
+          }
+        }
+      });
+
+    });
+  </script>
+</body>
+</html>
