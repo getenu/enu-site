@@ -141,7 +141,7 @@
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../intro/multiplayer.html" tabindex="0">
-        <strong aria-hidden="true">1.7.</strong> Multiplayer (Experimental)
+        <strong aria-hidden="true">1.7.</strong> Multiplayer
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../intro/config.html" tabindex="0">
@@ -261,7 +261,7 @@
       <h1 class="menu-title">Enu</h1>
 
       <div class="right-buttons">
-          <a href="https://github.com/dsrw/enu" title="Git repository"
+          <a href="https://github.com/getenu/enu" title="Git repository"
              aria-label="Git repository">
             <i id="git-repository-button"
                class="fa fa-github"></i>
@@ -313,7 +313,7 @@ coordinates instead of sizes:</p>
 ball 9
 </code></pre>
 <p><img src="../assets/shape_ball.png" alt="A red ball" /></p>
-<p>Hollow balls make good domes — draw one, then erase the bottom half, or bury
+<p>Hollow balls make good domes. Draw one, then erase the bottom half, or bury
 half of it in the ground. <code>sphere</code> is the same command with a fancier name.</p>
 <h2><code>can</code></h2>
 <p><code>can size, height</code> draws a cylinder, standing on the turtle's spot:</p>
@@ -324,7 +324,7 @@ can 7, 12
 <p>Perfect for towers, tree trunks, columns, and cans. <code>cylinder</code> is the same
 command with more syllables.</p>
 <h2><code>wall</code> and <code>floor</code></h2>
-<p><code>wall length</code> draws a wall heading the way the turtle faces — 4 blocks tall
+<p><code>wall length</code> draws a wall heading the way the turtle faces, 4 blocks tall
 unless you say otherwise:</p>
 <pre><code class="language-nim">wall 10       # 10 long, 4 tall
 wall 10, 8    # 10 long, 8 tall
@@ -371,7 +371,7 @@ box 2, 3, 1, at = vec3(4, 0, 0), color = eraser
 <p><code>ball</code> and <code>can</code> are aliases for <code>sphere</code> and <code>cylinder</code>. Sphere and cylinder
 sizes are diameters, rasterised centred on the target block, so even sizes
 round up to the next odd width. Fractional sizes are allowed, which is useful
-for smooth tapers — stack thin <code>can</code> slices with shrinking sizes to make cones
+for smooth tapers. Stack thin <code>can</code> slices with shrinking sizes to make cones
 and spires.</p>
 </details>
       </main>

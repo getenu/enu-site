@@ -141,7 +141,7 @@
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../intro/multiplayer.html" tabindex="0">
-        <strong aria-hidden="true">1.7.</strong> Multiplayer (Experimental)
+        <strong aria-hidden="true">1.7.</strong> Multiplayer
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../intro/config.html" tabindex="0">
@@ -261,7 +261,7 @@
       <h1 class="menu-title">Enu</h1>
 
       <div class="right-buttons">
-          <a href="https://github.com/dsrw/enu" title="Git repository"
+          <a href="https://github.com/getenu/enu" title="Git repository"
              aria-label="Git repository">
             <i id="git-repository-button"
                class="fa fa-github"></i>
@@ -292,33 +292,32 @@ change without editing the <a href="config.html">config file</a> by hand.</p>
 <h2>Levels</h2>
 <p>The <strong>Levels</strong> dropdown lists every level in your current world. Pick one to
 jump straight to it. Choosing <strong>New...</strong> lets you name and create a fresh level
-to build in — your worlds are kept separate, so you can have one for
-experiments and one for your masterpiece.</p>
+to build in. Your worlds are kept separate, so you can have one for experiments
+and one for your masterpiece.</p>
 <h2>Player Color</h2>
-<p>The color of your character in multiplayer. Pick one of Enu's built-in colors,
-or the panel will show a hex color if you've set a custom one in your config.</p>
+<p>The color of your character in multiplayer. Enu picks a random color for you
+the first time it launches, so everyone in a shared world looks different. Use
+this dropdown to change it to any of Enu's built-in colors.</p>
 <h2>Environment</h2>
 <p>Changes the scenery and lighting around you. <code>default</code> is the usual purple
-world; <code>none</code> strips it back; and there are others to try. Switching is
+world, but there are others to try: <code>gb</code> gives everything a Game Boy tint,
+<code>noir</code> goes hazy black and white, and <code>strange</code> is, well, strange. Switching is
 instant, so flip through them and see which you like.</p>
 <h2>Full Screen</h2>
-<p>Toggles between filling the whole screen and running in a window. (Hidden on
-iOS, where it wouldn't make sense.)</p>
+<p>Toggles between filling the whole screen and running in a window.</p>
 <h2>Megapixels</h2>
-<p>How sharp the world looks. Higher is crisper but asks more of your computer;
-lower is blurrier but runs faster. If things ever feel choppy, turn this down a
+<p>How sharp the world looks. Higher is crisper but asks more of your computer.
+Lower is blurrier but runs faster. If things ever feel choppy, turn this down a
 notch. Use the arrows to step through sensible values.</p>
 <h2>Font Size</h2>
 <p>How big the text is in the code editor and console. Nudge it up or down with
 the arrows.</p>
 <h2>Toolbar Size</h2>
 <p>How big the tool icons are along the bottom of the screen.</p>
-<h2>Run Server / Connect</h2>
-<p>The multiplayer controls. <strong>Run Server</strong> turns your Enu into a server other
-people can join. When it's on, a field appears for a <strong>server address</strong> so you
-can share your world. To join someone else's world instead, type their address
-and press <strong>Connect</strong>. Multiplayer is still experimental — see the
-<a href="multiplayer.html">Multiplayer</a> page. Connecting or disconnecting restarts Enu.</p>
+<h2>Connect</h2>
+<p>To join someone else's world, type their address into <strong>Remote Server
+Address</strong> and press <strong>Connect</strong>. Connecting or disconnecting restarts Enu. See
+the <a href="multiplayer.html">Multiplayer</a> page for how to host a world of your own.</p>
 <details class="note">
 <summary>Note</summary>
 <p>Every setting here writes to the same <code>config.json</code> described on the

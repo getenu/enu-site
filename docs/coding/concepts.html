@@ -141,7 +141,7 @@
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../intro/multiplayer.html" tabindex="0">
-        <strong aria-hidden="true">1.7.</strong> Multiplayer (Experimental)
+        <strong aria-hidden="true">1.7.</strong> Multiplayer
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../intro/config.html" tabindex="0">
@@ -261,7 +261,7 @@
       <h1 class="menu-title">Enu</h1>
 
       <div class="right-buttons">
-          <a href="https://github.com/dsrw/enu" title="Git repository"
+          <a href="https://github.com/getenu/enu" title="Git repository"
              aria-label="Git repository">
             <i id="git-repository-button"
                class="fa fa-github"></i>
@@ -297,21 +297,21 @@ bugs with this behavior.  Please report them.</p>
 <p><code>Unit</code> will be renamed to <code>Thing</code> at some point in the future.</p>
 <h2>Prototypes</h2>
 <p>Enu uses a prototype based object system for units. To allow a unit to be a
-prototype, you give it a name:</p>
-<pre><code class="language-nim">name ghost
+prototype, you give it a name. Prototype names start with a capital letter:</p>
+<pre><code class="language-nim">name Ghost
 </code></pre>
 <p>Then create a new instance in a different script with <code>.new</code>:</p>
-<pre><code class="language-nim">var ghost2 = ghost.new
+<pre><code class="language-nim">var ghost2 = Ghost.new
 </code></pre>
 <p>You can also provide parameters, which can be overridden when creating a new
 instance:</p>
-<pre><code class="language-nim">name ghost(color = white, speed = 5, spookiness = 10)
+<pre><code class="language-nim">name Ghost(color = white, speed = 5, spookiness = 10)
 </code></pre>
 <p>These become properties of the unit (ie <code>me.spookiness = 5</code>), but can be treated
 like variables in the unit's script due to auto <code>me</code> insertion
 (<code>spookiness = 200</code>).</p>
 <p>To create a new instance with specific property values:</p>
-<pre><code class="language-nim">var ghost2 = ghost.new(spookiness = 11)
+<pre><code class="language-nim">var ghost2 = Ghost.new(spookiness = 11)
 </code></pre>
 <p>Parameters can have a default value (<code>spookiness = 10</code>), which makes them
 optional when creating a new instance. If they should be required, or there's no
@@ -321,8 +321,8 @@ omit both the value and the type, which will make the type <code>auto</code>.</p
 <summary>Under the hood</summary>
 <p>Enu runs on the <a href="https://nim-lang.org">Nim</a> language, and prototypes compile
 down to Nim procs. Because Nim's <code>auto</code> type can be implicit,
-<code>name ghost(a, b: int)</code> treats parameters differently than a plain
-<code>proc ghost(a, b: int)</code> would: with the proc, <code>a</code> and <code>b</code> are both <code>int</code>,
+<code>name Ghost(a, b: int)</code> treats parameters differently than a plain
+<code>proc Ghost(a, b: int)</code> would: with the proc, <code>a</code> and <code>b</code> are both <code>int</code>,
 whereas the <code>name</code> version makes <code>a</code> <code>auto</code> and <code>b</code> <code>int</code>.</p>
 </details>
 <p><code>speed</code>, <code>color</code>, and <code>global</code> can always be passed to a new instance, even if

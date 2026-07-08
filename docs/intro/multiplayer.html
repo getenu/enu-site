@@ -3,7 +3,7 @@
 <head>
   <!-- Book generated using nimibook -->
   <meta charset="UTF-8">
-  <title>Multiplayer (Experimental) - Enu</title>
+  <title>Multiplayer - Enu</title>
 
   <!-- Custom HTML head -->
 
@@ -141,7 +141,7 @@
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../intro/multiplayer.html" class="active" tabindex="0">
-        <strong aria-hidden="true">1.7.</strong> Multiplayer (Experimental)
+        <strong aria-hidden="true">1.7.</strong> Multiplayer
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../intro/config.html" tabindex="0">
@@ -261,7 +261,7 @@
       <h1 class="menu-title">Enu</h1>
 
       <div class="right-buttons">
-          <a href="https://github.com/dsrw/enu" title="Git repository"
+          <a href="https://github.com/getenu/enu" title="Git repository"
              aria-label="Git repository">
             <i id="git-repository-button"
                class="fa fa-github"></i>
@@ -284,11 +284,40 @@
       <main>
 
 
-          <h1>Multiplayer (Experimental)</h1>
-<p>Enu can be run as a server by setting <code>listen_address</code> to <code>0.0.0.0</code> in your
-<a href="config.html">config file</a>. Other players can then connect to your server by
-putting your IP or hostname in the <code>connect_address</code> setting in their config.
-This is still a work in progress.</p>
+          <h1>Multiplayer</h1>
+<p>Enu worlds can be shared. Run one copy as a server and other people can connect
+to it, build alongside you, and see each other's changes live. It generally
+works well and is one of the most fun ways to use Enu.</p>
+<details class="note">
+<summary>Only play with people you trust</summary>
+<p>Connecting runs the host's world, scripts and all, on your machine. We haven't
+finished a proper security review yet, so for now only host with, or connect
+to, people you actually know and trust. A public server on the open internet
+isn't a good idea just yet.</p>
+</details>
+<h2>Hosting a world</h2>
+<p>Hosting isn't in the settings panel yet, so you start a server one of three
+ways:</p>
+<ul>
+<li><strong>Config file.</strong> Set <code>listen_address</code> in your <a href="config.html">config file</a> to
+something like <code>0.0.0.0</code> (optionally with a <code>:port</code>). This is the easiest if
+you want to host every time you launch.</li>
+<li><strong>Command line.</strong> Launch Enu with <code>--listen</code>, optionally followed by an
+address. With no address it listens on <code>0.0.0.0</code>.</li>
+<li><strong>Environment variable.</strong> Set <code>ENU_LISTEN_ADDRESS</code> before launching.</li>
+</ul>
+<p>If no port is given, Enu uses <code>9632</code>. Other players then connect using your
+computer's IP address or hostname.</p>
+<h2>Joining a world</h2>
+<p>To join someone else's server, use any of:</p>
+<ul>
+<li>The <strong>Connect</strong> field in the <a href="settings.html">Settings</a> panel: type the host's
+address and press Connect.</li>
+<li><code>connect_address</code> in your <a href="config.html">config file</a>.</li>
+<li>The <code>--connect &lt;address&gt;</code> command line flag.</li>
+<li>The <code>ENU_CONNECT_ADDRESS</code> environment variable.</li>
+</ul>
+<p>Set your <a href="settings.html">player color</a> so your friends can tell who's who.</p>
       </main>
 
       <nav class="nav-wrapper" aria-label="Page navigation">

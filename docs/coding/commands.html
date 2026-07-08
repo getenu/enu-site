@@ -141,7 +141,7 @@
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../intro/multiplayer.html" tabindex="0">
-        <strong aria-hidden="true">1.7.</strong> Multiplayer (Experimental)
+        <strong aria-hidden="true">1.7.</strong> Multiplayer
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../intro/config.html" tabindex="0">
@@ -261,7 +261,7 @@
       <h1 class="menu-title">Enu</h1>
 
       <div class="right-buttons">
-          <a href="https://github.com/dsrw/enu" title="Git repository"
+          <a href="https://github.com/getenu/enu" title="Git repository"
              aria-label="Git repository">
             <i id="git-repository-button"
                class="fa fa-github"></i>
@@ -286,8 +286,8 @@
 
           <h1>Built-in Commands</h1>
 <p>This page covers the commands for moving, turning, and reading the world.
-Commands for drawing whole shapes at once — <code>box</code>, <code>ball</code>, <code>can</code>, <code>wall</code>,
-<code>floor</code> — have their own page: <a href="shapes.html">Drawing Shapes</a>.</p>
+Commands for drawing whole shapes at once (<code>box</code>, <code>ball</code>, <code>can</code>, <code>wall</code>,
+<code>floor</code>) have their own page: <a href="shapes.html">Drawing Shapes</a>.</p>
 <h2><code>move</code> / <code>build</code></h2>
 <p>When dealing with a <code>Build</code> unit, commands can do different things depending on
 whether the unit is in <code>build</code> mode or <code>move</code> mode. <code>move</code> mode moves the unit
@@ -305,7 +305,7 @@ move me
 up 3
 
 # create another unit and add some blocks
-var enemy = ghost.new
+var enemy = Ghost.new
 build enemy
 down 5
 
@@ -348,7 +348,7 @@ lean right, 45   # tip right, 45 degrees
 <code>say &quot;&quot;</code> to put the sign away. The text is markdown, so <code>**bold**</code> and lists
 work.</p>
 <pre><code class="language-nim">say &quot;Hello!&quot;
-say &quot;Careful — dragons ahead.&quot;
+say &quot;Careful, dragons ahead.&quot;
 </code></pre>
 <h2><code>near</code> / <code>far</code></h2>
 <p><code>near(less_than = 5.0)</code> / <code>far(greater_than = 100.0)</code></p>

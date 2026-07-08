@@ -141,7 +141,7 @@
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../intro/multiplayer.html" tabindex="0">
-        <strong aria-hidden="true">1.7.</strong> Multiplayer (Experimental)
+        <strong aria-hidden="true">1.7.</strong> Multiplayer
       </a></li>
     <li class="chapter-item expanded ">
       <a href="../intro/config.html" tabindex="0">
@@ -261,7 +261,7 @@
       <h1 class="menu-title">Enu</h1>
 
       <div class="right-buttons">
-          <a href="https://github.com/dsrw/enu" title="Git repository"
+          <a href="https://github.com/getenu/enu" title="Git repository"
              aria-label="Git repository">
             <i id="git-repository-button"
                class="fa fa-github"></i>
@@ -290,33 +290,23 @@ This one builds something you can walk into: a little house, one command at a
 time. By the end you'll have used most of the <a href="../coding/shapes.html">shape commands</a>
 and know how to fix a build when it comes out wrong.</p>
 <h2>Get a Build to code</h2>
-<p>Everything here is drawn by a <code>Build</code> — a unit made of blocks. Place one by
+<p>Everything here is drawn by a <code>Build</code>, a unit made of blocks. Place one by
 picking a block color from the toolbar and dropping a block in the world.
 Then switch to the <code>Code</code> tool (key <code>1</code>) and click the block to open its code.</p>
 <p>Type each step below into that code window, and press left
 <code>alt/option (⌥)</code> to run it. Enu re-runs the whole script every time, so you can
 keep editing and re-running as you go.</p>
-<h2>Start slow</h2>
-<p>Put this at the very top. <code>speed = 0</code> means &quot;draw it all at once&quot; instead of
-block by block — handy while you're experimenting, since you don't have to wait
-for each run:</p>
-<pre><code class="language-nim">speed = 0
-</code></pre>
 <h2>Four walls</h2>
 <p>A hollow box is four walls, a floor, and a ceiling all at once. <code>fill = false</code>
 is what makes it hollow:</p>
-<pre><code class="language-nim">speed = 0
-
-color = white
+<pre><code class="language-nim">color = white
 box 12, 6, 10, fill = false
 </code></pre>
 <h2>A door and some windows</h2>
 <p>A house needs a way in. <code>eraser</code> is a color that removes blocks instead of
 drawing them, so we erase a door-shaped hole in the front wall, and two smaller
 holes for windows. <code>at</code> places each hole at an exact spot:</p>
-<pre><code class="language-nim">speed = 0
-
-color = white
+<pre><code class="language-nim">color = white
 box 12, 6, 10, fill = false
 
 # a doorway
@@ -330,14 +320,12 @@ box 2, 2, 1, at = vec3(9, 3, 9), color = eraser
 <summary>Why <code>vec3(5, 0, 9)</code>?</summary>
 <p><code>vec3</code> is a spot in the build: how far right, up, and forward. The <code>9</code> puts the
 holes on the front wall (the one facing you) instead of the back. If your door
-comes out on the wrong side, change the <code>9</code> to <code>0</code> — or spin the whole house
+comes out on the wrong side, change the <code>9</code> to <code>0</code>, or spin the whole house
 later with <code>rotation</code>.</p>
 </details>
 <h2>A roof</h2>
 <p>Give it a red roof by drawing a thin box across the top:</p>
-<pre><code class="language-nim">speed = 0
-
-color = white
+<pre><code class="language-nim">color = white
 box 12, 6, 10, fill = false
 
 # a doorway
@@ -354,7 +342,7 @@ box 12, 1, 10, at = vec3(0, 6, 0)
 <p><img src="../assets/tutorial_2_house.png" alt="The finished house" /></p>
 <p>That's a house! Walk over and go inside through the door.</p>
 <h2>Make it yours</h2>
-<p>Now the fun part — change things and re-run:</p>
+<p>Now the fun part. Change things and re-run:</p>
 <ul>
 <li>
 <p>Swap <code>white</code> for <code>brown</code> or <code>blue</code> to repaint the walls.</p>
@@ -379,19 +367,20 @@ can 2, 4, at = vec3(9, 6, 2)
 <ul>
 <li><strong>The pieces don't line up.</strong> <code>box</code> and shapes with <code>at</code> measure from the
 build's corner. But <code>wall</code>, <code>floor</code>, and a plain <code>box</code> with no <code>at</code> start
-from wherever the drawing turtle is — and <code>wall</code> and <code>floor</code> <em>move</em> the
-turtle to their far end. If parts drift apart, give everything an <code>at</code> so
-they share the same measuring stick.</li>
+from wherever the drawing turtle is, and <code>wall</code> and <code>floor</code> <em>move</em> the turtle
+to their far end. If parts drift apart, give everything an <code>at</code> so they share
+the same measuring stick.</li>
 <li><strong>You can't find your build.</strong> Fly up (double-jump, then hold jump) for a
 better view.</li>
-<li><strong>It's a mess and you want to start over.</strong> Delete everything the build has
-drawn and start fresh by putting <code>reset true</code> at the very top of the script.</li>
+<li><strong>You want to start over.</strong> Just change the code and run again. Enu re-runs
+the whole script from scratch each time and redraws it, so there's nothing to
+clean up by hand.</li>
 </ul>
 <h2>Next steps</h2>
 <ul>
 <li>The full list of shapes is on the <a href="../coding/shapes.html">Drawing Shapes</a>
 page.</li>
-<li>Make your house <em>do</em> something with <a href="../command_loops.html">Command Loops</a> —
+<li>Make your house <em>do</em> something with <a href="../command_loops.html">Command Loops</a>:
 a door that opens when you're near, lights that flicker, a bot that patrols.</li>
 <li>Browse the <a href="../api/enu_api.html">API Reference</a> for every command Enu
 knows.</li>
