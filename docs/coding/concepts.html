@@ -318,10 +318,12 @@ optional when creating a new instance. If they should be required, or there's no
 reasonable default value to use, specify a type (<code>spookiness: int</code>) instead, or
 omit both the value and the type, which will make the type <code>auto</code>.</p>
 <details class="note">
-<summary>Note for Nimions</summary>
-<p>Because <code>auto</code> can be implicit, <code>name ghost(a, b: int)</code> treats parameters
-differently than <code>proc ghost(a, b: int)</code> would. With the proc, <code>a</code> and <code>b</code> are
-both <code>int</code>, whereas the <code>name</code> version would make <code>a</code> <code>auto</code> and <code>b</code> <code>int</code>.</p>
+<summary>Under the hood</summary>
+<p>Enu runs on the <a href="https://nim-lang.org">Nim</a> language, and prototypes compile
+down to Nim procs. Because Nim's <code>auto</code> type can be implicit,
+<code>name ghost(a, b: int)</code> treats parameters differently than a plain
+<code>proc ghost(a, b: int)</code> would: with the proc, <code>a</code> and <code>b</code> are both <code>int</code>,
+whereas the <code>name</code> version makes <code>a</code> <code>auto</code> and <code>b</code> <code>int</code>.</p>
 </details>
 <p><code>speed</code>, <code>color</code>, and <code>global</code> can always be passed to a new instance, even if
 the prototype name doesn't include them.</p>

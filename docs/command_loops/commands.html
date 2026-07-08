@@ -309,12 +309,13 @@ future this will be handled automatically.</p>
 echo hello(&quot;Scott&quot;)
 </code></pre>
 <details class="note">
-<summary>Note for Nimions</summary>
-<p>A command is just a <code>proc</code>. Anything that can be done with commands can also be
-done with normal procs.</p>
-<p>Command parameters (called details here) will default to <code>auto</code> if no type is
-provided. Each parameter is shadowed my a mutable variable inside the command
-body.</p>
+<summary>Under the hood</summary>
+<p>Enu runs on the <a href="https://nim-lang.org">Nim</a> language, and a command is just a
+Nim <code>proc</code>. Anything you can do with a command you can also do with a normal
+proc.</p>
+<p>Command parameters (called details here) will default to Nim's <code>auto</code> type if
+no type is provided. Each parameter is shadowed by a mutable variable inside the
+command body.</p>
 </details>
       </main>
 

@@ -395,9 +395,10 @@ loop:
   attack -&gt; wander
 </code></pre>
 <details class="note">
-<summary>Note for Nimions</summary>
-<p>Command Loops are state machines, and any proc can be a state. If the proc
-has a return value it will be discarded.</p>
+<summary>Under the hood</summary>
+<p>Command Loops are state machines. Enu runs on the <a href="https://nim-lang.org">Nim</a>
+language, and any Nim proc can be a state. If the proc has a return value it
+will be discarded.</p>
 </details>
       </main>
 
